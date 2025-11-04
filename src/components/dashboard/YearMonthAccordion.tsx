@@ -14,7 +14,7 @@ export function YearMonthAccordion({ years, selected, onSelect }: Props){
   const [openYear, setOpenYear] = useState<string | null>(years[0]?.year ?? null);
 
   return (
-    <aside style={{ borderLeft: '1px solid #e5e7eb', padding:'1rem', width: 300 }}>
+    <aside style={{ borderLeft: '1px solid #e5e7eb', padding:'1rem', width: '100%' }}>
       <h3 style={{ marginBottom: '0.5rem' }}>Archive</h3>
       <div>
         {years.map(({ year, months }) => {

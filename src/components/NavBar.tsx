@@ -6,7 +6,7 @@ import { RootState } from "@/redux/store";
 import { setActiveMenu } from "@/redux/slices/uiSlice";
 import { setLocale } from "@/redux/slices/localeSlice";
 import { useTranslation } from "react-i18next";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import menuEN from "@/data/menu.en.json";
 import menuHI from "@/data/menu.hi.json";
 import { logout } from "@/redux/slices/authSlice";
@@ -39,12 +39,33 @@ export function NavBar(){
   const user = useSelector((s: RootState)=> (s as any).auth?.user);
   const [open, setOpen] = useState<string | null>(null);
   const [closeTimer, setCloseTimer] = useState<NodeJS.Timeout | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileDropdowns, setMobileDropdowns] = useState<Record<string, boolean>>({});
 
   const menuData = useMemo(() => {
     return i18n.language === 'hi' ? menuHI : menuEN;
   }, [i18n.language]);
 
+  // Track viewport for mobile behaviors
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+      const matches = 'matches' in e ? e.matches : (e as MediaQueryList).matches;
+      setIsMobile(matches);
+      if (!matches) {
+        // Reset mobile-only states when returning to desktop
+        setMobileOpen(false);
+        setMobileDropdowns({});
+      }
+    };
+    handler(mq);
+    mq.addEventListener?.('change', handler as (e: MediaQueryListEvent) => void);
+    return () => mq.removeEventListener?.('change', handler as (e: MediaQueryListEvent) => void);
+  }, []);
+
   const handleMouseEnter = (menu: string) => {
+    if (isMobile) return; // Disable hover logic on mobile
     if (closeTimer) {
       clearTimeout(closeTimer);
       setCloseTimer(null);
@@ -57,6 +78,7 @@ export function NavBar(){
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return; // Disable hover close on mobile
     const timer = setTimeout(() => {
       setOpen(null);
     }, 300);
@@ -79,11 +101,27 @@ export function NavBar(){
       );
     } else {
       return (
-        <div key={item.id} className="menuItemWithDropdown" onMouseEnter={() => handleMouseEnter(item.id)} onMouseLeave={handleMouseLeave}>
-          <a href={item.href} onClick={() => dispatch(setActiveMenu(item.id))}>
+        <div
+          key={item.id}
+          className="menuItemWithDropdown"
+          onMouseEnter={() => handleMouseEnter(item.id)}
+          onMouseLeave={handleMouseLeave}
+        >
+          <button
+            className="menuDropdownTrigger"
+            onClick={() => {
+              if (isMobile) {
+                setMobileDropdowns(prev => ({ ...prev, [item.id]: !prev[item.id] }));
+              } else {
+                dispatch(setActiveMenu(item.id));
+              }
+            }}
+            aria-expanded={(isMobile ? !!mobileDropdowns[item.id] : open === item.id) ? true : false}
+            aria-haspopup="true"
+          >
             {item.label}
-          </a>
-          {open === item.id && item.submenu && (
+          </button>
+          {(item.submenu && ((isMobile && mobileDropdowns[item.id]) || (!isMobile && open === item.id))) && (
             <div className="menuDropdown" role="menu">
               {item.submenu.map((subItem: any) => (
                 <a key={subItem.id} href={subItem.href}>
@@ -101,14 +139,19 @@ export function NavBar(){
     <nav className="navbar">
       <div className="navInner">
         <span className="brand">🕉 {t('brand.name')}</span>
-        <div className="menuContainer">
+        <button className="hamburger" aria-label="Toggle menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(v => !v)}>
+          <span/>
+          <span/>
+          <span/>
+        </button>
+        <div className={`menuContainer ${mobileOpen ? 'open' : ''}`}>
           {menuData.rows.map((row, index) => (
             <div key={row.id} className="menuRow" role="menubar" aria-label={`Main menu row ${index + 1}`}>
               {row.items.map(renderMenuItem)}
             </div>
           ))}
         </div>
-        <div style={{display:'flex', gap:'.5rem', alignItems:'center'}}>
+        <div className="navRight">
           {i18n.language === 'hi' ? (
             <button className="langBtn" onClick={()=>changeLang('en')}>EN</button>
           ) : (

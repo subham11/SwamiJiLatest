@@ -38,7 +38,7 @@ export default function DashboardPage(){
   return (
     <main>
       <NavBar />
-      <section className="container" style={{ display:'grid', gridTemplateColumns:'1fr 320px', gap:'1.5rem', alignItems:'start', padding:'1rem' }}>
+      <section className="container dashboardGrid">
         <div>
           <h1 style={{ fontSize:'clamp(1.25rem,2.5vw,1.75rem)', margin:'0.5rem 0 1rem' }}>Dashboard</h1>
           {user?.role === 'admin' && selectedMonth && (

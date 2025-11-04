@@ -32,6 +32,19 @@ function SwamijiHero() {
   const [loadedCount, setLoadedCount] = useState<number>(0);
   const [imagesShow, setImagesShow] = useState<boolean>(false);
   const { i18n } = useTranslation();
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Detect mobile viewport to adapt layout/interaction
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const handler = (e: MediaQueryListEvent | MediaQueryList) => {
+      const matches = 'matches' in e ? e.matches : (e as MediaQueryList).matches;
+      setIsMobile(matches);
+    };
+    handler(mq);
+    mq.addEventListener?.('change', handler as (e: MediaQueryListEvent) => void);
+    return () => mq.removeEventListener?.('change', handler as (e: MediaQueryListEvent) => void);
+  }, []);
 
   // Compute default content based on language
   const defaultContent = useMemo(() => (
@@ -135,7 +148,8 @@ function SwamijiHero() {
       <div className="heroOverlapContainer">
         <div className="heroOverlapImages">
           {items.map((item, index) => {
-            const baseTransform = `translateX(${index * 80}px) rotate(${(index - 2) * 3}deg)`;
+            const step = isMobile ? 40 : 80;
+            const baseTransform = `translateX(${index * step}px) rotate(${(index - 2) * 3}deg)`;
             const transform = imagesShow
               ? baseTransform
               : `${baseTransform} translateY(20px) scale(0.98)`;
@@ -153,6 +167,7 @@ function SwamijiHero() {
               }}
               onMouseEnter={() => setHoveredImage(index)}
               onMouseLeave={() => setHoveredImage(null)}
+              onClick={() => setHoveredImage(prev => prev === index ? null : index)}
             >
               <img
                 src={item.image}
@@ -208,19 +223,9 @@ function SwamijiHero() {
     </div>
 
     {/* About Swamiji Section */}
-    <section
-      className="container"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1.2fr',
-        gap: '2rem',
-        alignItems: 'center',
-        padding: '3rem 1rem',
-      }}
-    >
+    <section className="container aboutSwamiji">
       {/* (Badge heading removed as requested) */}
-      <div
-        style={{
+      <div className="aboutImageWrap" style={{
           position: 'relative',
           borderRadius: '16px',
           overflow: 'hidden',
@@ -228,8 +233,7 @@ function SwamijiHero() {
           opacity: aboutImgLoaded ? 1 : 0,
           transform: aboutImgLoaded ? 'none' : 'translateY(16px) scale(0.98)',
           transition: 'opacity 700ms ease, transform 700ms ease',
-        }}
-      >
+      }}>
         <img
           src={aboutItem.image}
           alt={typeof aboutItem.title === 'string' ? aboutItem.title : 'Swamiji'}
@@ -252,13 +256,11 @@ function SwamijiHero() {
         />
       </div>
 
-      <div
-        style={{
+      <div className="aboutText" style={{
           opacity: aboutShowText ? 1 : 0,
           transform: aboutShowText ? 'none' : 'translateY(10px)',
           transition: 'opacity 700ms ease, transform 700ms ease',
-        }}
-      >
+      }}>
         <h2 style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.25rem)', marginBottom: '0.25rem' }}>
           {typeof aboutItem.title === 'string' ? aboutItem.title : (i18n.language === 'hi' ? 'स्वामीजी के बारे में' : 'About Swamiji')}
         </h2>

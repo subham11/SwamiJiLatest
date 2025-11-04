@@ -130,4 +130,10 @@ AWS Amplify:
 - Menu hover and dropdowns are tuned to avoid flicker (hover bridge + small delay).
 - Themed colors are applied via CSS variables set by `ThemeApplier`.
 
+## Mobile responsiveness
+- Navbar collapses to a hamburger with stacked, tap-friendly dropdowns on ≤768px.
+- Swamiji images reduce their overlap step and support tap-to-switch text; About section stacks image above text.
+- Parallax background uses scroll on mobile to avoid iOS jank; sections compact padding.
+- Card grids, teachings, quotes, and events all adapt with existing breakpoints.
+
 ````

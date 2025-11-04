@@ -398,6 +398,45 @@ html, body {
   transform: translateY(0);
 }
 
+/* Nav: right controls */
+.navRight{ display:flex; gap:.5rem; align-items:center; }
+
+/* Mobile nav hamburger (hidden on desktop) */
+.hamburger{
+  display:none;
+  background:transparent;
+  border:none;
+  width:40px; height:40px;
+  border-radius:8px;
+  align-items:center; justify-content:center;
+  gap:4px; flex-direction:column;
+  cursor:pointer;
+}
+.hamburger span{ display:block; width:22px; height:2px; background:#333; border-radius:2px; }
+
+/* Dropdown trigger becomes a button for better a11y */
+.menuDropdownTrigger{
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 0.5rem 0.875rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  z-index: 10;
+  white-space: nowrap;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+}
+.menuDropdownTrigger:hover{
+  color: var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary)10, var(--color-secondary)10);
+  transform: translateY(-2px);
+}
+
 .hero {
   width: 100%;
   min-height: min(100vh, 760px);
@@ -621,6 +660,49 @@ html, body {
   animation: fadeInUp 0.5s ease 0.4s backwards;
 }
 
+@media (max-width: 1024px) {
+  /* Collapse nav layout */
+  .hamburger{ display:flex; }
+  .navInner{ flex-wrap: wrap; }
+  .menuContainer{
+    order: 3;
+    width: 100%;
+    display: none;
+  }
+  .menuContainer.open{ display:flex; }
+  .menuRow{
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile menu becomes stacked vertical list */
+  .menuContainer{
+    gap: .25rem;
+  }
+  .menuRow{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .menuRow a,
+  .menuDropdownTrigger{
+    width: 100%;
+    text-align: left;
+    border-radius: 10px;
+  }
+  .menuItemWithDropdown{ width: 100%; }
+  .menuDropdown{
+    position: static;
+    border-width: 1px;
+    box-shadow: none;
+    padding: .5rem;
+    margin-top: .25rem;
+    border-radius: 10px;
+  }
+  .navRight{ margin-left:auto; }
+}
 @media (max-width: 1024px) {
   .imageHoverModal {
     max-width: 700px;
@@ -1012,6 +1094,26 @@ html, body {
   padding: 6rem 1rem;
 }
 
+@media (max-width: 768px){
+  .parallaxWrap{ background-attachment: scroll; }
+  .parallaxOverlay{ padding: 4rem 1rem; }
+}
+
+/* About Swamiji layout */
+.aboutSwamiji{
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+@media (max-width: 900px){
+  .aboutSwamiji{ grid-template-columns: 1fr; }
+  .aboutImageWrap{ order: 1; }
+  .aboutText{ order: 2; }
+}
+
 .cardsGrid{
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -1041,6 +1143,19 @@ html, body {
   border-radius: 999px;
   font-weight: 700;
   font-size: .75rem;
+}
+
+/* Dashboard grid layout */
+.dashboardGrid{
+  display:grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.5rem;
+  align-items:start;
+  padding: 1rem;
+}
+
+@media (max-width: 900px){
+  .dashboardGrid{ grid-template-columns: 1fr; }
 }
 
 /* Animation styles for cards */

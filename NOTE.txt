@@ -1,0 +1,1 @@
+All files from previous boilerplate remain identical; only Next.js upgraded to latest.

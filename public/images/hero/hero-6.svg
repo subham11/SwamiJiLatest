@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hero 6">
+  <defs>
+    <linearGradient id="h6" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FDC830"/>
+      <stop offset="100%" stop-color="#F37335"/>
+    </linearGradient>
+    <radialGradient id="overlay6" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.45)"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#h6)"/>
+  <polygon points="1920,0 1920,400 1500,0" fill="rgba(255,255,255,0.08)"/>
+  <polygon points="0,1080 500,1080 0,650" fill="rgba(255,255,255,0.08)"/>
+  <rect x="700" y="350" width="520" height="380" rx="70" fill="rgba(255,255,255,0.06)"/>
+  <rect width="100%" height="100%" fill="url(#overlay6)"/>
+</svg>

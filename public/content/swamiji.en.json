@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "title": "Divine Wisdom",
+      "description": "Swami Rupeshwaranand shares ancient Vedic knowledge and spiritual insights to guide seekers on their path to enlightenment.",
+      "image": "/images/SwamiJi/swami-ji-1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Sacred Teachings",
+      "description": "Through profound teachings and discourses, Swamiji illuminates the path of dharma and righteous living.",
+      "image": "/images/SwamiJi/swami-ji-2.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Spiritual Guide",
+      "description": "As a devoted spiritual master, Swamiji leads disciples through meditation, yoga, and sacred rituals.",
+      "image": "/images/SwamiJi/swami-ji-3.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Inner Peace",
+      "description": "Learn the ancient practices of finding tranquility and inner peace through Swamiji's compassionate guidance.",
+      "image": "/images/SwamiJi/swami-ji-4.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Jagadguru Shree Peetambara Siddha Peethacharya Shree Shree 1008",
+      "subtitle": "|| Swami Rupeshwaranand Ji Maharaj ||",
+      "description": "Revered Swamiji is a world-renowned and foremost Mantra Yogi (mantra specialist) with lakhs of disciples across India and abroad. They practice daily Trikal Sandhya and perform Yajna-Havan; every Sunday they collectively recite 108 paths of Shri Bajrang Baan for universal welfare.\nSwami Rupeshwaranand Ji is a spiritual seeker and mantra-yogi. From the young age of 10, he developed deep interest in devotion, worship, and mantra sadhana; at 17, he renounced household life and accepted the life of a renunciate. For the past 25 years, he has been steadfast in the field of mantra and yoga sadhana and, considering service to the nation and society his duty, he remains actively engaged in various service activities.",
+      "image": "/images/SwamiJi/swami-ji-5.jpg"
+    }
+  ]
+}

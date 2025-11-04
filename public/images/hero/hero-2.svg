@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hero 2">
+  <defs>
+    <linearGradient id="h2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#667EEA"/>
+      <stop offset="100%" stop-color="#764BA2"/>
+    </linearGradient>
+    <radialGradient id="overlay2" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.45)"/>
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#h2)"/>
+  <polygon points="0,0 800,0 0,600" fill="rgba(255,255,255,0.07)"/>
+  <polygon points="1920,1080 1200,1080 1920,500" fill="rgba(255,255,255,0.07)"/>
+  <rect width="100%" height="100%" fill="url(#overlay2)"/>
+</svg>

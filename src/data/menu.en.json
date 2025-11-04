@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "id": "row1",
+      "items": [
+        {
+          "id": "home",
+          "label": "Home",
+          "href": "/",
+          "type": "link"
+        },
+        {
+          "id": "about",
+          "label": "Swamiji",
+          "href": "/swamiji",
+          "type": "link"
+        },
+        {
+          "id": "campaign",
+          "label": "Shri Bajrang Baan Abhiyan",
+          "href": "#campaign",
+          "type": "link"
+        },
+        {
+          "id": "swamiji-ashram",
+          "label": "Swami Rupeshwaranand Ashram",
+          "href": "#swamiji-ashram",
+          "type": "link"
+        },
+        {
+          "id": "services",
+          "label": "Aashram Poojan Services",
+          "href": "#services",
+          "type": "dropdown",
+          "submenu": [
+            {
+              "id": "narayan",
+              "label": "Narayan Bali Poojan",
+              "href": "#narayan"
+            },
+            {
+              "id": "tripindi",
+              "label": "Tripindi Shraddh Poojan",
+              "href": "#tripindi"
+            },
+            {
+              "id": "pitr",
+              "label": "Pitr Shanti Poojan",
+              "href": "#pitr"
+            },
+            {
+              "id": "vipreet",
+              "label": "Shri Vipreet Pratyangira Prayog",
+              "href": "#vipreet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "row2",
+      "items": [
+        {
+          "id": "yantra",
+          "label": "Siddha Yantra & Raksha Kavach",
+          "href": "#yantra",
+          "type": "dropdown",
+          "submenu": [
+            {
+              "id": "mantrasiddha",
+              "label": "Mantrasiddha Yagyabhasma",
+              "href": "#mantrasiddha"
+            },
+            {
+              "id": "shastraukta",
+              "label": "Shastraukta Yagya Havan Set",
+              "href": "#shastraukta"
+            },
+            {
+              "id": "trikal",
+              "label": "Trikal Sandhya Set",
+              "href": "#trikal"
+            }
+          ]
+        },
+        {
+          "id": "stotra",
+          "label": "Stotra",
+          "href": "#stotra",
+          "type": "link"
+        },
+        {
+          "id": "registration",
+          "label": "Registration",
+          "href": "#registration",
+          "type": "link"
+        },
+        {
+          "id": "donation",
+          "label": "Donation",
+          "href": "#donation",
+          "type": "link"
+        },
+        {
+          "id": "signin",
+          "label": "Signin",
+          "href": "/login",
+          "type": "link"
+        },
+        {
+          "id": "contact",
+          "label": "Contact",
+          "href": "#contact",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}

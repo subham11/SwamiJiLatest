@@ -1,0 +1,48 @@
+{
+  "brand": {
+    "name": "Swami Rupeshwaranand"
+  },
+  "menu": {
+    "home": "Home",
+    "about": "Swamiji",
+    "campaign": "Shri Bajrang Baan Abhiyan",
+    "swamiji-ashram": "Swami Rupeshwaranand Ashram",
+    "services": "Aashram Poojan Services",
+    "yantra": "Siddha Yantra & Raksha Kavach",
+    "stotra": "Stotra",
+    "registration": "Registration",
+    "donation": "Donation",
+    "signin": "Signin",
+    "contact": "Contact"
+  },
+  "submenu": {
+    "narayan": "Narayan Bali Poojan",
+    "tripindi": "Tripindi Shraddh Poojan",
+    "pitr": "Pitr Shanti Poojan",
+    "vipreet": "Shri Vipreet Pratyangira Prayog",
+    "mantrasiddha": "Mantrasiddha Yagyabhasma",
+    "shastraukta": "Shastraukta Yagya Havan Set",
+    "trikal": "Trikal Sandhya Set"
+  },
+  "hero": {
+    "slide1": "Divine Guidance For Modern Life",
+    "slide2": "Daily Inspirations & Teachings",
+    "cta": "Explore Now"
+  },
+  "parallax": {
+    "title": "A Place of Peace",
+    "subtitle": "Experience the calm through words, music and service"
+  },
+  "cards": {
+    "title": "Words of Wisdom",
+    "subtitle": "Daily Inspiration from Swami Ji"
+  },
+  "events": {
+    "title": "Upcoming Events",
+    "subtitle": "Join us for spiritual gatherings and community activities"
+  },
+  "teachings": {
+    "title": "Sacred Teachings",
+    "subtitle": "Timeless wisdom for modern living"
+  }
+}

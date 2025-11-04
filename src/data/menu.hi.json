@@ -1,0 +1,119 @@
+{
+  "rows": [
+    {
+      "id": "row1",
+      "items": [
+        {
+          "id": "home",
+          "label": "होम",
+          "href": "/",
+          "type": "link"
+        },
+        {
+          "id": "about",
+          "label": "स्वामीजी",
+          "href": "/swamiji",
+          "type": "link"
+        },
+        {
+          "id": "campaign",
+          "label": "श्री बजरंग बाण अभियान",
+          "href": "#campaign",
+          "type": "link"
+        },
+        {
+          "id": "swamiji-ashram",
+          "label": "स्वामी रुपेश्वरानंद आश्रम",
+          "href": "#swamiji-ashram",
+          "type": "link"
+        },
+        {
+          "id": "services",
+          "label": "आश्रम पूजन सेवाएं",
+          "href": "#services",
+          "type": "dropdown",
+          "submenu": [
+            {
+              "id": "narayan",
+              "label": "नारायण बलि पूजन",
+              "href": "#narayan"
+            },
+            {
+              "id": "tripindi",
+              "label": "त्रिपिंडी श्राध्द पूजन",
+              "href": "#tripindi"
+            },
+            {
+              "id": "pitr",
+              "label": "पितृशांति पूजन",
+              "href": "#pitr"
+            },
+            {
+              "id": "vipreet",
+              "label": "श्री विपरीत प्रत्यंगिरा प्रयोग",
+              "href": "#vipreet"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "row2",
+      "items": [
+        {
+          "id": "yantra",
+          "label": "सिद्ध यंत्र एवं रक्षा कवच",
+          "href": "#yantra",
+          "type": "dropdown",
+          "submenu": [
+            {
+              "id": "mantrasiddha",
+              "label": "मंत्रसिध्द यज्ञभस्म",
+              "href": "#mantrasiddha"
+            },
+            {
+              "id": "shastraukta",
+              "label": "शास्त्रोक्त यज्ञ हवन सेट",
+              "href": "#shastraukta"
+            },
+            {
+              "id": "trikal",
+              "label": "त्रिकाल संध्या सेट",
+              "href": "#trikal"
+            }
+          ]
+        },
+        {
+          "id": "stotra",
+          "label": "स्तोत्र",
+          "href": "#stotra",
+          "type": "link"
+        },
+        {
+          "id": "registration",
+          "label": "पंजीकरण",
+          "href": "#registration",
+          "type": "link"
+        },
+        {
+          "id": "donation",
+          "label": "नित्यदान",
+          "href": "#donation",
+          "type": "link"
+        },
+        {
+          "id": "signin",
+          "label": "लॉग इन",
+          "href": "/login",
+          "type": "link"
+        },
+        {
+          "id": "contact",
+          "label": "संपर्क",
+          "href": "#contact",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}

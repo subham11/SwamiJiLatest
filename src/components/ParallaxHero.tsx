@@ -79,6 +79,9 @@ function ParallaxSlideContent({ slide, isActive, onScanComplete, index }: { slid
           className={`parallaxImage ${showImage ? 'loaded' : ''}`}
           onLoad={handleImageLoad}
           style={{ opacity: imageLoaded ? undefined : 0 }}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchPriority={isActive && index === 0 ? 'high' : 'low'}
         />
       </div>
       <div className="parallaxTextContainer" data-swiper-parallax="100">

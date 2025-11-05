@@ -49,7 +49,7 @@ export function CardGrid(){
       {cards.map((c, i) => (
         <AnimatedCard key={c.id} delay={i * 100}>
           <article className="card" tabIndex={0} aria-label={c.title}>
-            <img src={c.image} alt="" style={{width:'100%', height:180, objectFit:'cover', borderRadius:12}}/>
+            <img src={c.image} alt="" loading="lazy" decoding="async" style={{width:'100%', height:180, objectFit:'cover', borderRadius:12}}/>
             <h3 style={{margin:'.75rem 0 0 0'}}>{c.title}</h3>
             <p style={{color:'#555'}}>{c.desc}</p>
           </article>

@@ -1,52 +1,26 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-
-export type EventItem = {
-  id: number | string;
-  title: string;
-  date: string;
-  time: string;
-  location: string;
-  type: string;
-  image?: string;
-  link?: string;
-};
-
+import React, { useMemo, useRef, useState } from 'react';
+import { useEventsData, type EventItem } from '@/hooks/useEventsData';
+import { useEventValidation } from '@/hooks/useEventValidation';
 const emptyEvent = (): EventItem => ({ id: Date.now(), title: '', date: '', time: '', location: '', type: '' });
 
 export function EventsEditor(){
   const [locale, setLocale] = useState<'en'|'hi'>('en');
-  const [items, setItems] = useState<EventItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const { items, setItems, loading, error: loadError, setError, baselineRef } = useEventsData(locale, 'api');
   const [savingIndex, setSavingIndex] = useState<number | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [dragIndex, setDragIndex] = useState<number | null>(null);
-  const [fieldErrors, setFieldErrors] = useState<Record<number, Partial<Record<'title'|'date'|'time'|'link'|'image', string>>>>({});
+  const { fieldErrors, setFieldErrors, validateItem, isValidUrl } = useEventValidation();
   const [dirty, setDirty] = useState<Set<number>>(new Set());
   const [justSaved, setJustSaved] = useState<Set<number>>(new Set());
-  const baselineRef = useRef<EventItem[]>([]); // last persisted version
+  // baselineRef provided by hook
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
+  // Reset dirty state when locale changes via items baseline refresh
+  React.useEffect(() => {
     setDirty(new Set());
     setJustSaved(new Set());
-    fetch(`/api/events/${locale}`, { cache: 'no-store' })
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        const items = Array.isArray(data?.items) ? data.items : [];
-        setItems(items);
-        baselineRef.current = items;
-      })
-      .catch((err) => {
-        console.error(err);
-        setError('Failed to load events');
-        setItems([]);
-      })
-      .finally(() => setLoading(false));
-  }, [locale]);
+    setFieldErrors({});
+  }, [locale, setFieldErrors]);
 
   const addItem = () => setItems((prev) => {
     const next = [...prev, emptyEvent()];
@@ -85,26 +59,7 @@ export function EventsEditor(){
     setDragIndex(null);
   };
 
-  const isValidUrl = (s: string) => {
-    try {
-      const u = new URL(s);
-      return u.protocol === 'http:' || u.protocol === 'https:';
-    } catch {
-      return false;
-    }
-  };
-
-  const validateItem = (idx: number): boolean => {
-    const it = items[idx];
-    const fe: Partial<Record<'title'|'date'|'time'|'link'|'image', string>> = {};
-    if (!it.title?.trim()) fe.title = 'Required';
-    if (!it.date || isNaN(Date.parse(it.date))) fe.date = 'Invalid date';
-    if (!it.time?.trim()) fe.time = 'Required';
-    if (it.link && !isValidUrl(it.link)) fe.link = 'Invalid URL';
-    if (it.image && !isValidUrl(it.image)) fe.image = 'Invalid URL';
-    setFieldErrors((prev) => ({ ...prev, [idx]: fe }));
-    return Object.keys(fe).length === 0;
-  };
+  const validateItemLocal = (idx: number) => validateItem(idx, items);
 
   const itemExistsInBaseline = (id: EventItem['id']) => baselineRef.current.some((b) => b.id === id);
 
@@ -112,7 +67,7 @@ export function EventsEditor(){
     setSavingIndex(idx);
     setError(null);
     try{
-      if (!validateItem(idx)){
+      if (!validateItemLocal(idx)){
         throw new Error('validation');
       }
       const current = items[idx];
@@ -178,8 +133,8 @@ export function EventsEditor(){
         </div>
       </div>
 
-      {loading && <div className="sectionLoader"><div className="sectionSpinner" /><span>Loading...</span></div>}
-      {error && <div style={{ color:'#b91c1c', marginBottom:'.5rem' }}>{error}</div>}
+  {loading && <div className="sectionLoader"><div className="sectionSpinner" /><span>Loading...</span></div>}
+  {(loadError) && <div style={{ color:'#b91c1c', marginBottom:'.5rem' }}>{loadError}</div>}
   {/* page-level saved removed; per-card saved indicator shown inline */}
 
       <div className="eventsGrid">

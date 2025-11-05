@@ -1,7 +1,8 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useEventsData } from '@/hooks/useEventsData';
 
 type EventItem = {
   id: number | string;
@@ -17,36 +18,9 @@ type EventItem = {
 export function UpcomingEvents() {
   const { t, i18n } = useTranslation();
   const locale = (i18n.language || 'en').startsWith('hi') ? 'hi' : 'en';
-  const [events, setEvents] = useState<EventItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const { items: events, loading, error } = useEventsData(locale as 'en'|'hi', 'public');
   const [animateIn, setAnimateIn] = useState<boolean>(false);
 
-  useEffect(() => {
-    let mounted = true;
-    setLoading(true);
-    setError(null);
-    const url = `/content/events.${locale}.json`;
-    fetch(url)
-      .then(async (res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (!mounted) return;
-        const items: EventItem[] = Array.isArray(data?.items) ? data.items : [];
-        setEvents(items);
-      })
-      .catch((err) => {
-        if (!mounted) return;
-        console.error('Failed to load events', err);
-        setError(locale === 'hi' ? 'इवेंट लोड करने में समस्या हुई।' : 'Failed to load events.');
-        setEvents([]);
-      })
-      .finally(() => {
-        if (!mounted) return;
-        setLoading(false);
-      });
-    return () => { mounted = false; };
-  }, [locale]);
 
   // Trigger a subtle staggered fade-in when loading completes
   useEffect(() => {
@@ -101,7 +75,7 @@ export function UpcomingEvents() {
               <article key={event.id} className="eventCard" style={{ ['--i' as any]: idx }}>
                 {event.image && (
                   <div className="eventImageWrap">
-                    <img className="eventImage" src={event.image} alt={event.title} />
+                    <img className="eventImage" src={event.image} alt={event.title} loading="lazy" decoding="async" />
                   </div>
                 )}
                 <div className="eventType">

@@ -32,7 +32,7 @@ export function AboutCarousel({ items }: { items: AboutItem[] }) {
           <SwiperSlide key={it.id}>
             <div className="aboutSlide">
               <div className="aboutSlideImageWrap">
-                <img src={it.image} alt={it.title} className="aboutSlideImage" />
+                <img src={it.image} alt={it.title} className="aboutSlideImage" loading="lazy" decoding="async" />
               </div>
               <div className="aboutSlideText">
                 <h2 className="aboutSlideTitle">{it.title}</h2>

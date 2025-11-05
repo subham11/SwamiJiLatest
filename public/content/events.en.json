@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "id": 4,
+      "title": "Community Bhandara 1",
+      "date": "2025-11-25",
+      "time": "12:00 PM - 2:00 PM",
+      "location": "Ashram Grounds",
+      "type": "Community Service"
+    },
+    {
+      "id": 2,
+      "title": "Hanuman Chalisa Path",
+      "date": "2025-11-08",
+      "time": "7:00 AM - 8:00 AM",
+      "location": "Temple Premises",
+      "type": "Daily Prayer"
+    },
+    {
+      "id": 3,
+      "title": "Yoga & Pranayama Session",
+      "date": "2025-11-20",
+      "time": "5:30 AM - 7:00 AM",
+      "location": "Yoga Hall",
+      "type": "Health & Wellness"
+    },
+    {
+      "id": 1,
+      "title": "Spiritual Discourse & Meditation",
+      "date": "2025-11-15",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "Main Ashram Hall",
+      "type": "Weekly Satsang once"
+    },
+    {
+      "id": 1762376352019,
+      "title": "asdf",
+      "date": "2025-11-15",
+      "time": "8 pm",
+      "location": "ad",
+      "type": "adsf"
+    }
+  ]
+}

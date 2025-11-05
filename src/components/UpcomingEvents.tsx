@@ -1,57 +1,61 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-const events = [
-  {
-    id: 1,
-    titleEn: "Spiritual Discourse & Meditation",
-    titleHi: "आध्यात्मिक प्रवचन एवं ध्यान",
-    date: "2025-11-15",
-    time: "6:00 PM - 8:00 PM",
-    location: "Main Ashram Hall",
-    locationHi: "मुख्य आश्रम हॉल",
-    type: "Weekly Satsang",
-    typeHi: "साप्ताहिक सत्संग"
-  },
-  {
-    id: 2,
-    titleEn: "Hanuman Chalisa Path",
-    titleHi: "हनुमान चालीसा पाठ",
-    date: "2025-11-08",
-    time: "7:00 AM - 8:00 AM",
-    location: "Temple Premises",
-    locationHi: "मंदिर परिसर",
-    type: "Daily Prayer",
-    typeHi: "दैनिक प्रार्थना"
-  },
-  {
-    id: 3,
-    titleEn: "Yoga & Pranayama Session",
-    titleHi: "योग एवं प्राणायाम सत्र",
-    date: "2025-11-20",
-    time: "5:30 AM - 7:00 AM",
-    location: "Yoga Hall",
-    locationHi: "योग हॉल",
-    type: "Health & Wellness",
-    typeHi: "स्वास्थ्य एवं कल्याण"
-  },
-  {
-    id: 4,
-    titleEn: "Community Bhandara",
-    titleHi: "सामुदायिक भंडारा",
-    date: "2025-11-25",
-    time: "12:00 PM - 2:00 PM",
-    location: "Ashram Grounds",
-    locationHi: "आश्रम परिसर",
-    type: "Community Service",
-    typeHi: "सामुदायिक सेवा"
-  }
-];
+type EventItem = {
+  id: number | string;
+  title: string;
+  date: string; // ISO date string
+  time: string;
+  location: string;
+  type: string;
+  image?: string;
+  link?: string;
+};
 
 export function UpcomingEvents() {
   const { t, i18n } = useTranslation();
   const locale = (i18n.language || 'en').startsWith('hi') ? 'hi' : 'en';
+  const [events, setEvents] = useState<EventItem[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+  const [animateIn, setAnimateIn] = useState<boolean>(false);
+
+  useEffect(() => {
+    let mounted = true;
+    setLoading(true);
+    setError(null);
+    const url = `/content/events.${locale}.json`;
+    fetch(url)
+      .then(async (res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (!mounted) return;
+        const items: EventItem[] = Array.isArray(data?.items) ? data.items : [];
+        setEvents(items);
+      })
+      .catch((err) => {
+        if (!mounted) return;
+        console.error('Failed to load events', err);
+        setError(locale === 'hi' ? 'इवेंट लोड करने में समस्या हुई।' : 'Failed to load events.');
+        setEvents([]);
+      })
+      .finally(() => {
+        if (!mounted) return;
+        setLoading(false);
+      });
+    return () => { mounted = false; };
+  }, [locale]);
+
+  // Trigger a subtle staggered fade-in when loading completes
+  useEffect(() => {
+    if (!loading && events.length) {
+      setAnimateIn(true);
+      const t = setTimeout(() => setAnimateIn(false), 900);
+      return () => clearTimeout(t);
+    }
+  }, [loading, events.length]);
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
@@ -63,41 +67,76 @@ export function UpcomingEvents() {
 
   return (
     <section className="upcomingEvents">
-      <div className="eventsContainer">
+      <div className="eventsContainer" aria-busy={loading} aria-live="polite">
         <div className="eventsHeader">
           <h2 className="sectionTitle">{t('events.title')}</h2>
           <p className="sectionSubtitle">{t('events.subtitle')}</p>
         </div>
 
-        <div className="eventsGrid">
-          {events.map((event) => (
-            <article key={event.id} className="eventCard">
-              <div className="eventType">
-                {locale === 'hi' ? event.typeHi : event.type}
-              </div>
-              <h3 className="eventTitle">
-                {locale === 'hi' ? event.titleHi : event.titleEn}
-              </h3>
-              <div className="eventDetails">
-                <div className="eventDetail">
-                  <span className="eventIcon">📅</span>
-                  <span>{formatDate(event.date)}</span>
+        {error && (
+          <div className="eventsError" role="alert" style={{ color: '#b91c1c', marginTop: '0.5rem' }}>
+            {error}
+          </div>
+        )}
+
+        {/* Grid */}
+        {loading ? (
+          <div className="eventsGrid">
+            {Array.from({ length: 4 }).map((_, idx) => (
+              <article key={idx} className="eventCard skeletonCard" aria-hidden="true">
+                <div className="skeletonBlock skBadge" />
+                <div className="skeletonBlock skTitle" />
+                <div className="eventDetails">
+                  <div className="skeletonBlock skLine" />
+                  <div className="skeletonBlock skLine" />
+                  <div className="skeletonBlock skLine short" />
                 </div>
-                <div className="eventDetail">
-                  <span className="eventIcon">🕐</span>
-                  <span>{event.time}</span>
+                <div className="skeletonBlock skBtn" />
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className={`eventsGrid${animateIn ? ' fadeInGrid' : ''}`}>
+            {events.map((event, idx) => (
+              <article key={event.id} className="eventCard" style={{ ['--i' as any]: idx }}>
+                {event.image && (
+                  <div className="eventImageWrap">
+                    <img className="eventImage" src={event.image} alt={event.title} />
+                  </div>
+                )}
+                <div className="eventType">
+                  {event.type}
                 </div>
-                <div className="eventDetail">
-                  <span className="eventIcon">📍</span>
-                  <span>{locale === 'hi' ? event.locationHi : event.location}</span>
+                <h3 className="eventTitle">
+                  {event.title}
+                </h3>
+                <div className="eventDetails">
+                  <div className="eventDetail">
+                    <span className="eventIcon">📅</span>
+                    <span>{formatDate(event.date)}</span>
+                  </div>
+                  <div className="eventDetail">
+                    <span className="eventIcon">🕐</span>
+                    <span>{event.time}</span>
+                  </div>
+                  <div className="eventDetail">
+                    <span className="eventIcon">📍</span>
+                    <span>{event.location}</span>
+                  </div>
                 </div>
-              </div>
-              <button className="eventBtn">
-                {locale === 'hi' ? 'विवरण देखें' : 'Learn More'}
-              </button>
-            </article>
-          ))}
-        </div>
+                {event.link ? (
+                  <a className="eventBtn" href={event.link} target="_blank" rel="noopener noreferrer">
+                    {locale === 'hi' ? 'विवरण देखें' : 'Learn More'}
+                  </a>
+                ) : (
+                  <button className="eventBtn" type="button">
+                    {locale === 'hi' ? 'विवरण देखें' : 'Learn More'}
+                  </button>
+                )}
+              </article>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -16,6 +16,10 @@ html, body {
   /* Background will be set by ThemeApplier */
 }
 
+body {
+  padding-top: 46px; /* Height of fixed announcement bar */
+}
+
 /* Page Loader */
 .pageLoader {
   position: fixed;
@@ -165,8 +169,12 @@ html, body {
   color: white;
   padding: 0.75rem 0;
   overflow: hidden;
-  position: relative;
-  z-index: 60;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -178,7 +186,7 @@ html, body {
 
 .marqueeContent {
   display: flex;
-  animation: marquee 40s linear infinite;
+  animation: marquee 32s linear infinite;
   will-change: transform;
 }
 
@@ -210,6 +218,42 @@ html, body {
   padding: 2rem 1rem;
 }
 
+/* Section-only loader (used in Upcoming Events) */
+.sectionLoader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  padding: 1.25rem 0 1.5rem;
+}
+.sectionSpinner{
+  width: 28px; height: 28px;
+  border-radius: 9999px;
+  border: 3px solid rgba(0,0,0,0.08);
+  border-top-color: var(--color-primary);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* About carousel styles */
+.aboutCarousel{ padding-top: 2rem; padding-bottom: 2rem; }
+.aboutSlide{
+  display: grid;
+  grid-template-columns: 48% 52%;
+  gap: 2rem;
+  align-items: center;
+}
+.aboutSlideImageWrap{ border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+.aboutSlideImage{ width: 100%; height: auto; display: block; border: 4px solid var(--color-primary); }
+.aboutSlideText{ display: block; }
+.aboutSlideTitle{ font-size: clamp(1.5rem, 2.5vw, 2.25rem); margin: 0 0 0.25rem; }
+.aboutSlideSubtitle{ font-size: clamp(1.25rem, 2.2vw, 2rem); font-weight: 700; margin-bottom: .75rem; }
+.aboutSlideDescription p{ font-size: clamp(1rem, 1.2vw, 1.125rem); line-height: 1.65; margin: .5rem 0; }
+
+@media (max-width: 900px){
+  .aboutSlide{ grid-template-columns: 1fr; }
+}
+
 .sectionTitle{
   font-size: clamp(1.5rem, 1.5vw + 1rem, 2.25rem);
   color: var(--color-primary);
@@ -223,8 +267,8 @@ html, body {
 
 .navbar {
   position: sticky;
-  top: 0;
-  z-index: 50;
+  top: 46px; /* Height of announcement bar */
+  z-index: 90;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 2px solid var(--color-secondary);
@@ -486,6 +530,7 @@ html, body {
 
 .heroOverlapImage {
   position: absolute;
+  left: 50%;
   width: 280px;
   height: 380px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -497,9 +542,8 @@ html, body {
   pointer-events: none;
 }
 
-.heroOverlapImage:hover {
-  transform: translateY(-20px) scale(1.05) !important;
-  z-index: 100 !important;
+.heroOverlapImage:hover { /* neutralize CSS hover to avoid flicker; use .hovered class instead */
+  transform: none !important;
 }
 
 .heroOverlapImage.active {
@@ -516,9 +560,15 @@ html, body {
   transition: all 0.3s ease;
 }
 
-.heroOverlapImage:hover img {
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-  border-color: var(--color-secondary);
+.heroOverlapImage.hovered { z-index: 100 !important; }
+.heroOverlapImage.hovered img { box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); border-color: var(--color-secondary); }
+
+/* On touch devices, disable hover-based motion to make tapping precise */
+@media (hover: none) and (pointer: coarse) {
+  .heroOverlapImage:hover {
+    transform: none !important;
+  }
+  .heroOverlapImage:hover img { box-shadow: none; }
 }
 
 /* Blur background when image is hovered */
@@ -833,6 +883,64 @@ html, body {
   margin-top: 1rem;
 }
 
+/* Swamiji Viewer Overlay */
+.swamijiViewerOverlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 1rem;
+}
+
+.swamijiViewerCard{
+  background: #fff;
+  border-radius: 16px;
+  border: 2px solid var(--color-secondary);
+  width: min(1000px, 92vw);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.swamijiViewerClose{
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: #fff; font-size: 1.5rem; cursor: pointer;
+}
+
+.swamijiViewerBody{
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 1rem;
+}
+
+.swamijiViewerImage{ background:#fafafa; }
+.swamijiViewerImage img{ width:100%; height:100%; object-fit: cover; display:block; }
+
+.swamijiViewerText{ padding: 1.25rem 1.25rem; }
+.swamijiViewerTitle{
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  margin: 0 0 .25rem 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip:text;
+}
+.swamijiViewerSubtitle{ font-weight: 700; margin-bottom: .5rem; font-size: clamp(1.1rem, 2vw, 1.25rem); }
+.swamijiViewerDesc{ color:#444; line-height: 1.7; }
+
+@media (max-width: 900px){
+  .swamijiViewerBody{ grid-template-columns: 1fr; }
+  .swamijiViewerImage{ max-height: 50vh; }
+}
+
 @media (max-width: 1024px) {
   .heroOverlapContainer {
     flex-direction: column;
@@ -845,6 +953,7 @@ html, body {
   }
 
   .heroOverlapImage {
+    left: 50%;
     width: 220px;
     height: 300px;
   }
@@ -857,6 +966,7 @@ html, body {
   }
 
   .heroOverlapImage {
+    left: 50%;
     width: 180px;
     height: 240px;
   }
@@ -881,6 +991,180 @@ html, body {
 .heroFullBleed .swiper-button-prev:hover,
 .heroFullBleed .swiper-button-next:hover {
   color: var(--color-secondary);
+}
+
+.parallaxHero{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+.parallaxSlide{ 
+  position: relative; 
+  width:100%; 
+  height:100%; 
+  display: grid;
+  grid-template-columns: 45% 55%;
+}
+
+.parallaxImageContainer{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.parallaxImage{
+  width: 70%;
+  height: 70%;
+  max-width: 500px;
+  max-height: 500px;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 800ms ease, transform 800ms ease;
+  border: 8px solid rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.parallaxImage.loaded{
+  opacity: 1;
+  transform: scale(1);
+}
+
+.parallaxTextContainer{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.parallax-bg{
+  position:absolute; inset:0; background-position:center; background-size:cover; background-repeat:no-repeat;
+  transform: translateZ(0);
+}
+.parallaxContent{
+  position:relative; z-index:2; color:#fff; text-align: left;
+  max-width: 90%;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms ease 200ms, transform 600ms ease 200ms;
+}
+
+.parallaxContent.show{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.parallaxTitle{ 
+  font-size: clamp(2rem, 4vw + 1rem, 4rem); 
+  margin:0 0 1rem; 
+  font-weight:800; 
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.parallaxSubtitle{ 
+  font-size: clamp(1.1rem, 2vw, 1.5rem); 
+  font-weight:700; 
+  margin-bottom:1rem; 
+  color: #fff;
+}
+.parallaxText{ 
+  font-size: clamp(1rem, 1.6vw, 1.25rem); 
+  line-height:1.8;
+  color: #fff;
+}
+
+/* Grid Scan reveal effect */
+.gridScanWrapper{
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.gridScanner{
+  position: absolute;
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.0) 60%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.15) 0px,
+      rgba(255,255,255,0.15) 1px,
+      transparent 1px,
+      transparent 16px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,0.15) 0px,
+      rgba(255,255,255,0.15) 1px,
+      transparent 1px,
+      transparent 16px
+    );
+  mix-blend-mode: screen;
+  opacity: .9;
+  transform: translateX(-120%);
+  will-change: transform;
+  animation: grid-scan-move var(--scan-duration, 1200ms) cubic-bezier(.2,.8,.2,1) 150ms both;
+}
+
+@keyframes grid-scan-move{
+  from{ transform: translateX(-120%); }
+  to{ transform: translateX(120%); }
+}
+
+/* Typewriter cursor animation */
+.typewriter {
+  display: inline-block;
+  min-height: 1em;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  font-weight: 400;
+  color: #fff;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px){
+  .parallaxHero{ height: 100vh; }
+  .parallaxSlide{ 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 50% 50%;
+  }
+  .parallaxImageContainer{ padding: 1rem; }
+  .parallaxImage{
+    width: 80%;
+    height: 80%;
+    max-width: 350px;
+    max-height: 350px;
+    border-width: 6px;
+  }
+  .parallaxTextContainer{ padding: 2rem 1.5rem; }
+  .parallaxContent{ text-align: center; max-width: 100%; }
 }
 
 
@@ -1448,6 +1732,9 @@ html, body {
   line-height: 1.3;
 }
 
+.eventImageWrap{ border-radius: 12px; overflow: hidden; margin: -0.5rem -0.5rem 1rem; aspect-ratio: 16 / 9; background: #f7f7f7; }
+.eventImage{ width: 100%; height: 100%; object-fit: cover; display:block; }
+
 .eventDetails {
   display: flex;
   flex-direction: column;
@@ -1492,6 +1779,40 @@ html, body {
 
 .eventBtn:active {
   transform: translateY(0);
+}
+
+/* Fade-in for events after skeleton */
+.fadeInGrid .eventCard{
+  opacity: 0;
+  transform: translateY(8px);
+  animation: card-in 420ms ease forwards;
+  animation-delay: calc(var(--i, 0) * 70ms);
+}
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Skeleton grid for Upcoming Events */
+.skeletonCard{
+  position: relative;
+}
+.skeletonBlock{
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 37%, rgba(0,0,0,0.06) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  border-radius: 8px;
+}
+.skBadge{ width: 140px; height: 28px; border-radius: 20px; }
+.skTitle{ width: 70%; height: 24px; margin: 1rem 0; }
+.skLine{ width: 100%; height: 14px; margin: .5rem 0; }
+.skLine.short{ width: 60%; }
+.skBtn{ width: 100%; height: 44px; margin-top: 1rem; border-radius: 10px; }
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
 }
 
 @media (max-width: 768px) {

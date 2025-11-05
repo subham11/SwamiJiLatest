@@ -18,7 +18,7 @@ type EventItem = {
 export function UpcomingEvents() {
   const { t, i18n } = useTranslation();
   const locale = (i18n.language || 'en').startsWith('hi') ? 'hi' : 'en';
-  const { items: events, loading, error } = useEventsData(locale as 'en'|'hi', 'public');
+  const { items: events, loading, error } = useEventsData(locale as 'en'|'hi', 'api');
   const [animateIn, setAnimateIn] = useState<boolean>(false);
 
 

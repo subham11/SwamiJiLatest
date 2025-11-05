@@ -18,7 +18,7 @@ type SwamijiItem = {
 
 export default function SwamijiPage() {
   return (
-    <main>
+    <main id="main-content">
       <NavBar />
       <SwamijiHero />
       <Footer />
@@ -168,6 +168,8 @@ function SwamijiHero() {
               display: 'block',
               border: '4px solid var(--color-primary)'
             }}
+            loading="lazy"
+            decoding="async"
             onLoad={() => {
               setAboutImgLoaded(true);
               setTimeout(() => setAboutShowText(true), 350);

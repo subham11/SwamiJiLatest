@@ -12,14 +12,16 @@ export function AnnouncementBar() {
   };
 
   return (
-    <div className="announcementBar">
-      <div className="marquee">
+    <div className="announcementBar" role="region" aria-label={locale === 'hi' ? 'घोषणा' : 'Announcements'}>
+      <div className="marquee" aria-hidden="true">
         <div className="marqueeContent">
           <span>{announcements[locale]}</span>
           <span>{announcements[locale]}</span>
           <span>{announcements[locale]}</span>
         </div>
       </div>
+      {/* Static text for screen readers to avoid repeated reading of marquee */}
+      <span className="srOnly">{announcements[locale]}</span>
     </div>
   );
 }

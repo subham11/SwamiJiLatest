@@ -122,9 +122,9 @@ export function NavBar(){
             {item.label}
           </button>
           {(item.submenu && ((isMobile && mobileDropdowns[item.id]) || (!isMobile && open === item.id))) && (
-            <div className="menuDropdown" role="menu">
+            <div className="menuDropdown" role="menu" aria-label={`${item.label} submenu`}>
               {item.submenu.map((subItem: any) => (
-                <a key={subItem.id} href={subItem.href}>
+                <a key={subItem.id} href={subItem.href} role="menuitem">
                   {subItem.label}
                 </a>
               ))}

@@ -28,7 +28,12 @@ export function DocumentViewer({ doc, onClose }: Props){
             <img src={doc.url} alt={doc.title} loading="lazy" decoding="async" style={{ maxWidth:'100%', height:'auto', display:'block', margin:'0 auto' }} />
           )}
           {isPdf && (
-            <iframe src={`${doc.url}#view=FitH`} loading="lazy" style={{ width:'100%', height:'70vh', border:'none' }} />
+            <iframe
+              src={`${doc.url}#view=FitH`}
+              loading="lazy"
+              title={`${doc.title} preview`}
+              style={{ width:'100%', height:'70vh', border:'none' }}
+            />
           )}
           {!isImage && !isPdf && (
             <div>

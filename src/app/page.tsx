@@ -1,15 +1,10 @@
-'use client';
-
 import { Hero } from "@/components/Hero";
 import { NavBar } from "@/components/NavBar";
-import { SacredTeachings } from "@/components/SacredTeachings";
-import { WordsOfWisdom } from "@/components/WordsOfWisdom";
-import { UpcomingEvents } from "@/components/UpcomingEvents";
-import { Footer } from "@/components/Footer";
+import { SacredTeachings, WordsOfWisdom, UpcomingEvents, Footer } from "@/components/DeferredSections";
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="main-content">
       <NavBar />
       <Hero />
       <SacredTeachings />

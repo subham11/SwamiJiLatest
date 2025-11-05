@@ -5,6 +5,7 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { ThemeApplier } from "@/components/ThemeApplier";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { PageLoader } from "@/components/PageLoader";
+import { LangSetter } from "../components/LangSetter";
 
 export const metadata = {
   title: "Swami Rupeshwaranand website",
@@ -15,8 +16,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
+        <a href="#main-content" className="skipLink">Skip to main content</a>
         <Providers>
           <I18nProvider>
+            <LangSetter />
             <PageLoader />
             <ThemeApplier />
             <AnnouncementBar />

@@ -2183,3 +2183,671 @@ button:focus-visible,
     text-align: left;
   }
 }
+
+/* ==========================================
+   BAJRANG BAAN ABHIYAN SECTION - STACKED CARDS
+   ========================================== */
+.bajrangBaanSection {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #fff5f0 0%, #fff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.bajrangBaanContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.bajrangBaanHeader {
+  text-align: center;
+  margin-bottom: 60px;
+  animation: fadeInUp 0.8s ease;
+}
+
+.bajrangBaanHeader .sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bajrangBaanHeader .sectionSubtitle {
+  font-size: 1.25rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 12px;
+  line-height: 1.6;
+}
+
+.bajrangBaanHeader .sectionHint {
+  font-size: 0.95rem;
+  color: #999;
+  font-style: italic;
+  margin-top: 8px;
+}
+
+.bajrangBaanStackedCarousel {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.bajrangBaanStackedCarousel .swiper {
+  width: 100%;
+  height: 600px;
+  padding: 20px;
+}
+
+.bajrangBaanStackedCarousel .swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+}
+
+.bajrangBaanStackedCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.cardCategory {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  padding: 8px 18px;
+  border-radius: 24px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(255, 77, 0, 0.4);
+}
+
+.stackedCardImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 65%;
+  overflow: hidden;
+}
+
+.stackedCardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bajrangBaanStackedCard:hover .stackedCardImage {
+  transform: scale(1.05);
+}
+
+.stackedCardOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  pointer-events: none;
+}
+
+.stackedCardContent {
+  padding: 32px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  position: relative;
+  z-index: 5;
+}
+
+.stackedCardTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.stackedCardDescription {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.stackedCardButton {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+  box-shadow: 0 4px 16px rgba(255, 77, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stackedCardButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 77, 0, 0.5);
+}
+
+.stackedCardButton:active {
+  transform: translateY(-1px);
+}
+
+/* Swiper Pagination Customization */
+.bajrangBaanStackedCarousel .swiper-pagination {
+  bottom: 10px !important;
+}
+
+.bajrangBaanStackedCarousel .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #d0d0d0;
+  opacity: 1;
+  transition: all 0.3s ease;
+  margin: 0 6px !important;
+}
+/* ==========================================
+   BAJRANG BAAN ABHIYAN SECTION - PARALLAX SLIDER
+   ========================================== */
+.bajrangBaanSection {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #fff5f0 0%, #fff 100%);
+  padding: 80px 0 0;
+}
+
+.bajrangBaanHeader {
+  text-align: center;
+  padding: 0 20px 60px;
+  position: relative;
+  z-index: 1000;
+  animation: fadeInUp 0.8s ease;
+}
+
+.bajrangBaanHeader .sectionTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bajrangBaanHeader .sectionSubtitle {
+  font-size: 1.25rem;
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 12px;
+  line-height: 1.6;
+}
+
+.bajrangBaanHeader .sectionHint {
+  font-size: 0.95rem;
+  color: #999;
+  font-style: italic;
+  margin-top: 8px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slider container */
+.bajrangBaanSlider {
+  position: relative;
+  width: 100%;
+}
+
+/* Individual parallax slides */
+.parallaxSlide {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease-out;
+  opacity: 0.3;
+  overflow: hidden;
+}
+
+.parallaxSlide.fixed {
+  position: fixed;
+  opacity: 1;
+}
+
+/* Card-style inner slider (AWS-like) */
+.slideCard{
+  position: relative;
+  width: min(1200px, 90%);
+  aspect-ratio: 16 / 9;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  background: #000;
+  transform: translateY(20px);
+  opacity: .6;
+  transition: transform .6s ease, opacity .6s ease;
+}
+.parallaxSlide.fixed .slideCard{ transform: translateY(0); opacity: 1; }
+
+.slideCardImage{ z-index: 0; object-position: center; }
+.slideCardOverlay{
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(80% 60% at 50% 40%, rgba(0,0,0,.05) 0%, rgba(0,0,0,.5) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.1) 0%, rgba(0,0,0,.6) 80%);
+}
+.slideCardContent{
+  position: absolute; left: clamp(16px, 4vw, 48px); bottom: clamp(16px, 4vw, 48px);
+  z-index: 2; color: #fff; max-width: 65%;
+}
+.slideBadge{
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: .8rem; font-weight: 700; letter-spacing: .3px;
+  color: #111; background: #fff; border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  margin-bottom: 12px;
+}
+.slideHeading{ font-size: clamp(1.4rem, 3.2vw, 2rem); line-height: 1.25; margin: 6px 0 8px; text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.slideSub{ font-size: clamp(.95rem, 2.2vw, 1.1rem); color: rgba(255,255,255,.9); margin-bottom: 14px; text-shadow: 0 1px 6px rgba(0,0,0,.3); }
+.slideCta{ display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; border: 0; background: transparent; color: #fff; font-weight: 700; cursor: pointer; }
+.slideCtaArrow{ transition: transform .25s ease; }
+.slideCta:hover .slideCtaArrow{ transform: translateX(4px); }
+
+/* Decorative stacked bars beneath card */
+.slideStack{ position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%); display: flex; flex-direction: column; gap: 8px; z-index: 0; pointer-events: none; }
+.slideStack span{ display: block; height: 12px; border-radius: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.25); background: linear-gradient(90deg, #e7e7e7, #d8d8d8); }
+.slideStack span:nth-child(1){ width: 92%; }
+.slideStack span:nth-child(2){ width: 84%; }
+.slideStack span:nth-child(3){ width: 76%; }
+
+/* Slide overlay for darkening */
+.slideOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+  z-index: 1;
+}
+
+/* Slide content */
+.slideContent {
+  position: relative;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 60px 80px;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s ease-out 0.2s;
+}
+
+.parallaxSlide.fixed .slideContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slideCategory {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px rgba(255, 77, 0, 0.5);
+  margin-bottom: 24px;
+}
+
+.slideTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.slideDescription {
+  font-size: 1.25rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+
+.slideButton {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: white;
+  border: none;
+  padding: 18px 48px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 77, 0, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slideButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255, 77, 0, 0.6);
+}
+
+.slideButton:active {
+  transform: translateY(-1px);
+}
+
+/* Slide number indicator */
+.slideNumber {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1);
+  z-index: 2;
+  font-family: 'Arial Black', sans-serif;
+  line-height: 1;
+  transition: color 0.5s ease-out;
+}
+
+.parallaxSlide.fixed .slideNumber {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Fake height spacer */
+.slideSpacer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .bajrangBaanHeader .sectionTitle {
+    font-size: 2.5rem;
+  }
+
+  .slideContent {
+    padding: 50px 60px;
+    max-width: 700px;
+  }
+
+  .slideTitle {
+    font-size: 2.5rem;
+  }
+
+  .slideDescription {
+    font-size: 1.1rem;
+  }
+
+  .slideNumber {
+    font-size: 5rem;
+    bottom: 30px;
+    right: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bajrangBaanSection {
+    padding: 60px 0 0;
+  }
+
+  .bajrangBaanHeader {
+    padding: 0 20px 40px;
+  }
+
+  .bajrangBaanHeader .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .bajrangBaanHeader .sectionSubtitle {
+    font-size: 1rem;
+  }
+
+  .parallaxSlide,
+  .slideSpacer {
+    min-height: 500px;
+  }
+
+  .slideContent {
+    padding: 40px 32px;
+    max-width: 90%;
+  }
+
+  .slideTitle {
+    font-size: 2rem;
+  }
+
+  .slideDescription {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .slideButton {
+    padding: 14px 36px;
+    font-size: 1rem;
+  }
+
+  .slideCategory {
+    padding: 8px 18px;
+    font-size: 0.75rem;
+    margin-bottom: 20px;
+  }
+
+  .slideNumber {
+    font-size: 4rem;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bajrangBaanHeader .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .parallaxSlide,
+  .slideSpacer {
+    min-height: 450px;
+  }
+
+  .slideContent {
+    padding: 32px 24px;
+  }
+
+  .slideTitle {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+  }
+
+  .slideDescription {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .slideButton {
+    padding: 12px 28px;
+    font-size: 0.95rem;
+  }
+
+  .slideCategory {
+    padding: 6px 14px;
+    font-size: 0.7rem;
+    margin-bottom: 16px;
+  }
+
+  .slideNumber {
+    font-size: 3rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+/* ==========================================
+   PARALLAX STACK HERO COMPONENT (psh-*)
+   ========================================== */
+.psh-root { position: relative; width: 100%; }
+.psh-sticky { position: sticky; top: 0; width: 100%; }
+.psh-snap { scroll-snap-type: y mandatory; }
+
+.psh-card { position: absolute; left: 50%; bottom: 0; transform-origin: bottom center; width: min(1200px, 92%); aspect-ratio: 16 / 9; translate: -50% 0; border-radius: 1.25rem; overflow: hidden; background:#111; display: flex; flex-direction: column; justify-content: flex-end; isolation: isolate; }
+.psh-shadow { box-shadow: 0 40px 90px -10px rgba(0,0,0,.5), 0 10px 25px rgba(0,0,0,.4); }
+.psh-card:not(.active){ filter: brightness(.75); }
+.psh-media { position: absolute; inset:0; }
+.psh-img { object-position: center; }
+.psh-fallback { position:absolute; inset:0; background:linear-gradient(135deg,#222,#444); }
+.psh-overlay { position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,.65) 85%); }
+.psh-content { position: relative; z-index: 5; padding: clamp(16px,3.5vw,56px); max-width: 70%; }
+.psh-badge { display:inline-block; background:#fff; color:#111; font-size:.75rem; font-weight:700; letter-spacing:.4px; padding:6px 14px; border-radius:999px; box-shadow:0 3px 12px rgba(0,0,0,.35); margin-bottom:14px; }
+.psh-title { font-size: clamp(1.65rem,3.6vw,2.4rem); line-height:1.25; margin:0 0 14px; font-weight:600; text-shadow:0 3px 18px rgba(0,0,0,.5); }
+.psh-desc { font-size: clamp(.95rem,2.2vw,1.15rem); line-height:1.55; color:rgba(255,255,255,.88); margin:0 0 18px; text-shadow:0 2px 10px rgba(0,0,0,.45); }
+.psh-cta { display:inline-flex; align-items:center; gap:8px; font-weight:600; color:#fff; text-decoration:none; padding:10px 0; }
+.psh-cta .psh-arrow { transition: transform .25s ease; }
+.psh-cta:hover .psh-arrow { transform: translateX(4px); }
+
+.psh-bars { position:absolute; left:50%; top:-32px; transform:translateX(-50%); display:flex; flex-direction:column-reverse; gap:10px; z-index:0; pointer-events:none; }
+.psh-bars span { height:14px; border-radius:10px; background:linear-gradient(90deg,#eaeaea,#d4d4d4); box-shadow:0 6px 20px rgba(0,0,0,.25); display:block; }
+.psh-bars span:nth-child(1){ width:94%; }
+.psh-bars span:nth-child(2){ width:86%; }
+.psh-bars span:nth-child(3){ width:78%; }
+
+.psh-controls { position: absolute; right: clamp(8px,4vw,40px); top: clamp(8px,3vw,40px); display:flex; gap:12px; z-index:10; }
+.psh-btn { background:rgba(255,255,255,.15); backdrop-filter:blur(6px); color:#fff; border:1px solid rgba(255,255,255,.3); padding:10px 18px; border-radius:10px; cursor:pointer; font-size:1rem; transition:background .25s,border-color .25s; }
+.psh-btn:hover:not(:disabled){ background:rgba(255,255,255,.3); }
+.psh-btn:disabled{ opacity:.35; cursor:not-allowed; }
+
+.psh-indicators { position:absolute; left: clamp(12px,3vw,48px); top: clamp(12px,3vw,48px); display:flex; gap:10px; z-index:10; }
+.psh-dot { width:10px; height:10px; background:rgba(255,255,255,.35); border-radius:50%; transition: all .3s; }
+.psh-dot.active { background:#fff; width:28px; border-radius:8px; }
+
+@media (max-width: 900px){
+  .psh-content{ max-width: 100%; }
+  .psh-bars{ top:-28px; }
+  .psh-bars span{ height:12px; }
+}
+
+@media (max-width: 640px){
+  .psh-card{ aspect-ratio: 4 / 3; }
+  .psh-title{ font-size: clamp(1.4rem,5.5vw,1.8rem); }
+  .psh-desc{ font-size: .9rem; }
+  .psh-bars span{ height:10px; }
+  .psh-controls{ gap:8px; }
+  .psh-btn{ padding:8px 14px; font-size:.85rem; }
+  .psh-dot.active{ width:22px; }
+}
+
+/* Additional responsive improvements for announcement bar */
+@media (max-width: 768px) {
+  .announcementBar {
+    padding: 0.5rem 0;
+  }
+  
+  .marqueeContent span {
+    font-size: 0.85rem;
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .announcementBar {
+    padding: 0.4rem 0;
+  }
+  
+  .marqueeContent span {
+    font-size: 0.75rem;
+    padding: 0 1.5rem;
+  }
+}
+
+/* Responsive improvements for container */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Ensure body padding adjusts on mobile */
+@media (max-width: 480px) {
+  body {
+    padding-top: 40px; /* Slightly smaller announcement bar on mobile */
+  }
+}

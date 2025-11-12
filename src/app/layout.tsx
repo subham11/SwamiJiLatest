@@ -15,6 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <link 
+          rel="preload" 
+          href="/images/hero/hero-1.svg" 
+          as="image" 
+          type="image/svg+xml"
+          fetchPriority="high"
+        />
+      </head>
       <body>
         <a href="#main-content" className="skipLink">Skip to main content</a>
         <Providers>

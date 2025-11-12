@@ -18,7 +18,13 @@
         {
           "id": "campaign",
           "label": "Shri Bajrang Baan Abhiyan",
-          "href": "#campaign",
+          "href": "/bajrang-baan",
+          "type": "link"
+        },
+        {
+          "id": "test-component",
+          "label": "Test Component",
+          "href": "/test-component",
           "type": "link"
         },
         {

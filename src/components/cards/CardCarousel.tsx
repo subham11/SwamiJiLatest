@@ -25,15 +25,21 @@ export function CardCarousel(){
           1280: { slidesPerView: 5.2, spaceBetween: 16 },
           1536: { slidesPerView: 6.2, spaceBetween: 18 },
         }}
+        a11y={{
+          prevSlideMessage: 'Previous card',
+          nextSlideMessage: 'Next card',
+        }}
       >
-        {cards.map((c)=> (
+        {cards.map((c, index)=> (
           <SwiperSlide key={c.id}>
-            <article className="cardItem" tabIndex={0} aria-label={c.title}>
+            <article className="cardItem" tabIndex={0} aria-labelledby={`carousel-card-${c.id}`}>
               <div className="cardThumb">
                 <img
                   src={c.image}
-                  alt=""
-                  loading="lazy"
+                  alt={c.title}
+                  loading={index < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  fetchPriority={index === 0 ? 'high' : 'low'}
                   onError={(e)=>{
                     const target = e.currentTarget as HTMLImageElement;
                     if (target.dataset.fallback !== '1') {
@@ -44,7 +50,7 @@ export function CardCarousel(){
                 />
               </div>
               <div className="cardOverlay">
-                <h3>{c.title}</h3>
+                <h3 id={`carousel-card-${c.id}`}>{c.title}</h3>
                 <p>{c.desc}</p>
               </div>
             </article>

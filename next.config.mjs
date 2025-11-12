@@ -5,7 +5,21 @@ const nextConfig = {
   output: 'standalone',
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
+  // Disable source maps in production for better performance
+  productionBrowserSourceMaps: false,
+  // Enable compression
+  compress: true,
+  // Optimize for AWS Amplify
+  poweredByHeader: false,
+  // Enable static optimization where possible
+  swcMinify: true,
 }
 
 export default nextConfig

@@ -18,7 +18,13 @@
         {
           "id": "campaign",
           "label": "श्री बजरंग बाण अभियान",
-          "href": "#campaign",
+          "href": "/bajrang-baan",
+          "type": "link"
+        },
+        {
+          "id": "test-component",
+          "label": "टेस्ट कंपोनेंट",
+          "href": "/test-component",
           "type": "link"
         },
         {

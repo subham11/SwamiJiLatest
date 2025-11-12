@@ -75,10 +75,17 @@ export function UpcomingEvents() {
               <article key={event.id} className="eventCard" style={{ ['--i' as any]: idx }}>
                 {event.image && (
                   <div className="eventImageWrap">
-                    <img className="eventImage" src={event.image} alt={event.title} loading="lazy" decoding="async" />
+                    <img 
+                      className="eventImage" 
+                      src={event.image} 
+                      alt={event.title} 
+                      loading={idx < 3 ? 'eager' : 'lazy'} 
+                      decoding="async"
+                      fetchPriority={idx === 0 ? 'high' : 'low'}
+                    />
                   </div>
                 )}
-                <div className="eventType">
+                <div className="eventType" role="status" aria-label={`Event type: ${event.type}`}>
                   {event.type}
                 </div>
                 <h3 className="eventTitle">
@@ -86,16 +93,16 @@ export function UpcomingEvents() {
                 </h3>
                 <div className="eventDetails">
                   <div className="eventDetail">
-                    <span className="eventIcon">📅</span>
-                    <span>{formatDate(event.date)}</span>
+                    <span className="eventIcon" aria-hidden="true">📅</span>
+                    <span><span className="srOnly">Date: </span>{formatDate(event.date)}</span>
                   </div>
                   <div className="eventDetail">
-                    <span className="eventIcon">🕐</span>
-                    <span>{event.time}</span>
+                    <span className="eventIcon" aria-hidden="true">🕐</span>
+                    <span><span className="srOnly">Time: </span>{event.time}</span>
                   </div>
                   <div className="eventDetail">
-                    <span className="eventIcon">📍</span>
-                    <span>{event.location}</span>
+                    <span className="eventIcon" aria-hidden="true">📍</span>
+                    <span><span className="srOnly">Location: </span>{event.location}</span>
                   </div>
                 </div>
                 {event.link ? (

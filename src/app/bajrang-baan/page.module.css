@@ -1,0 +1,135 @@
+.contentSection {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--page-background, #f5f5f5);
+}
+
+.contentCard {
+  background-color: white;
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary, #ff4d00);
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--color-secondary, #ffc100);
+  padding-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.textContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  text-align: justify;
+}
+
+.paragraph {
+  margin-bottom: 1.5rem;
+}
+
+.highlightPrimary {
+  font-weight: 600;
+  color: var(--color-primary, #ff4d00);
+}
+
+.highlightAccent {
+  font-weight: 600;
+  color: var(--color-accent, #ff7400);
+}
+
+/* Tablet - Portrait iPads, Landscape Phones */
+@media (max-width: 1024px) {
+  .contentSection {
+    padding: 3rem 1.5rem;
+  }
+  
+  .contentCard {
+    padding: 2.5rem;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .textContent {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+/* Mobile - Phones */
+@media (max-width: 768px) {
+  .contentSection {
+    padding: 2rem 1rem;
+  }
+  
+  .contentCard {
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom-width: 2px;
+    padding-bottom: 0.75rem;
+  }
+  
+  .textContent {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+  
+  .paragraph {
+    margin-bottom: 1.25rem;
+  }
+}
+
+/* Small Mobile - Narrow Phones */
+@media (max-width: 480px) {
+  .contentSection {
+    padding: 1.5rem 0.75rem;
+  }
+  
+  .contentCard {
+    padding: 1.5rem 1rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    line-height: 1.3;
+    word-wrap: break-word;
+  }
+  
+  .textContent {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+}
+
+/* Extra Small - Very Narrow Screens */
+@media (max-width: 360px) {
+  .contentSection {
+    padding: 1rem 0.5rem;
+  }
+  
+  .contentCard {
+    padding: 1.25rem 0.75rem;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .textContent {
+    font-size: 0.9rem;
+  }
+}

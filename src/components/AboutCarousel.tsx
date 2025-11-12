@@ -19,7 +19,7 @@ export function AboutCarousel({ items }: { items: AboutItem[] }) {
   if (!items || items.length === 0) return null;
 
   return (
-    <section className="container aboutCarousel">
+    <section className="container aboutCarousel" aria-label="About Swamiji">
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         navigation
@@ -27,12 +27,24 @@ export function AboutCarousel({ items }: { items: AboutItem[] }) {
         spaceBetween={24}
         slidesPerView={1}
         style={{ width: '100%' }}
+        a11y={{
+          prevSlideMessage: 'Previous slide',
+          nextSlideMessage: 'Next slide',
+          paginationBulletMessage: 'Go to slide {{index}}',
+        }}
       >
-        {items.map((it) => (
+        {items.map((it, index) => (
           <SwiperSlide key={it.id}>
-            <div className="aboutSlide">
+            <article className="aboutSlide">
               <div className="aboutSlideImageWrap">
-                <img src={it.image} alt={it.title} className="aboutSlideImage" loading="lazy" decoding="async" />
+                <img 
+                  src={it.image} 
+                  alt={it.title} 
+                  className="aboutSlideImage" 
+                  loading={index === 0 ? 'eager' : 'lazy'} 
+                  decoding="async"
+                  fetchPriority={index === 0 ? 'high' : 'low'}
+                />
               </div>
               <div className="aboutSlideText">
                 <h2 className="aboutSlideTitle">{it.title}</h2>
@@ -45,7 +57,7 @@ export function AboutCarousel({ items }: { items: AboutItem[] }) {
                   </div>
                 )}
               </div>
-            </div>
+            </article>
           </SwiperSlide>
         ))}
       </Swiper>

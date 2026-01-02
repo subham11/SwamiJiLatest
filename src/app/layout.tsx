@@ -6,6 +6,7 @@ import { ThemeApplier } from "@/components/ThemeApplier";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { PageLoader } from "@/components/PageLoader";
 import { LangSetter } from "../components/LangSetter";
+import { HashRedirector } from "@/components/HashRedirector";
 
 export const metadata = {
   title: "Swami Rupeshwaranand website",
@@ -28,6 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="skipLink">Skip to main content</a>
         <Providers>
           <I18nProvider>
+            <HashRedirector />
             <LangSetter />
             <PageLoader />
             <ThemeApplier />

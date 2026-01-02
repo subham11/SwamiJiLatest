@@ -18,8 +18,6 @@ const nextConfig = {
   compress: true,
   // Optimize for AWS Amplify
   poweredByHeader: false,
-  // Enable static optimization where possible
-  swcMinify: true,
 }
 
 export default nextConfig

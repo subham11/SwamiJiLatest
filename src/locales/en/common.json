@@ -52,5 +52,55 @@
     "paragraph3": "By participating in this campaign and reciting Shri Bajrang Baan, many devotees have received divine benefits and their divine problems have been resolved! Spiritual progress has also been experienced! The main goal through this collective campaign is to purify the divine atmosphere of India.",
     "paragraph4": "Special practitioners should master Shri Ram Raksha Stotra! This will provide them complete divine protection!",
     "paragraph5": "Before the 108 recitations of Bajrang Baan, must perform Shatkarma and Sankalpa...must read the protective shield!"
+  },
+  "announcement": {
+    "text": "🔔 Join us for Hanuman Chalisa Path every Tuesday at 7 AM • 🎉 Special Bhandara on Nov 25th • 📿 New Yoga Sessions starting Nov 20th • 🙏 Daily Satsang at 6 PM",
+    "ariaLabel": "Announcements"
+  },
+  "ashram": {
+    "services": {
+      "rituals": {
+        "title": "Sacred Rituals & Pujas",
+        "desc": "Experience authentic Vedic rituals and pujas performed by expert practitioners in a sacred atmosphere."
+      },
+      "meditation": {
+        "title": "Meditation Practices",
+        "desc": "Learn various meditation techniques to calm your mind and connect with your inner self."
+      },
+      "teachings": {
+        "title": "Spiritual Teachings",
+        "desc": "Receive guidance through sacred teachings and scriptures from experienced spiritual masters."
+      },
+      "retreats": {
+        "title": "Spiritual Retreats",
+        "desc": "Join intensive retreats designed to deepen your spiritual practice and self-discovery."
+      }
+    },
+    "facilities": {
+      "temple": {
+        "title": "Temple",
+        "desc": "Beautiful temple for daily prayers and spiritual gatherings"
+      },
+      "library": {
+        "title": "Library",
+        "desc": "Extensive collection of spiritual books and scriptures"
+      },
+      "accommodation": {
+        "title": "Accommodation",
+        "desc": "Comfortable rooms for guests and visiting spiritual seekers"
+      },
+      "dining": {
+        "title": "Dining Hall",
+        "desc": "Vegetarian meals prepared with care and love"
+      },
+      "garden": {
+        "title": "Meditation Garden",
+        "desc": "Peaceful gardens for contemplation and walking meditation"
+      },
+      "community": {
+        "title": "Community Hall",
+        "desc": "Space for satsangs, programs and community gatherings"
+      }
+    }
   }
 }

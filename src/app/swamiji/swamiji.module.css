@@ -1,0 +1,674 @@
+.main {
+  min-height: 100vh;
+  background: #faf9f6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Hero Section */
+.heroSection {
+  padding: 5rem 0 4rem;
+  position: relative;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+  padding-top: 1rem;
+}
+
+.badge {
+  display: inline-block;
+  color: #b8860b;
+  padding: 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.heroTitle {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0 0 2rem;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+  letter-spacing: -0.02em;
+}
+
+.titleLine {
+  display: block;
+}
+
+.titleHighlight {
+  display: block;
+  color: #b8860b;
+  font-style: italic;
+}
+
+.heroDescription {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #444;
+  margin-bottom: 1.5rem;
+  font-family: 'Lora', 'Georgia', serif;
+  font-weight: 400;
+}
+
+.highlight {
+  color: #b8860b;
+  font-weight: 500;
+}
+
+.heroSubDescription {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #666;
+  margin-bottom: 2.5rem;
+  font-family: 'Lora', 'Georgia', serif;
+}
+
+/* Stats Container */
+.statsContainer {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.statCard {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+}
+
+.statCard:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.statIcon {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  font-family: 'Playfair Display', serif;
+}
+
+.statLabel {
+  font-size: 0.65rem;
+  color: #888;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Hero Image */
+.heroImageWrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.imageFrame {
+  position: relative;
+  background: transparent;
+  padding: 0;
+}
+
+.imageFrame::before {
+  content: '';
+  position: absolute;
+  top: 12px;
+  right: -12px;
+  bottom: -12px;
+  left: 12px;
+  border: 2px solid #b8860b;
+  z-index: -1;
+}
+
+.heroImage {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  filter: grayscale(0%);
+  transition: filter 0.5s ease;
+}
+
+.imageCaption {
+  text-align: center;
+  padding: 1.25rem 0 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: #666;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Journey Section */
+.journeySection {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 3rem;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  letter-spacing: -0.01em;
+}
+
+.sectionTitle::after {
+  content: '✦';
+  display: block;
+  font-size: 1rem;
+  color: #b8860b;
+  margin-top: 1rem;
+  opacity: 0.7;
+}
+
+.journeyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.journeyCard {
+  text-align: center;
+  padding: 2rem 1.25rem;
+  background: transparent;
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.journeyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: none;
+}
+
+.journeyIcon {
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  opacity: 0.85;
+}
+
+.journeyCard h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.journeyCard p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'Lora', serif;
+}
+
+/* Teachings Section */
+.teachingsSection {
+  padding: 5rem 0;
+  background: #faf9f6;
+}
+
+.teachingsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.teachingsImage {
+  position: relative;
+}
+
+.teachingImg {
+  width: 100%;
+  height: auto;
+  filter: grayscale(10%);
+}
+
+.teachingsContent {
+  padding-left: 0;
+}
+
+.teachingsTitle {
+  font-size: clamp(1.5rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 1rem 0 1.5rem;
+  font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+.teachingsContent > p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #555;
+  margin-bottom: 1.75rem;
+  font-family: 'Lora', serif;
+}
+
+.teachingsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.teachingsList li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.85rem;
+  font-size: 0.95rem;
+  color: #444;
+  font-family: 'Lora', serif;
+  line-height: 1.6;
+}
+
+.teachingsList li::before {
+  content: '○';
+  position: absolute;
+  left: 0;
+  color: #b8860b;
+  font-size: 0.6rem;
+  top: 0.35rem;
+}
+
+/* Quote Section */
+.quoteSection {
+  padding: 5rem 0;
+  background: #1a1a1a;
+  position: relative;
+}
+
+.quoteSection::before {
+  display: none;
+}
+
+.quote {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  line-height: 2;
+  color: #e8e8e8;
+  font-style: italic;
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 300;
+}
+
+.quoteIcon {
+  display: block;
+  font-size: 3rem;
+  line-height: 1;
+  color: #b8860b;
+  font-style: normal;
+  margin-bottom: 1.5rem;
+  opacity: 0.6;
+}
+
+.quoteAuthor {
+  display: block;
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b8860b;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Mission Section */
+.missionSection {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.missionContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.missionCard {
+  padding: 2rem 1.5rem;
+  background: transparent;
+  border: none;
+  text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding-top: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.missionCard:hover {
+  transform: translateY(-4px);
+  box-shadow: none;
+}
+
+.missionCard h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 0 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.missionCard p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.75;
+  margin: 0;
+  font-family: 'Lora', serif;
+}
+
+/* Life Events Timeline Section */
+.lifeEventsSection {
+  padding: 5rem 0;
+  background: #fff;
+}
+
+.timeline {
+  max-width: 750px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.timelineItem {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 60px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(184, 134, 11, 0.3), rgba(184, 134, 11, 0.1));
+}
+
+.timelineItem:last-child::before {
+  display: none;
+}
+
+.timelineIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #fff9f0, #fff5e6);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.timelineContent {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.timelineLabel {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #e67700;
+  margin-bottom: 0.5rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.timelineTitle {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin: 0 0 0.75rem;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+}
+
+.timelineDescription {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
+  font-family: 'Lora', serif;
+}
+
+.timelineDescription strong {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* Highlighted Timeline Item (Present Day) */
+.timelineItemHighlight .timelineContent {
+  background: linear-gradient(135deg, #faf9f6, #f5f3ef);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(184, 134, 11, 0.15);
+  margin-top: -0.25rem;
+}
+
+.timelineItemHighlight .timelineIcon {
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  border-color: rgba(184, 134, 11, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .heroImageWrapper {
+    order: -1;
+  }
+
+  .journeyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teachingsGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .missionContent {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .missionCard {
+    border-top: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 2rem 1rem;
+  }
+
+  .missionCard:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .heroSection {
+    padding: 3rem 0 2rem;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .statsContainer {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .heroImage {
+    max-width: 320px;
+  }
+
+  .journeyGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .journeyCard {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 1.5rem 0;
+  }
+
+  .journeyCard:last-child {
+    border-bottom: none;
+  }
+
+  .quote {
+    font-size: 1.05rem;
+    line-height: 1.9;
+  }
+
+  .quoteIcon {
+    font-size: 2.5rem;
+  }
+
+  .timelineItem {
+    gap: 1.25rem;
+    padding: 1.5rem 0;
+  }
+
+  .timelineIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .timelineItem::before {
+    left: 19px;
+    top: 55px;
+  }
+
+  .timelineTitle {
+    font-size: 1.05rem;
+  }
+
+  .timelineDescription {
+    font-size: 0.9rem;
+  }
+
+  .timelineItemHighlight .timelineContent {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .heroSection {
+    padding: 2.5rem 0 2rem;
+  }
+
+  .badge {
+    font-size: 0.6rem;
+  }
+
+  .heroTitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .heroDescription,
+  .heroSubDescription {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .sectionTitle {
+    font-size: 1.35rem;
+  }
+
+  .quoteSection {
+    padding: 3.5rem 0;
+  }
+
+  .timelineItem {
+    gap: 1rem;
+    padding: 1.25rem 0;
+  }
+
+  .timelineIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .timelineItem::before {
+    left: 17px;
+    top: 50px;
+  }
+
+  .timelineTitle {
+    font-size: 1rem;
+  }
+
+  .timelineDescription {
+    font-size: 0.85rem;
+    line-height: 1.75;
+  }
+
+  .timelineItemHighlight .timelineContent {
+    padding: 1rem;
+  }
+}

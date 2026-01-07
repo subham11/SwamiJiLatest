@@ -11,9 +11,27 @@
 html, body {
   padding: 0;
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family: 'Lora', Georgia, serif;
   color: var(--text-dark);
   /* Background will be set by ThemeApplier */
+}
+
+h1, h2, h3, h4, h5, h6, .brand, .wisdomTitle, .imageHoverTitle {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* UI/labels/buttons */
+button, .langBtn, .eventBtn, .ctaBtn, .menuRow a, .menuDropdownTrigger {
+  font-family: 'Inter', 'Lora', Arial, sans-serif;
+  font-weight: 600;
+}
+
+/* Ensure main UI containers use Inter for clarity */
+.navbar, .footer, .announcementBar, .marqueeContent span {
+  font-family: 'Inter', 'Lora', Arial, sans-serif !important;
+  font-weight: 600;
 }
 
 body {
@@ -1032,6 +1050,15 @@ button:focus-visible,
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
 }
 
+.parallaxHero .swiper,
+.parallaxHero .swiper-wrapper,
+.parallaxHero .swiper-slide {
+  transform: none !important;
+  -webkit-transform: none !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 .parallaxSlide{ 
   position: relative; 
   width:100%; 
@@ -1059,16 +1086,19 @@ button:focus-visible,
   object-fit: cover;
   object-position: center;
   opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 800ms ease, transform 800ms ease;
+  transform: translateZ(0);
+  transition: opacity 800ms ease;
   border: 8px solid rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .parallaxImage.loaded{
   opacity: 1;
-  transform: scale(1);
 }
 
 .parallaxTextContainer{

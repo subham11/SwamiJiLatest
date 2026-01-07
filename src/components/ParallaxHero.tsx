@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation, Parallax, A11y } from 'swiper/modules';
+import { Pagination, Navigation, A11y } from 'swiper/modules';
 import { useState, useEffect, useRef } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
 import LetterGlitch from '@/components/effects/LetterGlitch';
@@ -72,7 +72,7 @@ function ParallaxSlideContent({ slide, isActive, onScanComplete, index }: { slid
 
   return (
     <div className="parallaxSlide">
-      <div className="parallaxImageContainer" data-swiper-parallax="-100">
+      <div className="parallaxImageContainer">
         <img 
           src={slide.image} 
           alt={slide.title} 
@@ -84,17 +84,17 @@ function ParallaxSlideContent({ slide, isActive, onScanComplete, index }: { slid
           fetchPriority={isActive && index === 0 ? 'high' : 'low'}
         />
       </div>
-      <div className="parallaxTextContainer" data-swiper-parallax="100">
+      <div className="parallaxTextContainer">
         <div className={`parallaxContent ${showText ? 'show' : ''}`}>
           <div className="gridScanWrapper" style={{ ['--scan-duration' as any]: '1200ms' }}>
-            <h2 className="parallaxTitle" data-swiper-parallax="-200">
+            <h2 className="parallaxTitle">
               <LetterGlitch text={slide.title} start={startGlitch} speed={14} settleDuration={700} />
             </h2>
             <span className="gridScanner" onAnimationEnd={() => setScanCompleted((c) => c + 1)} />
           </div>
           {slide.subtitle && (
             <div className="gridScanWrapper" style={{ ['--scan-duration' as any]: '1000ms' }}>
-              <div className="parallaxSubtitle" data-swiper-parallax="-160">
+              <div className="parallaxSubtitle">
                 <LetterGlitch text={slide.subtitle || ''} start={startGlitch} speed={16} settleDuration={600} />
               </div>
               <span className="gridScanner" onAnimationEnd={() => setScanCompleted((c) => c + 1)} />
@@ -102,7 +102,7 @@ function ParallaxSlideContent({ slide, isActive, onScanComplete, index }: { slid
           )}
           {slide.description && (
             <div className="gridScanWrapper" style={{ ['--scan-duration' as any]: '900ms' }}>
-              <p className="parallaxText" data-swiper-parallax="-120">
+              <p className="parallaxText">
                 <LetterGlitch text={slide.description || ''} start={startGlitch} speed={18} settleDuration={500} />
               </p>
               <span className="gridScanner" onAnimationEnd={() => setScanCompleted((c) => c + 1)} />
@@ -140,12 +140,10 @@ export function ParallaxHero({ slides, height = '100vh', autoplayMs = 5000 }: Pr
   return (
     <section className="parallaxHero" style={{ height }}>
       <Swiper
-        modules={[Autoplay, Pagination, Navigation, Parallax, A11y]}
+        modules={[Pagination, Navigation, A11y]}
         navigation
         pagination={{ clickable: true }}
-        autoplay={false}
         speed={1200}
-        parallax
         loop
         onSlideChange={(swiper) => {
           // Clear pending timers when slide changes

@@ -9,13 +9,11 @@ import 'swiper/css/effect-fade';
 import { useTranslation } from 'react-i18next';
 
 const heroSlides = [
-  { id: 1, image: '/images/hero/hero-1.svg', titleKey: 'hero.slide1' },
-  { id: 2, image: '/images/hero/hero-2.svg', titleKey: 'hero.slide2' },
-  { id: 3, image: '/images/hero/hero-3.svg', titleKey: 'hero.slide1' },
-  { id: 4, image: '/images/hero/hero-4.svg', titleKey: 'hero.slide2' },
-  { id: 5, image: '/images/hero/hero-5.svg', titleKey: 'hero.slide1' },
-  { id: 6, image: '/images/hero/hero-6.svg', titleKey: 'hero.slide2' },
-  { id: 7, image: '/images/hero/hero-7.svg', titleKey: 'hero.slide1' },
+  { id: 1, image: '/images/TempleImages/Temple_01.jpeg', titleKey: 'hero.slide1' },
+  { id: 2, image: '/images/TempleImages/Temple_02.jpeg', titleKey: 'hero.slide2' },
+  { id: 3, image: '/images/TempleImages/Temple_03.jpeg', titleKey: 'hero.slide1' },
+  { id: 4, image: '/images/TempleImages/Temple_04.jpeg', titleKey: 'hero.slide2' },
+  { id: 5, image: '/images/TempleImages/Temple_05.jpeg', titleKey: 'hero.slide1' },
 ];
 
 export function Hero(){

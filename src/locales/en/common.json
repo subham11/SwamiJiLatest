@@ -6,6 +6,7 @@
     "home": "Home",
     "about": "Swamiji",
     "campaign": "Shri Bajrang Baan Abhiyan",
+    "varahiYagya": "Shri Varahi Yagya",
     "swamiji-ashram": "Swami Rupeshwaranand Ashram",
     "services": "Aashram Poojan Services",
     "yantra": "Siddha Yantra & Raksha Kavach",
@@ -52,6 +53,32 @@
     "paragraph3": "By participating in this campaign and reciting Shri Bajrang Baan, many devotees have received divine benefits and their divine problems have been resolved! Spiritual progress has also been experienced! The main goal through this collective campaign is to purify the divine atmosphere of India.",
     "paragraph4": "Special practitioners should master Shri Ram Raksha Stotra! This will provide them complete divine protection!",
     "paragraph5": "Before the 108 recitations of Bajrang Baan, must perform Shatkarma and Sankalpa...must read the protective shield!"
+  },
+  "varahiYagya": {
+    "title": "Shri Varahi Yagya – Protection, Prosperity, and Divine Grace",
+    "paragraph1": "A sacred yagya invoking Mother Varahi, the fierce guardian form of Adi Shakti, to dispel negativity, remove obstacles, and anchor inner stability.",
+    "paragraph2": "Guided by Swami Rupeshwaranand Ji, the ritual follows traditional mantras, disciplined offerings, and a calm meditative environment to honor Devi Varahi.",
+    "paragraph3": "Seek protection for family, professional steadiness, and spiritual acceleration by offering your sankalpa with faith and adherence to the vidhi.",
+    "paragraph4": "Morning homa, evening japa, and dedicated Devi sadhana are conducted with precision; participants are encouraged to maintain purity and punctuality.",
+    "paragraph5": "Please observe satvik conduct, modest attire, and silence around the yagya shala to preserve the sanctity of the ritual space.",
+    "cards": {
+      "schedule": {
+        "title": "Schedule & Pace",
+        "desc": "Dawn sankalpa, morning homa, and evening japa sessions; arrive 30 minutes early to settle and prepare."
+      },
+      "participation": {
+        "title": "Participation",
+        "desc": "Register your name and gotra in advance; limited seats per batch; follow satvik dietary guidelines during the yagya."
+      },
+      "location": {
+        "title": "Venue",
+        "desc": "Conducted at Swami Rupeshwaranand Ashram; on-site sevaks guide seating, offerings, and directions for visitors."
+      },
+      "contact": {
+        "title": "Contact",
+        "desc": "For seva, sankalpa entries, or group participation, please connect with the ashram coordination team."
+      }
+    }
   },
   "announcement": {
     "text": "🔔 Join us for Hanuman Chalisa Path every Tuesday at 7 AM • 🎉 Special Bhandara on Nov 25th • 📿 New Yoga Sessions starting Nov 20th • 🙏 Daily Satsang at 6 PM",

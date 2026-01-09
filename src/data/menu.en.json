@@ -22,6 +22,12 @@
           "type": "link"
         },
         {
+          "id": "varahi-yagya",
+          "label": "Shri Varahi Yagya",
+          "href": "/shri-varahi-yagya",
+          "type": "link"
+        },
+        {
           "id": "test-component",
           "label": "Test Component",
           "href": "/test-component",

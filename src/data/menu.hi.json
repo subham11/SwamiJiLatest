@@ -22,6 +22,12 @@
           "type": "link"
         },
         {
+          "id": "varahi-yagya",
+          "label": "श्री वाराही यज्ञ",
+          "href": "/shri-varahi-yagya",
+          "type": "link"
+        },
+        {
           "id": "test-component",
           "label": "टेस्ट कंपोनेंट",
           "href": "/test-component",

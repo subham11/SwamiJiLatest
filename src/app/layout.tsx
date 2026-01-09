@@ -2,6 +2,7 @@ import "./globals.css";
 import { Providers } from "@/redux/Providers";
 import { I18nProvider } from "@/lib/i18n-provider";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import { ThemeApplier } from "@/components/ThemeApplier";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { PageLoader } from "@/components/PageLoader";
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ThemeApplier />
             <AnnouncementBar />
             <ThemeSwitcher />
+            <LanguageToggle />
             {children}
           </I18nProvider>
         </Providers>

@@ -138,7 +138,6 @@ export function NavBar(){
   return (
     <nav className="navbar">
       <div className="navInner">
-        <span className="brand">🕉 {t('brand.name')}</span>
         <button className="hamburger" aria-label="Toggle menu" aria-expanded={mobileOpen} onClick={() => setMobileOpen(v => !v)}>
           <span/>
           <span/>
@@ -152,11 +151,6 @@ export function NavBar(){
           ))}
         </div>
         <div className="navRight">
-          {i18n.language === 'hi' ? (
-            <button className="langBtn" onClick={()=>changeLang('en')}>EN</button>
-          ) : (
-            <button className="langBtn" onClick={()=>changeLang('hi')}>HI</button>
-          )}
           {!user ? null : (
             <>
               <span style={{ opacity: 0.8 }}>{user.username}</span>

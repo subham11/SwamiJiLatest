@@ -1,0 +1,164 @@
+.contentSection {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--page-background, #f5f5f5);
+}
+
+.contentCard {
+  background-color: #ffffff;
+  padding: 3rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-primary, #ff4d00);
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 3px solid var(--color-secondary, #ffc100);
+  padding-bottom: 1rem;
+  line-height: 1.35;
+}
+
+.textContent {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #222;
+  text-align: justify;
+}
+
+.paragraph {
+  margin-bottom: 1.5rem;
+}
+
+.highlightPrimary {
+  font-weight: 650;
+  color: var(--color-primary, #ff4d00);
+}
+
+.infoSection {
+  padding: 3rem 2rem 4rem;
+  background: linear-gradient(135deg, #fff7ed 0%, #fff 100%);
+}
+
+.infoHeader {
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.infoHeader h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: #1f1f1f;
+}
+
+.infoHeader p {
+  color: #4a4a4a;
+  font-size: 1rem;
+}
+
+.infoGrid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.infoCard {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.infoCard h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: #1f1f1f;
+}
+
+.infoCard p {
+  color: #444;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .contentSection {
+    padding: 3rem 1.5rem;
+  }
+
+  .contentCard {
+    padding: 2.5rem;
+  }
+
+  .title {
+    font-size: 1.85rem;
+  }
+
+  .textContent {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 768px) {
+  .contentSection {
+    padding: 2.4rem 1.25rem;
+  }
+
+  .contentCard {
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .textContent {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .infoSection {
+    padding: 2.5rem 1.25rem 3rem;
+  }
+
+  .infoHeader h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentSection {
+    padding: 1.8rem 1rem;
+  }
+
+  .contentCard {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .title {
+    font-size: 1.35rem;
+  }
+
+  .textContent {
+    font-size: 0.95rem;
+  }
+
+  .infoHeader h2 {
+    font-size: 1.35rem;
+  }
+
+  .infoGrid {
+    gap: 1rem;
+  }
+}

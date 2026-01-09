@@ -72,7 +72,7 @@ export default function VarahiYagyaPage() {
     <main>
       <NavBar />
       <ScrollSnapAnimation
-        defaultEffect="parallax"
+        defaultEffect="fade"
         hideHeader={true}
         customSections={heroSections}
         reducedHeight={true}

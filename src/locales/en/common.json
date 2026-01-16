@@ -129,5 +129,162 @@
         "desc": "Space for satsangs, programs and community gatherings"
       }
     }
+  },
+  "narayanBali": {
+    "title": "Narayan Bali Poojan – Ancestral Peace & Pitru Dosha Nivaran",
+    "paragraph1": "Narayan Bali is a sacred Vedic ritual performed to liberate the souls of ancestors who may have died under unnatural circumstances such as accidents, suicides, or without proper last rites. This powerful ceremony helps release trapped souls and brings peace to both the departed and their living descendants.",
+    "paragraph2": "According to Hindu scriptures, when ancestors do not receive proper funeral rites or die in unfortunate circumstances, their souls may remain in a state of unrest. This can manifest as Pitru Dosha (ancestral affliction) in the horoscopes of descendants, causing obstacles in marriage, progeny, health, and overall prosperity.",
+    "paragraph3": "The Narayan Bali ritual is performed by invoking Lord Vishnu (Narayan) and making offerings to satisfy the unfulfilled desires of departed souls. The ceremony involves the creation of symbolic bodies using darbha grass, followed by the complete funeral rites including mantras, offerings, and final immersion.",
+    "paragraph4": "Traditionally performed at sacred tirthas like Trimbakeshwar, Gaya, or Prayagraj, this ritual is now conducted at Swami Rupeshwaranand Ashram under the guidance of learned priests following authentic Vedic procedures. The ritual typically takes one full day and requires the presence of the family head or eldest son.",
+    "benefitsTitle": "Benefits of Narayan Bali Poojan",
+    "benefits": {
+      "item1": "Liberation of ancestral souls from bondage and unrest",
+      "item2": "Removal of Pitru Dosha from the family lineage",
+      "item3": "Resolution of obstacles in marriage and progeny",
+      "item4": "Improvement in health, career, and financial matters",
+      "item5": "Restoration of peace and harmony in family life",
+      "item6": "Spiritual upliftment and ancestral blessings"
+    },
+    "cards": {
+      "when": {
+        "title": "When to Perform",
+        "desc": "Recommended during Pitru Paksha, Amavasya, or as advised by the priest after horoscope analysis for Pitru Dosha."
+      },
+      "who": {
+        "title": "Who Should Perform",
+        "desc": "Eldest son or family head; in their absence, other family members can perform with proper sankalpa."
+      },
+      "vidhi": {
+        "title": "Ritual Process",
+        "desc": "Full day ceremony including sankalpa, pinda daan, tarpan, homa, and final immersion of symbolic bodies."
+      },
+      "contact": {
+        "title": "Book Ritual",
+        "desc": "Contact the ashram coordination team to schedule your Narayan Bali Poojan with proper muhurat."
+      }
+    }
+  },
+  "tripindiShradh": {
+    "title": "Tripindi Shradh Poojan – Three Generations Ancestral Peace",
+    "paragraph1": "Tripindi Shradh is a sacred Vedic ritual performed to appease and liberate the souls of three generations of ancestors – father, grandfather, and great-grandfather (or mother, grandmother, and great-grandmother). This powerful ceremony addresses the unfulfilled desires and grievances of departed souls that may be affecting the current generation.",
+    "paragraph2": "According to Garuda Purana and other Hindu scriptures, when Shradh rituals are not performed regularly or are conducted improperly, the ancestors' souls remain unsatisfied. This can lead to various problems in the lives of descendants including obstacles in career, delayed marriages, health issues, and financial difficulties – collectively known as Pitru Dosha.",
+    "paragraph3": "The word 'Tripindi' comes from 'Tri' meaning three and 'Pinda' meaning rice balls offered to ancestors. During this ritual, three pindas are offered simultaneously to three generations of ancestors, along with tarpan (water offerings), mantras, and homa (sacred fire ceremony). This consolidated ritual is considered equivalent to performing individual Shradh for each ancestor.",
+    "paragraph4": "Performing Tripindi Shradh with devotion and proper Vedic procedures brings ancestral blessings, removes obstacles from life, and ensures peace and prosperity for the entire family lineage.",
+    "benefitsTitle": "Benefits of Tripindi Shradh",
+    "benefits": {
+      "item1": "Peace and liberation for three generations of ancestors",
+      "item2": "Removal of Pitru Dosha and its negative effects",
+      "item3": "Resolution of marriage and relationship obstacles",
+      "item4": "Harmony and prosperity in household affairs",
+      "item5": "Relief from recurring health and financial issues",
+      "item6": "Ancestral blessings for future generations"
+    },
+    "steps": {
+      "step1": {
+        "title": "Sankalpa (Sacred Vow)",
+        "desc": "The ritual begins with the performer taking a sacred vow, declaring their intention and invoking divine presence."
+      },
+      "step2": {
+        "title": "Pinda Daan",
+        "desc": "Three rice balls (pindas) are prepared and offered to three generations of ancestors with sacred mantras."
+      },
+      "step3": {
+        "title": "Tarpan (Water Offerings)",
+        "desc": "Holy water mixed with sesame seeds is offered to satisfy the thirst of ancestral souls."
+      },
+      "step4": {
+        "title": "Homa (Fire Ceremony)",
+        "desc": "Sacred offerings are made into the consecrated fire while chanting Vedic mantras."
+      },
+      "step5": {
+        "title": "Brahmin Bhojan",
+        "desc": "Feeding Brahmins and seeking their blessings completes the ritual merit."
+      }
+    },
+    "cards": {
+      "meaning": {
+        "title": "What is Tripindi",
+        "desc": "A consolidated Shradh for three generations of ancestors performed in a single ceremony to ensure their peace and liberation."
+      },
+      "when": {
+        "title": "When to Perform",
+        "desc": "During Pitru Paksha, Amavasya, death anniversaries, or when advised by priest after detecting Pitru Dosha in horoscope."
+      },
+      "who": {
+        "title": "Who Should Perform",
+        "desc": "Eldest son is primary performer; daughters, grandsons, or relatives may perform in absence of direct male heir."
+      },
+      "vidhi": {
+        "title": "Ritual Duration",
+        "desc": "Approximately 3-4 hours including all ceremonies. Devotee should observe fast until completion."
+      }
+    }
+  },
+  "pitrShanti": {
+    "title": "Pitr Shanti Poojan – Bringing Peace to Ancestral Souls",
+    "subtitle": "Ritual for Pacifying and Liberating All Ancestral Spirits",
+    "introTitle": "Understanding Pitr Shanti Poojan",
+    "paragraph1": "Pitr Shanti Poojan is a sacred Vedic ritual performed to pacify, satisfy, and bring relief to all ancestral souls – not limited to a specific lineage or generation. Unlike Shraddh which is performed on specific dates or Tripindi which focuses on three generations, Pitr Shanti is a universal ceremony to address the dissatisfaction of any and all deceased ancestors whose presence may be causing problems or disturbances in the family.",
+    "paragraph2": "This powerful ritual is based on the principle that unsatisfied or angry ancestors (Pitri Dosha) can negatively influence their descendants' lives in various ways. When ancestral debts remain unpaid or when proper rituals are neglected, the spirits may cause obstacles in marriage, career, health, finances, relationships, and overall prosperity of the family.",
+    "whyTitle": "Why Perform Pitr Shanti Poojan?",
+    "paragraph3": "According to the Garuda Purana and other Hindu scriptures, the souls of deceased family members who are not properly honored through rituals remain in a state of dissatisfaction. They may linger in the earthly realm, unable to progress to their rightful destination. In their frustration, they may interfere with the lives of their descendants, creating obstacles and suffering.",
+    "paragraph4": "Pitr Shanti Poojan addresses these issues by performing comprehensive rituals including sacred invocations (Mantras), offerings of water (Tarpan), food offerings (Bali), and fire ceremonies (Havan). The ritual seeks to fulfill the unfulfilled wishes of the ancestors and grant them peace, thereby liberating both the souls of the ancestors and their descendants from the burden of unresolved ancestral karma.",
+    "benefitsTitle": "Key Benefits of Pitr Shanti Poojan",
+    "benefits": {
+      "item1": "Peace and satisfaction for all ancestral spirits, regardless of generation",
+      "item2": "Removal of Pitri Dosha and its negative effects on the family",
+      "item3": "Resolution of recurring obstacles in career, education, and professional growth",
+      "item4": "Improvement in relationships and family harmony",
+      "item5": "Relief from chronic health issues and psychological disturbances",
+      "item6": "Blessing and prosperity for the entire family lineage"
+    },
+    "stepsTitle": "Steps of the Pitr Shanti Ritual",
+    "steps": {
+      "step1": {
+        "title": "Purification and Sacred Preparation",
+        "desc": "The ritual space is sanctified, and participants undergo purification to prepare for the sacred ceremony."
+      },
+      "step2": {
+        "title": "Invocation (Pranidhan)",
+        "desc": "All ancestors, both known and unknown, are respectfully invoked with sacred mantras to invite their spiritual presence."
+      },
+      "step3": {
+        "title": "Water Offerings (Tarpan)",
+        "desc": "Offerings of water mixed with sesame seeds and sacred herbs are made to satisfy the thirst and desires of the ancestral souls."
+      },
+      "step4": {
+        "title": "Food and Flower Offerings (Bali)",
+        "desc": "Symbolic food offerings and flowers are presented with mantras to gratify the ancestors spiritually."
+      },
+      "step5": {
+        "title": "Fire Ceremony (Havan)",
+        "desc": "Sacred fire is offered with ghee, grains, and herbs while reciting Vedic mantras to purify and liberate the ancestral spirits."
+      },
+      "step6": {
+        "title": "Brahmin Feeding and Blessings",
+        "desc": "Brahmins are fed and asked to bless the family, sealing the ritual with their divine blessings for peace and prosperity."
+      }
+    },
+    "cards": {
+      "meaning": {
+        "title": "What is Pitr Shanti",
+        "desc": "A universal Vedic ceremony to pacify, satisfy, and liberate all ancestral souls and resolve ancestral karmic debts affecting the family."
+      },
+      "when": {
+        "title": "When to Perform",
+        "desc": "After Pitri Dosha is detected in a horoscope, during inauspicious periods, or as recommended by a qualified priest after consultation."
+      },
+      "who": {
+        "title": "Who Should Perform",
+        "desc": "The eldest son traditionally performs it; in absence, daughters, grandsons, or close family members can conduct the ritual with proper guidance."
+      },
+      "vidhi": {
+        "title": "Ritual Duration",
+        "desc": "Typically 3-5 hours depending on the complexity. The ritual should be performed on auspicious days and at proper Muhurat (time)."
+      }
+    },
+    "ctaTitle": "Bring Peace to Your Ancestral Lineage",
+    "ctaDesc": "Let us help you perform this sacred ritual with proper Vedic procedures and genuine devotion. Contact our Ashram coordination team to schedule your Pitr Shanti Poojan ceremony.",
+    "ctaButton": "Schedule Your Ritual"
   }
 }

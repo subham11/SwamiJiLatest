@@ -28,12 +28,6 @@
           "type": "link"
         },
         {
-          "id": "test-component",
-          "label": "Test Component",
-          "href": "/test-component",
-          "type": "link"
-        },
-        {
           "id": "swamiji-ashram",
           "label": "Swami Rupeshwaranand Ashram",
           "href": "/ashram",
@@ -48,17 +42,17 @@
             {
               "id": "narayan",
               "label": "Narayan Bali Poojan",
-              "href": "#narayan"
+              "href": "/narayan-bali"
             },
             {
               "id": "tripindi",
               "label": "Tripindi Shraddh Poojan",
-              "href": "#tripindi"
+              "href": "/tripindi-shradh"
             },
             {
               "id": "pitr",
               "label": "Pitr Shanti Poojan",
-              "href": "#pitr"
+              "href": "/pitr-shanti"
             },
             {
               "id": "vipreet",

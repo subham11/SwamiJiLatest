@@ -28,12 +28,6 @@
           "type": "link"
         },
         {
-          "id": "test-component",
-          "label": "टेस्ट कंपोनेंट",
-          "href": "/test-component",
-          "type": "link"
-        },
-        {
           "id": "swamiji-ashram",
           "label": "स्वामी रुपेश्वरानंद आश्रम",
           "href": "/ashram",
@@ -48,17 +42,17 @@
             {
               "id": "narayan",
               "label": "नारायण बलि पूजन",
-              "href": "#narayan"
+              "href": "/narayan-bali"
             },
             {
               "id": "tripindi",
               "label": "त्रिपिंडी श्राध्द पूजन",
-              "href": "#tripindi"
+              "href": "/tripindi-shradh"
             },
             {
               "id": "pitr",
               "label": "पितृशांति पूजन",
-              "href": "#pitr"
+              "href": "/pitr-shanti"
             },
             {
               "id": "vipreet",

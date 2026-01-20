@@ -7,17 +7,108 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
-const heroSlides = [
-  { id: 1, image: '/images/TempleImages/Temple_01.jpeg', titleKey: 'hero.slide1' },
-  { id: 2, image: '/images/TempleImages/Temple_02.jpeg', titleKey: 'hero.slide2' },
-  { id: 3, image: '/images/TempleImages/Temple_03.jpeg', titleKey: 'hero.slide1' },
-  { id: 4, image: '/images/TempleImages/Temple_04.jpeg', titleKey: 'hero.slide2' },
-  { id: 5, image: '/images/TempleImages/Temple_05.jpeg', titleKey: 'hero.slide1' },
+type Locale = 'en' | 'hi';
+
+interface HeroContent {
+  slides: string[]; // expect 5 entries
+  cta: string;
+}
+
+// Default content (used as fallback)
+const defaultContent: Record<Locale, HeroContent> = {
+  en: {
+    slides: [
+      'Divine Guidance For Modern Life',
+      'Daily Inspirations & Teachings',
+      'Divine Guidance For Modern Life',
+      'Daily Inspirations & Teachings',
+      'Divine Guidance For Modern Life'
+    ],
+    cta: 'Explore Now'
+  },
+  hi: {
+    slides: [
+      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
+      'दैनिक प्रेरणाएँ और उपदेश',
+      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
+      'दैनिक प्रेरणाएँ और उपदेश',
+      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन'
+    ],
+    cta: 'अभी देखें'
+  }
+};
+
+function normalizeSlides(raw: unknown, locale: Locale): string[] {
+  const fallback = defaultContent[locale].slides;
+  if (Array.isArray(raw)) {
+    const cleaned = raw
+      .filter((s): s is string => typeof s === 'string' && s.trim().length > 0)
+      .map((s) => s.trim());
+    if (cleaned.length) {
+      const count = 5;
+      return Array.from({ length: count }, (_v, i) => cleaned[i] ?? cleaned[i % cleaned.length] ?? fallback[i]);
+    }
+  }
+  return fallback;
+}
+
+function normalizeContent(data: any, locale: Locale): HeroContent {
+  const slidesSource = data?.slides ?? [data?.slide1, data?.slide2];
+  const slides = normalizeSlides(slidesSource, locale);
+  const cta = typeof data?.cta === 'string' && data.cta.trim() ? data.cta : defaultContent[locale].cta;
+  return { slides, cta };
+}
+
+const heroSlideImages = [
+  '/images/TempleImages/Temple_01.jpeg',
+  '/images/TempleImages/Temple_02.jpeg',
+  '/images/TempleImages/Temple_03.jpeg',
+  '/images/TempleImages/Temple_04.jpeg',
+  '/images/TempleImages/Temple_05.jpeg',
 ];
 
 export function Hero(){
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [content, setContent] = useState<HeroContent>(defaultContent.en);
+  
+  useEffect(() => {
+    const fetchHeroContent = async () => {
+      const locale: Locale = i18n.language?.startsWith('hi') ? 'hi' : 'en';
+      try {
+        const res = await fetch(`/api/page-content/${locale}/home/hero`, {
+          next: { revalidate: 60 }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.content) {
+            setContent(normalizeContent(data.content, locale));
+          }
+        } else {
+          // Use default content for current locale
+          setContent(defaultContent[locale]);
+        }
+      } catch {
+        // Use default content for current locale
+        const locale: Locale = i18n.language?.startsWith('hi') ? 'hi' : 'en';
+        setContent(defaultContent[locale]);
+      }
+    };
+    
+    fetchHeroContent();
+  }, [i18n.language]);
+
+  const currentLocale: Locale = i18n.language?.startsWith('hi') ? 'hi' : 'en';
+  const slidesArr = Array.isArray(content?.slides) && content.slides.length > 0
+    ? content.slides
+    : defaultContent[currentLocale].slides;
+
+  const heroSlides = heroSlideImages.map((image, index) => ({
+    id: index + 1,
+    image,
+    title: slidesArr[index] ?? slidesArr[index % slidesArr.length] ?? defaultContent[currentLocale].slides[index]
+  }));
   
   return (
     <section className="heroFullBleed" id="home" aria-label="Hero carousel">
@@ -39,18 +130,18 @@ export function Hero(){
           paginationBulletMessage: 'Go to slide {{index}}',
         }}
       >
-        {heroSlides.map((slide, index) => (
+        {heroSlides.map((slide) => (
           <SwiperSlide key={slide.id}>
             <div 
               className="heroSlideFullBleed" 
               style={{backgroundImage: `url(${slide.image})`}}
               role="img"
-              aria-label={t(slide.titleKey)}
+              aria-label={slide.title}
             >
               <div className="heroContent">
-                <h1 className="heroTitle">{t(slide.titleKey)}</h1>
+                <h1 className="heroTitle">{slide.title}</h1>
                 <p className="heroSubtitle">— {t('brand.name')}</p>
-                <button className="ctaBtn heroBtn" aria-label={t('hero.cta')}>{t('hero.cta')}</button>
+                <button className="ctaBtn heroBtn" aria-label={content.cta}>{content.cta}</button>
               </div>
             </div>
           </SwiperSlide>

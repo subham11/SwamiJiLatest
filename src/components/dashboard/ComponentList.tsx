@@ -1,6 +1,6 @@
 'use client';
 
-import { ComponentContent } from '@/data/pages-components.seed';
+import { ComponentContent } from '@/hooks/usePageContent';
 
 type Props = {
   components: ComponentContent[];
@@ -56,11 +56,6 @@ export function ComponentList({ components, selectedComponentId, onSelect }: Pro
             <div style={{ fontSize: '0.75rem', opacity: 0.6, marginTop: '0.25rem', lineHeight: 1.3 }}>
               {component.description}
             </div>
-            {component.lastModified && (
-              <div style={{ fontSize: '0.7rem', opacity: 0.5, marginTop: '0.25rem' }}>
-                Edited: {new Date(component.lastModified).toLocaleDateString()}
-              </div>
-            )}
           </button>
         ))}
       </div>

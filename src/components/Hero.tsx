@@ -22,9 +22,9 @@ const defaultContent: Record<Locale, HeroContent> = {
     slides: [
       'Divine Guidance For Modern Life',
       'Daily Inspirations & Teachings',
-      'Divine Guidance For Modern Life',
-      'Daily Inspirations & Teachings',
-      'Divine Guidance For Modern Life'
+      'Path to Inner Peace',
+      'Ancient Wisdom for Today',
+      'Spiritual Awakening Awaits'
     ],
     cta: 'Explore Now'
   },
@@ -32,9 +32,9 @@ const defaultContent: Record<Locale, HeroContent> = {
     slides: [
       'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
       'दैनिक प्रेरणाएँ और उपदेश',
-      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
-      'दैनिक प्रेरणाएँ और उपदेश',
-      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन'
+      'आंतरिक शांति का मार्ग',
+      'आज के लिए प्राचीन ज्ञान',
+      'आध्यात्मिक जागृति आपका इंतज़ार कर रही है'
     ],
     cta: 'अभी देखें'
   }

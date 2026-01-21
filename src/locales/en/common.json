@@ -26,8 +26,13 @@
     "trikal": "Trikal Sandhya Set"
   },
   "hero": {
-    "slide1": "Divine Guidance For Modern Life",
-    "slide2": "Daily Inspirations & Teachings",
+    "slides": [
+      "Divine Guidance For Modern Life",
+      "Daily Inspirations & Teachings",
+      "Path to Inner Peace",
+      "Ancient Wisdom for Today",
+      "Spiritual Awakening Awaits"
+    ],
     "cta": "Explore Now"
   },
   "parallax": {

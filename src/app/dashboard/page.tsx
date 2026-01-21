@@ -9,7 +9,6 @@ import { YearMonthAccordion } from '@/components/dashboard/YearMonthAccordion';
 import { DocumentList } from '@/components/dashboard/DocumentList';
 import { DocumentViewer } from '@/components/dashboard/DocumentViewer';
 import { UploadPanel } from '@/components/dashboard/UploadPanel';
-import { EventsEditor } from '@/components/dashboard/EventsEditor';
 import { PageComponentManager } from '@/components/dashboard/PageComponentManager';
 import { DocumentItem, DocumentsByMonth, getSeedDocuments, monthsToYears } from '@/data/docs.seed';
 
@@ -61,7 +60,7 @@ export default function DashboardPage(){
                 transition: 'all 0.2s ease',
               }}
             >
-              📄 Documents & Events
+              📄 Documents
             </button>
             <button
               onClick={() => setActiveTab('content')}
@@ -90,10 +89,6 @@ export default function DashboardPage(){
                 <UploadPanel monthKey={selectedMonth} onAdd={addDocs} />
               )}
               <DocumentList items={itemsForSelected} onOpen={setViewerDoc} />
-
-              {user?.role === 'admin' && (
-                <EventsEditor />
-              )}
             </div>
             <YearMonthAccordion
               years={years}

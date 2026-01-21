@@ -33,16 +33,93 @@ const FALLBACK_COMPONENTS: Record<string, Record<string, Record<string, any>>> =
         name: 'Hero Section',
         description: 'Main hero banner with parallax effect',
         content: {
-          slide1: 'Divine Guidance For Modern Life',
-          slide2: 'Daily Inspirations & Teachings',
           slides: [
             'Divine Guidance For Modern Life',
             'Daily Inspirations & Teachings',
-            'Divine Guidance For Modern Life',
-            'Daily Inspirations & Teachings',
-            'Divine Guidance For Modern Life'
+            'Path to Inner Peace',
+            'Ancient Wisdom for Today',
+            'Spiritual Awakening Awaits'
           ],
           cta: 'Explore Now'
+        }
+      },
+      sacredTeachings: {
+        id: 'sacredTeachings',
+        name: 'Sacred Teachings',
+        description: 'Display sacred teachings section',
+        content: {
+          title: 'Sacred Teachings',
+          subtitle: 'Timeless wisdom for modern living',
+          cards: [
+            {
+              id: 1,
+              icon: '🙏',
+              title: 'Path to Inner Peace',
+              description: 'Discover ancient techniques for finding tranquility in the modern world through meditation and mindful living.',
+              fullContent: 'In the hustle of modern life, finding inner peace seems like a distant dream. Swami Ji teaches that peace is not something external to be found, but an internal state to be uncovered. Through daily meditation practice, mindful breathing, and conscious living, we can peel away the layers of stress and anxiety that cloud our natural state of serenity.',
+              buttonText: 'Learn More',
+              buttonLink: '/swamiji'
+            },
+            {
+              id: 2,
+              icon: '📿',
+              title: 'Power of Mantras',
+              description: 'Learn how sacred sounds and vibrations can transform your consciousness and connect you with the divine.',
+              fullContent: 'Mantras are not mere words but powerful vibrations that resonate with the cosmic energy. The ancient rishis discovered that specific sound combinations could alter consciousness and create profound spiritual transformations.',
+              buttonText: 'Learn More',
+              buttonLink: '/bajrang-baan'
+            },
+            {
+              id: 3,
+              icon: '🙏🏻',
+              title: 'Service to Humanity',
+              description: 'Understand why selfless service (Seva) is considered the highest form of spiritual practice.',
+              fullContent: 'Seva, or selfless service, is the cornerstone of spiritual growth. When we serve others without expectation of reward, we transcend the ego and connect with our higher self.',
+              buttonText: 'Learn More',
+              buttonLink: '/ashram'
+            },
+            {
+              id: 4,
+              icon: '🙏🏼',
+              title: 'Living with Purpose',
+              description: 'Find your dharma and learn to align your daily actions with your higher spiritual purpose.',
+              fullContent: 'Every soul is born with a unique purpose, a dharma that only they can fulfill. The challenge lies in discovering this purpose and having the courage to pursue it.',
+              buttonText: 'Learn More',
+              buttonLink: '/swamiji'
+            }
+          ]
+        }
+      },
+      wordsOfWisdom: {
+        id: 'wordsOfWisdom',
+        name: 'Words of Wisdom',
+        description: 'Inspirational quotes section',
+        content: {
+          title: 'Words of Wisdom',
+          subtitle: 'Daily Inspiration from Swami Ji',
+          author: 'Swami Rupeshwaranand',
+          quotes: [
+            'The mind is everything. What you think, you become.',
+            'Peace comes from within. Do not seek it without.',
+            'Meditation brings wisdom; lack of meditation leaves ignorance.',
+            'Your purpose in life is to find your purpose and give your whole heart to it.',
+            'Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.'
+          ]
+        }
+      },
+      upcomingEvents: {
+        id: 'upcomingEvents',
+        name: 'Upcoming Events',
+        description: 'Shows upcoming events list',
+        content: {
+          title: 'Upcoming Events',
+          subtitle: 'Join us for spiritual gatherings and community activities',
+          events: [
+            { id: 1, title: 'Community Bhandara', date: '2025-11-25', time: '12:00 PM - 2:00 PM', location: 'Ashram Grounds', type: 'Community Service', image: '', link: '' },
+            { id: 2, title: 'Hanuman Chalisa Path', date: '2025-11-08', time: '7:00 AM - 8:00 AM', location: 'Temple Premises', type: 'Daily Prayer', image: '', link: '' },
+            { id: 3, title: 'Yoga & Pranayama Session', date: '2025-11-20', time: '5:30 AM - 7:00 AM', location: 'Yoga Hall', type: 'Health & Wellness', image: '', link: '' },
+            { id: 4, title: 'Spiritual Discourse & Meditation', date: '2025-11-15', time: '6:00 PM - 8:00 PM', location: 'Main Ashram Hall', type: 'Weekly Satsang', image: '', link: '' }
+          ]
         }
       }
     }
@@ -63,16 +140,93 @@ const FALLBACK_COMPONENTS: Record<string, Record<string, Record<string, any>>> =
         name: 'हीरो सेक्शन',
         description: 'मुख्य बैनर',
         content: {
-          slide1: 'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
-          slide2: 'दैनिक प्रेरणाएँ और उपदेश',
           slides: [
             'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
             'दैनिक प्रेरणाएँ और उपदेश',
-            'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
-            'दैनिक प्रेरणाएँ और उपदेश',
-            'आधुनिक जीवन हेतु दिव्य मार्गदर्शन'
+            'आंतरिक शांति का मार्ग',
+            'आज के लिए प्राचीन ज्ञान',
+            'आध्यात्मिक जागृति आपका इंतज़ार कर रही है'
           ],
           cta: 'अभी देखें'
+        }
+      },
+      sacredTeachings: {
+        id: 'sacredTeachings',
+        name: 'पवित्र शिक्षाएं',
+        description: 'पवित्र शिक्षाओं का अनुभाग',
+        content: {
+          title: 'पवित्र शिक्षाएं',
+          subtitle: 'आधुनिक जीवन के लिए कालातीत ज्ञान',
+          cards: [
+            {
+              id: 1,
+              icon: '🙏',
+              title: 'आंतरिक शांति का मार्ग',
+              description: 'ध्यान और सचेत जीवन के माध्यम से आधुनिक दुनिया में शांति पाने की प्राचीन तकनीकें सीखें।',
+              fullContent: 'आधुनिक जीवन की भागदौड़ में, आंतरिक शांति पाना एक दूर का सपना लगता है। स्वामी जी सिखाते हैं कि शांति कोई बाहरी वस्तु नहीं है जो खोजी जाए, बल्कि यह एक आंतरिक अवस्था है।',
+              buttonText: 'और जानें',
+              buttonLink: '/swamiji'
+            },
+            {
+              id: 2,
+              icon: '📿',
+              title: 'मंत्रों की शक्ति',
+              description: 'जानें कैसे पवित्र ध्वनियां और कंपन आपकी चेतना को रूपांतरित कर सकते हैं और आपको दिव्यता से जोड़ सकते हैं।',
+              fullContent: 'मंत्र केवल शब्द नहीं बल्कि शक्तिशाली कंपन हैं जो ब्रह्मांडीय ऊर्जा के साथ गूंजते हैं। प्राचीन ऋषियों ने खोजा कि विशिष्ट ध्वनि संयोजन चेतना को बदल सकते हैं।',
+              buttonText: 'और जानें',
+              buttonLink: '/bajrang-baan'
+            },
+            {
+              id: 3,
+              icon: '🙏🏻',
+              title: 'मानवता की सेवा',
+              description: 'समझें कि निस्वार्थ सेवा (सेवा) को आध्यात्मिक अभ्यास का सर्वोच्च रूप क्यों माना जाता है।',
+              fullContent: 'सेवा आध्यात्मिक विकास की आधारशिला है। जब हम बिना किसी प्रतिफल की अपेक्षा के दूसरों की सेवा करते हैं, तो हम अहंकार से परे जाते हैं।',
+              buttonText: 'और जानें',
+              buttonLink: '/ashram'
+            },
+            {
+              id: 4,
+              icon: '🙏🏼',
+              title: 'उद्देश्य के साथ जीवन',
+              description: 'अपना धर्म खोजें और अपने दैनिक कार्यों को अपने उच्चतर आध्यात्मिक उद्देश्य के साथ संरेखित करना सीखें।',
+              fullContent: 'हर आत्मा एक अद्वितीय उद्देश्य के साथ जन्म लेती है, एक धर्म जो केवल वे ही पूरा कर सकते हैं। चुनौती इस उद्देश्य को खोजने में है।',
+              buttonText: 'और जानें',
+              buttonLink: '/swamiji'
+            }
+          ]
+        }
+      },
+      wordsOfWisdom: {
+        id: 'wordsOfWisdom',
+        name: 'ज्ञान के मोती',
+        description: 'प्रेरणादायक उद्धरण अनुभाग',
+        content: {
+          title: 'ज्ञान के मोती',
+          subtitle: 'स्वामी जी से दैनिक प्रेरणा',
+          author: 'स्वामी रूपेश्वरानंद',
+          quotes: [
+            'मन ही सब कुछ है। जो आप सोचते हैं, वही आप बन जाते हैं।',
+            'शांति भीतर से आती है। इसे बाहर मत खोजो।',
+            'ध्यान ज्ञान लाता है; ध्यान की कमी अज्ञानता छोड़ती है।',
+            'जीवन में आपका उद्देश्य अपने उद्देश्य को खोजना और अपना पूरा दिल देना है।',
+            'अतीत में मत रहो, भविष्य के सपने मत देखो, वर्तमान क्षण पर मन को केंद्रित करो।'
+          ]
+        }
+      },
+      upcomingEvents: {
+        id: 'upcomingEvents',
+        name: 'आगामी कार्यक्रम',
+        description: 'आगामी कार्यक्रमों की सूची',
+        content: {
+          title: 'आगामी कार्यक्रम',
+          subtitle: 'आध्यात्मिक सभाओं और सामुदायिक गतिविधियों में हमसे जुड़ें',
+          events: [
+            { id: 1, title: 'सामुदायिक भंडारा', date: '2025-11-25', time: 'दोपहर 12:00 - 2:00 बजे', location: 'आश्रम मैदान', type: 'सामुदायिक सेवा', image: '', link: '' },
+            { id: 2, title: 'हनुमान चालीसा पाठ', date: '2025-11-08', time: 'सुबह 7:00 - 8:00 बजे', location: 'मंदिर परिसर', type: 'दैनिक प्रार्थना', image: '', link: '' },
+            { id: 3, title: 'योग एवं प्राणायाम सत्र', date: '2025-11-20', time: 'सुबह 5:30 - 7:00 बजे', location: 'योग हॉल', type: 'स्वास्थ्य एवं कल्याण', image: '', link: '' },
+            { id: 4, title: 'आध्यात्मिक प्रवचन एवं ध्यान', date: '2025-11-15', time: 'शाम 6:00 - 8:00 बजे', location: 'मुख्य आश्रम हॉल', type: 'साप्ताहिक सत्संग', image: '', link: '' }
+          ]
         }
       }
     }

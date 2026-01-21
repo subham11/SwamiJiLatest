@@ -5,6 +5,7 @@ export interface ComponentContent {
   name: string;
   description?: string;
   content: Record<string, any>;
+  lastModified?: string;
 }
 
 export interface PageLayout {

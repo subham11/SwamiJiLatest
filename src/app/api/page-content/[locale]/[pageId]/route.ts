@@ -158,10 +158,53 @@ const FALLBACK_PAGE_DATA: Record<string, Record<string, any>> = {
         {
           id: 'bajrang-hero',
           name: 'Hero Section',
-          description: 'Page introduction',
+          description: 'Hero slides with images, titles, and descriptions',
           content: {
-            title: 'Bajrang Baan Abhiyan',
-            subtitle: 'Collective chanting for divine connection'
+            slides: [
+              {
+                id: 1,
+                title: 'Shri Bajrang Baan Campaign',
+                description: 'Achieve success and strength in life with the grace of Lord Hanuman',
+                imageUrl: '/images/Bajrang_Baan/b2l.png'
+              },
+              {
+                id: 2,
+                title: 'Spiritual Power',
+                description: 'Recitation of Bajrang Baan provides extraordinary strength and protection',
+                imageUrl: '/images/Bajrang_Baan/c2l.png'
+              },
+              {
+                id: 3,
+                title: 'Daily Sadhana',
+                description: 'Regular recitation brings positive energy to life',
+                imageUrl: '/images/Bajrang_Baan/d2l.png'
+              },
+              {
+                id: 4,
+                title: 'Sankat Mochan',
+                description: 'All obstacles are removed with the grace of Lord Hanuman',
+                imageUrl: '/images/Bajrang_Baan/e2l.png'
+              },
+              {
+                id: 5,
+                title: 'Divine Blessings',
+                description: 'Receive divine blessings through devotion and faith',
+                imageUrl: '/images/Bajrang_Baan/f2l.png'
+              }
+            ]
+          }
+        },
+        {
+          id: 'bajrang-content',
+          name: 'Page Content',
+          description: 'Main content section with title and paragraphs',
+          content: {
+            title: '|| Shri Bajrang Baan Divine Weapon Practice - Under the Guidance of Param Pujya Shri Rupeshwaranand Ji ||',
+            paragraph1: 'Those devotees who wish to resolve their divine problems with the grace of Lord Hanuman, who want purification of their homes, who feel afflicted by obstacles such as evil spirits, should recite Shri Baan at least 11 times daily!',
+            paragraph2: 'A collective campaign has been initiated under the leadership of Swami Rupeshwaranand Ji Maharaj in the form of "Shri Bajrang Baan Divine Weapon Practice" to recite 108 times every Sunday at 5 AM, whose main objective is national welfare, upliftment of Sanatan culture, and public welfare!',
+            paragraph3: 'By participating in this campaign and reciting Shri Bajrang Baan, many devotees have received divine benefits and their divine problems have been resolved! Spiritual progress has also been experienced! The main goal through this collective campaign is to purify the divine atmosphere of India.',
+            paragraph4: 'Special practitioners should master Shri Ram Raksha Stotra! This will provide them complete divine protection!',
+            paragraph5: 'Before the 108 recitations of Bajrang Baan, must perform Shatkarma and Sankalpa...must read the protective shield!'
           }
         }
       ]
@@ -308,10 +351,53 @@ const FALLBACK_PAGE_DATA: Record<string, Record<string, any>> = {
         {
           id: 'bajrang-hero',
           name: 'हीरो सेक्शन',
-          description: 'पृष्ठ परिचय',
+          description: 'छवियों, शीर्षकों और विवरणों के साथ हीरो स्लाइड',
           content: {
-            title: 'श्री बजरंग बाण अभियान',
-            subtitle: 'दिव्य संबंध के लिए सामूहिक पाठ'
+            slides: [
+              {
+                id: 1,
+                title: 'श्री बजरंग बाण अभियान',
+                description: 'श्री हनुमान जी की कृपा से जीवन में सफलता और शक्ति प्राप्त करें',
+                imageUrl: '/images/Bajrang_Baan/b2l.png'
+              },
+              {
+                id: 2,
+                title: 'आध्यात्मिक शक्ति',
+                description: 'बजरंग बाण के पाठ से मिलती है अद्भुत शक्ति और सुरक्षा',
+                imageUrl: '/images/Bajrang_Baan/c2l.png'
+              },
+              {
+                id: 3,
+                title: 'दैनिक साधना',
+                description: 'नियमित पाठ से जीवन में आती है सकारात्मक ऊर्जा',
+                imageUrl: '/images/Bajrang_Baan/d2l.png'
+              },
+              {
+                id: 4,
+                title: 'संकट मोचन',
+                description: 'हनुमान जी की कृपा से दूर होते हैं सभी संकट',
+                imageUrl: '/images/Bajrang_Baan/e2l.png'
+              },
+              {
+                id: 5,
+                title: 'आशीर्वाद',
+                description: 'भक्ति और श्रद्धा से प्राप्त करें दिव्य आशीर्वाद',
+                imageUrl: '/images/Bajrang_Baan/f2l.png'
+              }
+            ]
+          }
+        },
+        {
+          id: 'bajrang-content',
+          name: 'पृष्ठ सामग्री',
+          description: 'शीर्षक और अनुच्छेदों के साथ मुख्य सामग्री अनुभाग',
+          content: {
+            title: '|| श्री बजरंग बाण दिव्यास्त्र प्रयोग - परम पूज्य श्री रुपेश्वरानंद जी के मार्गदर्शन में ||',
+            paragraph1: 'जो श्रध्दालु, हनुमान जी के भक्त गण श्री हनुमान जी कृपा से अपनी दैवीय समस्याओं का समाधान चाहते है, घर का शुध्दिकरण चाहते है, जो प्रेत आदि बाधाओं से स्वयं को ग्रसित समझते है, वे नित्य श्री बाण का कम से कम 11 पाठ करें!',
+            paragraph2: '"श्री बजरंग बाण दिव्यास्त्र प्रयोग" के रूप में प्रत्येक रविवार को प्रातः 5 बजे 108 पाठ करने का एक सामूहिक अभियान स्वामी रुपेश्वरानंद जी महाराज के नेतृत्त्व में आरम्भ किया गया है, जिसका मुख्य उद्देश्य राष्ट्र कल्याण, सनातन संस्कृति का उत्थान एवं जन कल्याण है!',
+            paragraph3: 'इस अभियान में भाग लेते हुए श्री बजरंग बाण का पाठ करने से अनेक श्रध्दालुओं को दैवीय लाभ हुए है तथा उनकी दैवीय समस्याओं का समाधान हुआ है! साथ ही आध्यात्मिक उन्नति के अनुभव भी हुए है! इस सामूहिक अभियान के माध्यम से भारतवर्ष के दैवीय वातावरण में शुध्दिकरण करना मुख्य लक्ष्य है।',
+            paragraph4: 'विशेष साधक श्री राम रक्षा स्तोत्र सिद्ध कर लें! इससे उन्हें पूर्ण दैवीय सुरक्षा प्राप्त होगी!',
+            paragraph5: 'बजरंग बाण 108 पाठ के पूर्व षट्कर्म और संकल्प अवश्य करें...रक्षा कवच अवश्य पढ़ लें!'
           }
         }
       ]

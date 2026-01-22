@@ -145,33 +145,58 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.1) 30%,
+    rgba(0, 0, 0, 0.1) 70%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
   z-index: 1;
 }
 
 .content {
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 2.5rem;
   max-width: 800px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .content h2 {
   font-size: 3rem;
   margin: 0 0 1rem 0;
-  color: #ffffff;
-  font-weight: 700;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  color: #fff9e6;
+  font-weight: 800;
+  text-shadow: 
+    /* White glowing border effect */
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+    1px -1px 0 rgba(255, 255, 255, 0.9),
+    -1px 1px 0 rgba(255, 255, 255, 0.9),
+    1px 1px 0 rgba(255, 255, 255, 0.9),
+    /* Outer glow */
+    0 0 10px rgba(255, 255, 255, 0.8),
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.4),
+    /* Depth shadow */
+    2px 2px 4px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
 }
 
 .content p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #fffef5;
   margin: 0;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 
+    0 0 8px rgba(255, 255, 255, 0.5),
+    1px 1px 3px rgba(0, 0, 0, 1);
+  font-weight: 500;
 }
 
 /* Effect: Blink */

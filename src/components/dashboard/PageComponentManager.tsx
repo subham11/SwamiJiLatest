@@ -5,6 +5,7 @@ import { usePageContent, ComponentContent, PageSummary } from '@/hooks/usePageCo
 import { PageList } from './PageList';
 import { ComponentList } from './ComponentList';
 import { ComponentEditor } from './ComponentEditor';
+import { BajrangBaanHeroEditor } from './BajrangBaanHeroEditor';
 
 export function PageComponentManager() {
   const [locale, setLocale] = useState<'en' | 'hi'>('en');
@@ -215,6 +216,46 @@ export function PageComponentManager() {
     return normalized;
   };
 
+  // Normalize bajrang-hero content to ensure slides array exists with 5 items
+  const normalizeBajrangHeroContent = (content: Record<string, any>): Record<string, any> => {
+    const normalized = { ...content };
+    
+    const defaultSlidesEn = [
+      { id: 1, title: 'Shri Bajrang Baan Campaign', description: 'Achieve success and strength in life with the grace of Lord Hanuman', imageUrl: '/images/Bajrang_Baan/b2l.png' },
+      { id: 2, title: 'Spiritual Power', description: 'Recitation of Bajrang Baan provides extraordinary strength and protection', imageUrl: '/images/Bajrang_Baan/c2l.png' },
+      { id: 3, title: 'Daily Sadhana', description: 'Regular recitation brings positive energy to life', imageUrl: '/images/Bajrang_Baan/d2l.png' },
+      { id: 4, title: 'Sankat Mochan', description: 'All obstacles are removed with the grace of Lord Hanuman', imageUrl: '/images/Bajrang_Baan/e2l.png' },
+      { id: 5, title: 'Divine Blessings', description: 'Receive divine blessings through devotion and faith', imageUrl: '/images/Bajrang_Baan/f2l.png' }
+    ];
+    const defaultSlidesHi = [
+      { id: 1, title: 'श्री बजरंग बाण अभियान', description: 'श्री हनुमान जी की कृपा से जीवन में सफलता और शक्ति प्राप्त करें', imageUrl: '/images/Bajrang_Baan/b2l.png' },
+      { id: 2, title: 'आध्यात्मिक शक्ति', description: 'बजरंग बाण के पाठ से मिलती है अद्भुत शक्ति और सुरक्षा', imageUrl: '/images/Bajrang_Baan/c2l.png' },
+      { id: 3, title: 'दैनिक साधना', description: 'नियमित पाठ से जीवन में आती है सकारात्मक ऊर्जा', imageUrl: '/images/Bajrang_Baan/d2l.png' },
+      { id: 4, title: 'संकट मोचन', description: 'हनुमान जी की कृपा से दूर होते हैं सभी संकट', imageUrl: '/images/Bajrang_Baan/e2l.png' },
+      { id: 5, title: 'आशीर्वाद', description: 'भक्ति और श्रद्धा से प्राप्त करें दिव्य आशीर्वाद', imageUrl: '/images/Bajrang_Baan/f2l.png' }
+    ];
+    
+    const defaultSlides = locale === 'hi' ? defaultSlidesHi : defaultSlidesEn;
+    
+    // If slides array exists, normalize each slide
+    if (Array.isArray(normalized.slides)) {
+      normalized.slides = normalized.slides.slice(0, 5).map((slide: any, idx: number) => ({
+        id: slide?.id || idx + 1,
+        title: slide?.title || defaultSlides[idx]?.title || '',
+        description: slide?.description || defaultSlides[idx]?.description || '',
+        imageUrl: slide?.imageUrl || defaultSlides[idx]?.imageUrl || ''
+      }));
+      while (normalized.slides.length < 5) {
+        normalized.slides.push({ ...defaultSlides[normalized.slides.length] });
+      }
+    } else {
+      // No slides array, create with defaults
+      normalized.slides = [...defaultSlides];
+    }
+    
+    return normalized;
+  };
+
   const handleComponentSelect = (componentId: string) => {
     setSelectedComponentId(componentId);
     const component = selectedPage?.components.find(c => c.id === componentId);
@@ -229,6 +270,8 @@ export function PageComponentManager() {
         content = normalizeWisdomContent(component.content);
       } else if (componentId === 'upcomingEvents') {
         content = normalizeEventsContent(component.content);
+      } else if (componentId === 'bajrang-hero') {
+        content = normalizeBajrangHeroContent(component.content);
       } else {
         content = { ...component.content };
       }
@@ -394,8 +437,19 @@ export function PageComponentManager() {
             />
           )}
 
-          {/* Editor Panel */}
-          {selectedComponent && (
+          {/* Editor Panel - Bajrang Baan Hero Editor */}
+          {selectedComponent && selectedComponentId === 'bajrang-hero' && (
+            <BajrangBaanHeroEditor
+              slides={editedContent.slides || []}
+              onSlidesChange={(slides) => handleContentChange('slides', slides)}
+              onSave={handleSave}
+              saving={saving}
+              locale={locale}
+            />
+          )}
+
+          {/* Editor Panel - Standard Component Editor */}
+          {selectedComponent && selectedComponentId !== 'bajrang-hero' && (
             <ComponentEditor
               component={selectedComponent}
               editedContent={editedContent}

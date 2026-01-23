@@ -37,6 +37,33 @@ export function PageComponentManager() {
     }
   }, [selectedPageId, locale, fetchPage]);
 
+  // Initialize editedContent for donation page when selectedPage loads
+  useEffect(() => {
+    if (selectedPageId === 'donation' && selectedPage && Object.keys(editedContent).length === 0) {
+      const heroComp = selectedPage.components.find(c => c.id === 'donation-hero')?.content as { title?: string; subtitle?: string; backgroundImage?: string } | undefined;
+      const guruComp = selectedPage.components.find(c => c.id === 'donation-guruMessage')?.content;
+      const galleryComp = selectedPage.components.find(c => c.id === 'donation-gallery')?.content;
+      const introComp = selectedPage.components.find(c => c.id === 'donation-intro')?.content;
+      
+      setEditedContent({
+        hero: {
+          title: typeof heroComp?.title === 'string' ? heroComp.title : '',
+          subtitle: typeof heroComp?.subtitle === 'string' ? heroComp.subtitle : '',
+          backgroundImage: typeof heroComp?.backgroundImage === 'string' ? heroComp.backgroundImage : ''
+        },
+        guruMessage: {
+          title: typeof guruComp?.title === 'string' ? guruComp.title : '',
+          message: typeof guruComp?.message === 'string' ? guruComp.message : '',
+          guruName: typeof guruComp?.guruName === 'string' ? guruComp.guruName : ''
+        },
+        gallery: galleryComp && typeof galleryComp.title === 'string' && Array.isArray(galleryComp.images)
+          ? { title: galleryComp.title, images: galleryComp.images }
+          : { title: '', images: [] },
+        intro: { text: typeof introComp?.text === 'string' ? introComp.text : '' }
+      });
+    }
+  }, [selectedPageId, selectedPage, editedContent]);
+
   // Get selected component from the page
   const selectedComponent = selectedPage?.components.find(c => c.id === selectedComponentId);
 
@@ -380,7 +407,12 @@ export function PageComponentManager() {
           {/* Editor Panel - Donation Page Editor */}
           {selectedPageId === 'donation' && selectedPage && (
             <DonationPageEditor
-              content={{
+              content={editedContent.hero ? {
+                hero: editedContent.hero,
+                guruMessage: editedContent.guruMessage,
+                gallery: editedContent.gallery,
+                intro: editedContent.intro
+              } : {
                 hero: (() => {
                   const c = selectedPage.components.find(c => c.id === 'donation-hero')?.content as { title?: string; subtitle?: string; backgroundImage?: string } | undefined;
                   return {

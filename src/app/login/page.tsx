@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/redux/store';
 import { HARDCODED_USERS, loginSuccess } from '@/redux/slices/authSlice';
 import { NavBar } from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
 
 export default function LoginPage(){
   const dispatch = useAppDispatch();
@@ -60,7 +59,6 @@ export default function LoginPage(){
           </div>
         </form>
       </section>
-      <Footer />
     </main>
   );
 }

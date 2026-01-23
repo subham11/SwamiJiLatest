@@ -16,8 +16,3 @@ export const UpcomingEvents = dynamic(
   () => import('@/components/UpcomingEvents').then(m => m.UpcomingEvents),
   { ssr: false }
 );
-
-export const Footer = dynamic(
-  () => import('@/components/Footer').then(m => m.Footer),
-  { ssr: false }
-);

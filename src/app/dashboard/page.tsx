@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/redux/store';
 import { NavBar } from '@/components/NavBar';
-import { Footer } from '@/components/Footer';
 import { YearMonthAccordion } from '@/components/dashboard/YearMonthAccordion';
 import { DocumentList } from '@/components/dashboard/DocumentList';
 import { DocumentViewer } from '@/components/dashboard/DocumentViewer';
@@ -105,8 +104,6 @@ export default function DashboardPage(){
           </div>
         )}
       </section>
-      <Footer />
-
       <DocumentViewer doc={viewerDoc} onClose={()=> setViewerDoc(null)} />
     </main>
   );

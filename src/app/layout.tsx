@@ -8,6 +8,7 @@ import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { PageLoader } from "@/components/PageLoader";
 import { LangSetter } from "../components/LangSetter";
 import { HashRedirector } from "@/components/HashRedirector";
+import { Footer } from "@/components/Footer";
 
 export const metadata = {
   title: "Swami Rupeshwaranand website",
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <ThemeSwitcher />
             <LanguageToggle />
             {children}
+            <Footer />
           </I18nProvider>
         </Providers>
       </body>

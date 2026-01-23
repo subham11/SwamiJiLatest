@@ -111,6 +111,32 @@
     "text": "🔔 Join us for Hanuman Chalisa Path every Tuesday at 7 AM • 🎉 Special Bhandara on Nov 25th • 📿 New Yoga Sessions starting Nov 20th • 🙏 Daily Satsang at 6 PM",
     "ariaLabel": "Announcements"
   },
+  "footer": {
+    "ariaLabel": "Footer navigation",
+    "sections": {
+      "main": "Main Page",
+      "services": "Ashram Services",
+      "programs": "Special Programs"
+    },
+    "links": {
+      "home": "Home",
+      "swamiji": "Swamiji",
+      "ashram": "Ashram",
+      "sadhana": "Sadhana",
+      "siddhaYantra": "Siddha Yantra",
+      "rakshaKavach": "Raksha Kavach",
+      "pitrDosha": "Pitr Dosha Nivaran Pooja",
+      "tantraBadha": "Tantra Badha Nivaran Yagya",
+      "narayanBali": "Narayan Bali",
+      "tripindiShradh": "Tripindi Shradh",
+      "siddhYagya": "Siddh Yagya Bhasm",
+      "amavasyaPitr": "Amavasya Pitru Pooja",
+      "bajrangBaan": "Bajrang Baan Abhiyan",
+      "purnimaHavan": "Purnima Havan",
+      "mantraSadhana": "Mantra Sadhana Shivir",
+      "daiviyaMargdarshan": "Daiviya Margdarshan Shivir"
+    }
+  },
   "ashram": {
     "services": {
       "rituals": {

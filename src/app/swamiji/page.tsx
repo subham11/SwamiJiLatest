@@ -1,7 +1,6 @@
 'use client';
 
 import { NavBar } from "@/components/NavBar";
-import { Footer } from "@/components/Footer";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import styles from "./swamiji.module.css";
@@ -337,7 +336,6 @@ export default function SwamijiPage() {
         </div>
       </section>
 
-      <Footer />
     </main>
   );
 }

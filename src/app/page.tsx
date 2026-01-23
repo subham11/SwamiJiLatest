@@ -1,6 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { NavBar } from "@/components/NavBar";
-import { SacredTeachings, WordsOfWisdom, UpcomingEvents, Footer } from "@/components/DeferredSections";
+import { SacredTeachings, WordsOfWisdom, UpcomingEvents } from "@/components/DeferredSections";
 
 export default function HomePage() {
   return (
@@ -10,7 +10,6 @@ export default function HomePage() {
       <SacredTeachings />
       <WordsOfWisdom />
       <UpcomingEvents />
-      <Footer />
     </main>
   );
 }

@@ -50,7 +50,7 @@ export function Footer() {
               <ul className="footerLinks">
                 {section.links.map(link => (
                   <li key={link.label}>
-                    <Link className="footerLink" href={link.href}>
+                    <Link className="footerLink" href={typeof link.href === 'string' ? (link.href.startsWith('/') ? { pathname: link.href } : { pathname: '/', hash: link.href.replace(/^#/, '') }) : link.href}>
                       {link.label}
                     </Link>
                   </li>

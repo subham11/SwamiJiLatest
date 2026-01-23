@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import styles from './donation-page-editor.module.css';
 
 interface GalleryImage {
   id: number;
@@ -122,30 +123,18 @@ export function DonationPageEditor({ content, onContentChange, onSave, saving = 
   ];
 
   return (
-    <div style={{
-      border: '1px solid #e5e7eb',
-      borderRadius: '12px',
-      padding: '1.5rem',
-      background: 'linear-gradient(135deg, #fff7ed 0%, #ffffff 100%)',
-    }}>
+    <div className={styles.card}>
       {/* Header */}
-      <div style={{ marginBottom: '1.5rem', borderBottom: '2px solid #fb923c', paddingBottom: '1rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem' }}>
-          <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700, color: '#ea580c' }}>
+      <div className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>
             🙏 {locale === 'hi' ? 'दान पृष्ठ संपादक' : 'Donation Page Editor'}
           </h2>
-          <span style={{
-            padding: '0.25rem 0.75rem',
-            background: locale === 'en' ? '#dbeafe' : '#fef3c7',
-            color: locale === 'en' ? '#1e40af' : '#92400e',
-            borderRadius: '999px',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-          }}>
+          <span className={styles.sectionMeta} style={{ background: locale === 'en' ? '#dbeafe' : '#fef3c7', color: locale === 'en' ? '#1e40af' : '#92400e' }}>
             {locale === 'en' ? '🇬🇧 English' : '🇮🇳 हिंदी'}
           </span>
         </div>
-        <p style={{ margin: 0, fontSize: '0.9rem', color: '#666' }}>
+        <p className={styles.sectionDesc}>
           {locale === 'hi' 
             ? 'दान पृष्ठ की सामग्री प्रबंधित करें - हीरो, गुरु संदेश, गैलरी और परिचय'
             : 'Manage donation page content - Hero, Guru Message, Gallery and Introduction'}
@@ -153,31 +142,12 @@ export function DonationPageEditor({ content, onContentChange, onSave, saving = 
       </div>
 
       {/* Section Tabs */}
-      <div style={{ 
-        display: 'flex', 
-        gap: '0.5rem', 
-        marginBottom: '1.5rem',
-        flexWrap: 'wrap',
-        borderBottom: '1px solid #e5e7eb',
-        paddingBottom: '0.75rem'
-      }}>
+      <div className={styles.sectionTabs}>
         {sectionTabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveSection(tab.id as typeof activeSection)}
-            style={{
-              padding: '0.6rem 1rem',
-              border: 'none',
-              borderRadius: '8px',
-              background: activeSection === tab.id 
-                ? 'linear-gradient(135deg, #ff4d00 0%, #ff7400 100%)' 
-                : '#f5f5f5',
-              color: activeSection === tab.id ? '#fff' : '#666',
-              fontWeight: activeSection === tab.id ? 600 : 500,
-              cursor: 'pointer',
-              fontSize: '0.9rem',
-              transition: 'all 0.2s ease',
-            }}
+            className={activeSection === tab.id ? styles.activeTab : styles.inactiveTab}
           >
             {tab.label}
           </button>
@@ -186,36 +156,26 @@ export function DonationPageEditor({ content, onContentChange, onSave, saving = 
 
       {/* Hero Section Editor */}
       {activeSection === 'hero' && (
-        <div style={{ background: '#fff', borderRadius: '8px', padding: '1.5rem', border: '1px solid #e5e7eb' }}>
-          <h3 style={{ margin: '0 0 1rem', fontSize: '1.1rem', color: '#333' }}>
+        <div className={styles.card}>
+          <h3 className={styles.cardTitle}>
             {locale === 'hi' ? 'हीरो बैनर सेक्शन' : 'Hero Banner Section'}
           </h3>
           
           {/* Background Image */}
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 600, marginBottom: '0.5rem', color: '#333' }}>
+          <div className={styles.section}>
+            <label className={styles.inputLabel}>
               {locale === 'hi' ? '📷 पृष्ठभूमि छवि' : '📷 Background Image'}
             </label>
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <div style={{
-                width: '200px',
-                height: '120px',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                border: '2px dashed #ddd',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                background: '#fafafa',
-              }}>
+            <div className={styles.flexRow}>
+              <div className={styles.imagePreview}>
                 {content.hero.backgroundImage ? (
                   <img 
                     src={content.hero.backgroundImage} 
                     alt="Hero background" 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                    className={styles.image}
                   />
                 ) : (
-                  <span style={{ color: '#999', fontSize: '0.85rem' }}>No image</span>
+                  <span className={styles.sectionMeta}>No image</span>
                 )}
               </div>
               <div>
@@ -223,20 +183,14 @@ export function DonationPageEditor({ content, onContentChange, onSave, saving = 
                   type="file"
                   accept="image/*"
                   onChange={(e) => e.target.files?.[0] && handleHeroImageUpload(e.target.files[0])}
-                  style={{ marginBottom: '0.5rem' }}
+                  className={styles.input}
                 />
                 <input
                   type="text"
                   value={content.hero.backgroundImage}
                   onChange={(e) => handleHeroChange('backgroundImage', e.target.value)}
                   placeholder={locale === 'hi' ? 'या URL दर्ज करें' : 'Or enter URL'}
-                  style={{
-                    width: '100%',
-                    padding: '0.5rem',
-                    border: '1px solid #ddd',
-                    borderRadius: '6px',
-                    fontSize: '0.85rem',
-                  }}
+                  className={styles.input}
                 />
               </div>
             </div>

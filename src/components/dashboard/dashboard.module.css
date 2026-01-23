@@ -1,0 +1,25 @@
+/* Dashboard Page/Component Manager Styles */
+
+.managerRoot {
+  margin-top: 1.5rem;
+}
+
+.languageBar {
+  font-weight: 600;
+  color: #333;
+}
+
+.gridLayout {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.gridLayoutDonation {
+  grid-template-columns: 250px 1fr;
+}
+
+.gridLayoutDefault {
+  grid-template-columns: 250px 250px 1fr;
+}
+
+/* Add more as needed for buttons, divs, etc. */

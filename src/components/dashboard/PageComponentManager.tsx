@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import styles from './dashboard.module.css';
 import { usePageContent, ComponentContent, PageSummary } from '@/hooks/usePageContent';
 import { PageList } from './PageList';
 import { ComponentList } from './ComponentList';
@@ -304,46 +305,19 @@ export function PageComponentManager() {
   };
 
   return (
-    <div style={{ marginTop: '1.5rem' }}>
+    <div className={styles.managerRoot}>
       {/* Language Toggle */}
-      <div style={{ 
-        display: 'flex', 
-        alignItems: 'center', 
-        gap: '0.75rem', 
-        marginBottom: '1.5rem',
-        padding: '1rem',
-        background: 'rgba(0,0,0,0.02)',
-        borderRadius: '8px',
-        border: '1px solid #e5e7eb'
-      }}>
-        <span style={{ fontWeight: 600, color: '#333' }}>🌐 Editing Language:</span>
+      <div className={styles.languageBar}>
+        <span className={styles.languageBar}>🌐 Editing Language:</span>
         <button
           onClick={() => handleLocaleChange('en')}
-          style={{
-            padding: '0.5rem 1rem',
-            border: locale === 'en' ? '2px solid var(--color-primary)' : '1px solid #d1d5db',
-            background: locale === 'en' ? 'var(--color-primary)' : 'white',
-            color: locale === 'en' ? 'white' : '#666',
-            borderRadius: '6px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-          }}
+          className={locale === 'en' ? styles.activeLangBtn : styles.inactiveLangBtn}
         >
           🇬🇧 English
         </button>
         <button
           onClick={() => handleLocaleChange('hi')}
-          style={{
-            padding: '0.5rem 1rem',
-            border: locale === 'hi' ? '2px solid var(--color-primary)' : '1px solid #d1d5db',
-            background: locale === 'hi' ? 'var(--color-primary)' : 'white',
-            color: locale === 'hi' ? 'white' : '#666',
-            borderRadius: '6px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            transition: 'all 0.2s ease',
-          }}
+          className={locale === 'hi' ? styles.activeLangBtn : styles.inactiveLangBtn}
         >
           🇮🇳 हिंदी
         </button>
@@ -351,14 +325,7 @@ export function PageComponentManager() {
 
       {/* Fallback Mode Warning */}
       {usingFallback && (
-        <div style={{
-          padding: '1rem',
-          background: '#fef3c7',
-          border: '1px solid #f59e0b',
-          borderRadius: '8px',
-          color: '#92400e',
-          marginBottom: '1rem',
-        }}>
+        <div className={styles.fallbackWarning}>
           <strong>⚠️ Offline Mode:</strong> Backend server is not available. 
           Showing default content. Start the backend server to save changes to MongoDB.
         </div>
@@ -366,26 +333,11 @@ export function PageComponentManager() {
 
       {/* Error Display */}
       {error && (
-        <div style={{
-          padding: '1rem',
-          background: '#fee2e2',
-          border: '1px solid #ef4444',
-          borderRadius: '8px',
-          color: '#dc2626',
-          marginBottom: '1rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
+        <div className={styles.errorBox}>
           <span>⚠️ {error}</span>
           <button 
             onClick={() => setError(null)}
-            style={{ 
-              background: 'none', 
-              border: 'none', 
-              cursor: 'pointer', 
-              fontSize: '1.2rem' 
-            }}
+            className={styles.errorCloseBtn}
           >
             ×
           </button>
@@ -394,34 +346,21 @@ export function PageComponentManager() {
 
       {/* Success Message */}
       {saveSuccess && (
-        <div style={{
-          padding: '1rem',
-          background: '#dcfce7',
-          border: '1px solid #22c55e',
-          borderRadius: '8px',
-          color: '#16a34a',
-          marginBottom: '1rem',
-        }}>
+        <div className={styles.successBox}>
           ✅ Content saved successfully!
         </div>
       )}
 
       {/* Loading State */}
       {loading && (
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          padding: '2rem',
-          color: '#666'
-        }}>
+        <div className={styles.loadingBox}>
           Loading...
         </div>
       )}
 
       {/* Main Grid */}
       {!loading && (
-        <div style={{ display: 'grid', gridTemplateColumns: selectedPageId === 'donation' ? '250px 1fr' : '250px 250px 1fr', gap: '1.5rem' }}>
+        <div className={styles.gridLayout + ' ' + (selectedPageId === 'donation' ? styles.gridLayoutDonation : styles.gridLayoutDefault)}>
           {/* Pages Sidebar */}
           <PageList
             pages={pages}
@@ -442,10 +381,32 @@ export function PageComponentManager() {
           {selectedPageId === 'donation' && selectedPage && (
             <DonationPageEditor
               content={{
-                hero: selectedPage.components.find(c => c.id === 'donation-hero')?.content || { title: '', subtitle: '', backgroundImage: '' },
-                guruMessage: selectedPage.components.find(c => c.id === 'donation-guruMessage')?.content || { title: '', message: '', guruName: '' },
-                gallery: selectedPage.components.find(c => c.id === 'donation-gallery')?.content || { title: '', images: [] },
-                intro: selectedPage.components.find(c => c.id === 'donation-intro')?.content || { text: '' },
+                hero: (() => {
+                  const c = selectedPage.components.find(c => c.id === 'donation-hero')?.content as { title?: string; subtitle?: string; backgroundImage?: string } | undefined;
+                  return {
+                    title: typeof c?.title === 'string' ? c.title : '',
+                    subtitle: typeof c?.subtitle === 'string' ? c.subtitle : '',
+                    backgroundImage: typeof c?.backgroundImage === 'string' ? c.backgroundImage : ''
+                  };
+                })(),
+                guruMessage: (() => {
+                  const c = selectedPage.components.find(c => c.id === 'donation-guruMessage')?.content;
+                  return {
+                    title: typeof c?.title === 'string' ? c.title : '',
+                    message: typeof c?.message === 'string' ? c.message : '',
+                    guruName: typeof c?.guruName === 'string' ? c.guruName : ''
+                  };
+                })(),
+                gallery: (() => {
+                  const c = selectedPage.components.find(c => c.id === 'donation-gallery')?.content;
+                  return c && typeof c.title === 'string' && Array.isArray(c.images)
+                    ? { title: c.title, images: c.images }
+                    : { title: '', images: [] };
+                })(),
+                intro: (() => {
+                  const c = selectedPage.components.find(c => c.id === 'donation-intro')?.content;
+                  return { text: typeof c?.text === 'string' ? c.text : '' };
+                })(),
               }}
               onContentChange={(newContent) => {
                 // Update edited content based on which section changed
@@ -488,16 +449,7 @@ export function PageComponentManager() {
 
           {/* Empty State */}
           {!selectedComponent && selectedPageId !== 'donation' && (
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: '400px',
-              background: 'rgba(0, 0, 0, 0.02)',
-              borderRadius: '8px',
-              color: '#999',
-              fontStyle: 'italic',
-            }}>
+            <div className={styles.emptyState}>
               Select a component to edit its content
             </div>
           )}

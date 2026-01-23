@@ -1,0 +1,68 @@
+/* Donation Page Editor Styles */
+
+.section {
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #fb923c;
+  padding-bottom: 1rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ea580c;
+}
+
+.sectionMeta {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.sectionDesc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.button {
+  /* Add button styles here */
+}
+
+.inputLabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.input,
+.textarea {
+  /* Add input/textarea styles here */
+}
+
+.flexRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.cardTitle {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  color: #333;
+}

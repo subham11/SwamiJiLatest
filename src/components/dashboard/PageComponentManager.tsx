@@ -7,6 +7,7 @@ import { PageList } from './PageList';
 import { ComponentList } from './ComponentList';
 import { ComponentEditor } from './ComponentEditor';
 import { BajrangBaanHeroEditor } from './BajrangBaanHeroEditor';
+import { HomeHeroEditor } from './HomeHeroEditor';
 import { DonationPageEditor } from './DonationPageEditor';
 
 export function PageComponentManager() {
@@ -74,35 +75,83 @@ export function PageComponentManager() {
     setSaveSuccess(false);
   };
 
-  // Normalize hero content to ensure slides array exists with 5 items
+  // Normalize hero content to ensure slides array exists with 5 items (new format: {text, imageUrl})
   const normalizeHeroContent = (content: Record<string, any>): Record<string, any> => {
     const normalized = { ...content };
     
-    // If slides array exists, ensure it has 5 items
-    if (Array.isArray(normalized.slides)) {
+    const DEFAULT_IMAGES = [
+      '/images/TempleImages/Temple_01.jpeg',
+      '/images/TempleImages/Temple_02.jpeg',
+      '/images/TempleImages/Temple_03.jpeg',
+      '/images/TempleImages/Temple_04.jpeg',
+      '/images/TempleImages/Temple_05.jpeg',
+    ];
+    
+    const defaultTexts = locale === 'hi' ? [
+      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
+      'दैनिक प्रेरणाएँ और उपदेश',
+      'आंतरिक शांति का मार्ग',
+      'आज के लिए प्राचीन ज्ञान',
+      'आध्यात्मिक जागृति आपका इंतज़ार कर रही है'
+    ] : [
+      'Divine Guidance For Modern Life',
+      'Daily Inspirations & Teachings',
+      'Path to Inner Peace',
+      'Ancient Wisdom for Today',
+      'Spiritual Awakening Awaits'
+    ];
+    
+    // If slides array exists with objects {text, imageUrl}
+    if (Array.isArray(normalized.slides) && normalized.slides.length > 0) {
+      normalized.slides = normalized.slides.slice(0, 5).map((slide: any, idx: number) => {
+        // Handle new format {text, imageUrl}
+        if (typeof slide === 'object' && slide !== null) {
+          return {
+            text: typeof slide.text === 'string' ? slide.text : defaultTexts[idx],
+            imageUrl: typeof slide.imageUrl === 'string' ? slide.imageUrl : DEFAULT_IMAGES[idx]
+          };
+        }
+        // Handle legacy format (just strings)
+        else if (typeof slide === 'string') {
+          return {
+            text: slide,
+            imageUrl: DEFAULT_IMAGES[idx]
+          };
+        }
+        // Fallback
+        return {
+          text: defaultTexts[idx],
+          imageUrl: DEFAULT_IMAGES[idx]
+        };
+      });
+      
+      // Ensure 5 slides
       while (normalized.slides.length < 5) {
-        normalized.slides.push('');
+        const idx = normalized.slides.length;
+        normalized.slides.push({ text: defaultTexts[idx], imageUrl: DEFAULT_IMAGES[idx] });
       }
-      normalized.slides = normalized.slides.slice(0, 5);
     } 
-    // If no slides array but slide1/slide2 exist, create slides array
+    // Legacy: slide1, slide2 as strings
     else if (normalized.slide1 || normalized.slide2) {
       normalized.slides = [
-        normalized.slide1 || '',
-        normalized.slide2 || '',
-        normalized.slide3 || '',
-        normalized.slide4 || '',
-        normalized.slide5 || ''
+        { text: normalized.slide1 || defaultTexts[0], imageUrl: DEFAULT_IMAGES[0] },
+        { text: normalized.slide2 || defaultTexts[1], imageUrl: DEFAULT_IMAGES[1] },
+        { text: normalized.slide3 || defaultTexts[2], imageUrl: DEFAULT_IMAGES[2] },
+        { text: normalized.slide4 || defaultTexts[3], imageUrl: DEFAULT_IMAGES[3] },
+        { text: normalized.slide5 || defaultTexts[4], imageUrl: DEFAULT_IMAGES[4] }
       ];
     }
-    // Remove legacy slide1/slide2 keys if slides array exists
-    if (Array.isArray(normalized.slides)) {
-      delete normalized.slide1;
-      delete normalized.slide2;
-      delete normalized.slide3;
-      delete normalized.slide4;
-      delete normalized.slide5;
+    // No slides data - create default
+    else {
+      normalized.slides = DEFAULT_IMAGES.map((img, i) => ({ text: defaultTexts[i], imageUrl: img }));
     }
+    
+    // Remove legacy keys
+    delete normalized.slide1;
+    delete normalized.slide2;
+    delete normalized.slide3;
+    delete normalized.slide4;
+    delete normalized.slide5;
     
     return normalized;
   };
@@ -456,6 +505,17 @@ export function PageComponentManager() {
             />
           )}
 
+          {/* Editor Panel - Home Hero Editor */}
+          {selectedComponent && selectedComponentId === 'hero' && selectedPageId === 'home' && (
+            <HomeHeroEditor
+              slides={editedContent.slides || []}
+              onSlidesChange={(slides) => handleContentChange('slides', slides)}
+              onSave={handleSave}
+              saving={saving}
+              locale={locale}
+            />
+          )}
+
           {/* Editor Panel - Bajrang Baan Hero Editor */}
           {selectedComponent && selectedComponentId === 'bajrang-hero' && selectedPageId !== 'donation' && (
             <BajrangBaanHeroEditor
@@ -468,7 +528,7 @@ export function PageComponentManager() {
           )}
 
           {/* Editor Panel - Standard Component Editor */}
-          {selectedComponent && selectedComponentId !== 'bajrang-hero' && selectedPageId !== 'donation' && (
+          {selectedComponent && selectedComponentId !== 'hero' && selectedComponentId !== 'bajrang-hero' && selectedPageId !== 'donation' && (
             <ComponentEditor
               component={selectedComponent}
               editedContent={editedContent}

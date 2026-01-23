@@ -11,63 +11,98 @@ import { useState, useEffect } from 'react';
 
 type Locale = 'en' | 'hi';
 
+interface HeroSlide {
+  text: string;
+  imageUrl: string;
+}
+
 interface HeroContent {
-  slides: string[]; // expect 5 entries
+  slides: HeroSlide[];
   cta: string;
 }
 
-// Default content (used as fallback)
-const defaultContent: Record<Locale, HeroContent> = {
-  en: {
-    slides: [
-      'Divine Guidance For Modern Life',
-      'Daily Inspirations & Teachings',
-      'Path to Inner Peace',
-      'Ancient Wisdom for Today',
-      'Spiritual Awakening Awaits'
-    ],
-    cta: 'Explore Now'
-  },
-  hi: {
-    slides: [
-      'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
-      'दैनिक प्रेरणाएँ और उपदेश',
-      'आंतरिक शांति का मार्ग',
-      'आज के लिए प्राचीन ज्ञान',
-      'आध्यात्मिक जागृति आपका इंतज़ार कर रही है'
-    ],
-    cta: 'अभी देखें'
-  }
-};
-
-function normalizeSlides(raw: unknown, locale: Locale): string[] {
-  const fallback = defaultContent[locale].slides;
-  if (Array.isArray(raw)) {
-    const cleaned = raw
-      .filter((s): s is string => typeof s === 'string' && s.trim().length > 0)
-      .map((s) => s.trim());
-    if (cleaned.length) {
-      const count = 5;
-      return Array.from({ length: count }, (_v, i) => cleaned[i] ?? cleaned[i % cleaned.length] ?? fallback[i]);
-    }
-  }
-  return fallback;
-}
-
-function normalizeContent(data: any, locale: Locale): HeroContent {
-  const slidesSource = data?.slides ?? [data?.slide1, data?.slide2];
-  const slides = normalizeSlides(slidesSource, locale);
-  const cta = typeof data?.cta === 'string' && data.cta.trim() ? data.cta : defaultContent[locale].cta;
-  return { slides, cta };
-}
-
-const heroSlideImages = [
+// Default images from TempleImages folder
+const DEFAULT_IMAGES = [
   '/images/TempleImages/Temple_01.jpeg',
   '/images/TempleImages/Temple_02.jpeg',
   '/images/TempleImages/Temple_03.jpeg',
   '/images/TempleImages/Temple_04.jpeg',
   '/images/TempleImages/Temple_05.jpeg',
 ];
+
+// Default slide texts
+const defaultSlideTexts: Record<Locale, string[]> = {
+  en: [
+    'Divine Guidance For Modern Life',
+    'Daily Inspirations & Teachings',
+    'Path to Inner Peace',
+    'Ancient Wisdom for Today',
+    'Spiritual Awakening Awaits'
+  ],
+  hi: [
+    'आधुनिक जीवन हेतु दिव्य मार्गदर्शन',
+    'दैनिक प्रेरणाएँ और उपदेश',
+    'आंतरिक शांति का मार्ग',
+    'आज के लिए प्राचीन ज्ञान',
+    'आध्यात्मिक जागृति आपका इंतज़ार कर रही है'
+  ]
+};
+
+// Default content (used as fallback)
+const defaultContent: Record<Locale, HeroContent> = {
+  en: {
+    slides: DEFAULT_IMAGES.map((img, i) => ({ text: defaultSlideTexts.en[i], imageUrl: img })),
+    cta: 'Explore Now'
+  },
+  hi: {
+    slides: DEFAULT_IMAGES.map((img, i) => ({ text: defaultSlideTexts.hi[i], imageUrl: img })),
+    cta: 'अभी देखें'
+  }
+};
+
+function normalizeSlides(raw: unknown, locale: Locale): HeroSlide[] {
+  const fallback = defaultContent[locale].slides;
+  
+  // Handle array of slide objects with text and imageUrl
+  if (Array.isArray(raw) && raw.length > 0) {
+    const count = 5;
+    const slides: HeroSlide[] = [];
+    
+    for (let i = 0; i < count; i++) {
+      const item = raw[i] || raw[i % raw.length] || fallback[i];
+      
+      // If item is an object with text and imageUrl
+      if (typeof item === 'object' && item !== null) {
+        slides.push({
+          text: typeof item.text === 'string' ? item.text : (fallback[i]?.text || ''),
+          imageUrl: typeof item.imageUrl === 'string' ? item.imageUrl : (DEFAULT_IMAGES[i] || DEFAULT_IMAGES[0])
+        });
+      } 
+      // If item is just a string (backward compatibility)
+      else if (typeof item === 'string') {
+        slides.push({
+          text: item,
+          imageUrl: DEFAULT_IMAGES[i] || DEFAULT_IMAGES[0]
+        });
+      } 
+      // Fallback
+      else {
+        slides.push(fallback[i]);
+      }
+    }
+    
+    return slides;
+  }
+  
+  return fallback;
+}
+
+function normalizeContent(data: any, locale: Locale): HeroContent {
+  const slidesSource = data?.slides ?? [];
+  const slides = normalizeSlides(slidesSource, locale);
+  const cta = typeof data?.cta === 'string' && data.cta.trim() ? data.cta : defaultContent[locale].cta;
+  return { slides, cta };
+}
 
 export function Hero(){
   const { t, i18n } = useTranslation();
@@ -104,10 +139,10 @@ export function Hero(){
     ? content.slides
     : defaultContent[currentLocale].slides;
 
-  const heroSlides = heroSlideImages.map((image, index) => ({
+  const heroSlides = slidesArr.map((slide, index) => ({
     id: index + 1,
-    image,
-    title: slidesArr[index] ?? slidesArr[index % slidesArr.length] ?? defaultContent[currentLocale].slides[index]
+    image: slide.imageUrl || DEFAULT_IMAGES[index] || DEFAULT_IMAGES[0],
+    title: slide.text || defaultSlideTexts[currentLocale][index] || ''
   }));
   
   return (

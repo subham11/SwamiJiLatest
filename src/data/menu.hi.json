@@ -104,7 +104,7 @@
         {
           "id": "donation",
           "label": "नित्यदान",
-          "href": "#donation",
+          "href": "/donation",
           "type": "link"
         },
         {

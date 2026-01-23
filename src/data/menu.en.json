@@ -104,7 +104,7 @@
         {
           "id": "donation",
           "label": "Donation",
-          "href": "#donation",
+          "href": "/donation",
           "type": "link"
         },
         {

@@ -6,6 +6,7 @@ import { PageList } from './PageList';
 import { ComponentList } from './ComponentList';
 import { ComponentEditor } from './ComponentEditor';
 import { BajrangBaanHeroEditor } from './BajrangBaanHeroEditor';
+import { DonationPageEditor } from './DonationPageEditor';
 
 export function PageComponentManager() {
   const [locale, setLocale] = useState<'en' | 'hi'>('en');
@@ -420,7 +421,7 @@ export function PageComponentManager() {
 
       {/* Main Grid */}
       {!loading && (
-        <div style={{ display: 'grid', gridTemplateColumns: '250px 250px 1fr', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: selectedPageId === 'donation' ? '250px 1fr' : '250px 250px 1fr', gap: '1.5rem' }}>
           {/* Pages Sidebar */}
           <PageList
             pages={pages}
@@ -428,8 +429,8 @@ export function PageComponentManager() {
             onSelect={handlePageSelect}
           />
 
-          {/* Components Sidebar */}
-          {selectedPage && (
+          {/* Components Sidebar - Hide for donation page */}
+          {selectedPage && selectedPageId !== 'donation' && (
             <ComponentList
               components={selectedPage.components}
               selectedComponentId={selectedComponentId}
@@ -437,8 +438,33 @@ export function PageComponentManager() {
             />
           )}
 
+          {/* Editor Panel - Donation Page Editor */}
+          {selectedPageId === 'donation' && selectedPage && (
+            <DonationPageEditor
+              content={{
+                hero: selectedPage.components.find(c => c.id === 'donation-hero')?.content || { title: '', subtitle: '', backgroundImage: '' },
+                guruMessage: selectedPage.components.find(c => c.id === 'donation-guruMessage')?.content || { title: '', message: '', guruName: '' },
+                gallery: selectedPage.components.find(c => c.id === 'donation-gallery')?.content || { title: '', images: [] },
+                intro: selectedPage.components.find(c => c.id === 'donation-intro')?.content || { text: '' },
+              }}
+              onContentChange={(newContent) => {
+                // Update edited content based on which section changed
+                setEditedContent(newContent);
+              }}
+              onSave={async (componentId, componentContent) => {
+                const success = await updateComponent(selectedPageId, componentId, componentContent);
+                if (success) {
+                  setSaveSuccess(true);
+                  setTimeout(() => setSaveSuccess(false), 3000);
+                }
+              }}
+              saving={saving}
+              locale={locale}
+            />
+          )}
+
           {/* Editor Panel - Bajrang Baan Hero Editor */}
-          {selectedComponent && selectedComponentId === 'bajrang-hero' && (
+          {selectedComponent && selectedComponentId === 'bajrang-hero' && selectedPageId !== 'donation' && (
             <BajrangBaanHeroEditor
               slides={editedContent.slides || []}
               onSlidesChange={(slides) => handleContentChange('slides', slides)}
@@ -449,7 +475,7 @@ export function PageComponentManager() {
           )}
 
           {/* Editor Panel - Standard Component Editor */}
-          {selectedComponent && selectedComponentId !== 'bajrang-hero' && (
+          {selectedComponent && selectedComponentId !== 'bajrang-hero' && selectedPageId !== 'donation' && (
             <ComponentEditor
               component={selectedComponent}
               editedContent={editedContent}
@@ -461,7 +487,7 @@ export function PageComponentManager() {
           )}
 
           {/* Empty State */}
-          {!selectedComponent && (
+          {!selectedComponent && selectedPageId !== 'donation' && (
             <div style={{
               display: 'flex',
               alignItems: 'center',

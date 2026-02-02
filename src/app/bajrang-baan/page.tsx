@@ -2,7 +2,6 @@
 
 import { useMemo, useState, useEffect } from 'react';
 import { NavBar } from '@/components/NavBar';
-import ScrollSnapAnimation from '@/components/ScrollSnapAnimation';
 import { useTranslation } from 'react-i18next';
 import styles from './page.module.css';
 
@@ -64,21 +63,18 @@ export default function BajrangBaanPage() {
   const [pageContent, setPageContent] = useState<PageContent | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch hero and content from API
   useEffect(() => {
     const fetchContent = async () => {
       const locale = i18n.language === 'hi' ? 'hi' : 'en';
       const defaultSlides = locale === 'hi' ? defaultSlidesHi : defaultSlidesEn;
       const defaultContent = locale === 'hi' ? defaultContentHi : defaultContentEn;
-      
+
       try {
-        // Fetch both hero and content in parallel
         const [heroResponse, contentResponse] = await Promise.all([
           fetch(`/api/page-content/${locale}/bajrang-baan/bajrang-hero`),
           fetch(`/api/page-content/${locale}/bajrang-baan/bajrang-content`)
         ]);
 
-        // Handle hero slides
         if (heroResponse.ok) {
           const heroData = await heroResponse.json();
           if (heroData?.content?.slides && Array.isArray(heroData.content.slides)) {
@@ -90,7 +86,6 @@ export default function BajrangBaanPage() {
           setHeroSlides(defaultSlides);
         }
 
-        // Handle page content
         if (contentResponse.ok) {
           const contentData = await contentResponse.json();
           if (contentData?.content) {
@@ -110,7 +105,8 @@ export default function BajrangBaanPage() {
         }
       } catch (error) {
         console.error('Error fetching content:', error);
-        setHeroSlides(defaultSlides);
+        const fallbackSlides = locale === 'hi' ? defaultSlidesHi : defaultSlidesEn;
+        setHeroSlides(fallbackSlides);
         setPageContent(defaultContent);
       } finally {
         setLoading(false);
@@ -123,62 +119,227 @@ export default function BajrangBaanPage() {
     }
   }, [i18n.language, ready]);
 
-  // Convert slides to sections format for ScrollSnapAnimation
-  const heroSections = useMemo(() => {
-    if (heroSlides.length === 0) {
-      const defaultSlides = i18n.language === 'hi' ? defaultSlidesHi : defaultSlidesEn;
-      return defaultSlides;
-    }
-    return heroSlides;
+  const heroImage = useMemo(() => {
+    if (heroSlides.length > 0 && heroSlides[0]?.imageUrl) return heroSlides[0].imageUrl;
+    const fallback = i18n.language === 'hi' ? defaultSlidesHi : defaultSlidesEn;
+    return fallback[0].imageUrl;
   }, [heroSlides, i18n.language]);
 
-  // Get content with fallback
   const content = useMemo(() => {
     if (pageContent) return pageContent;
     return i18n.language === 'hi' ? defaultContentHi : defaultContentEn;
   }, [pageContent, i18n.language]);
 
-  if (!ready || loading) {
-    return null;
-  }
+  const vidhiSteps = useMemo(() => ([
+    i18n.language === 'hi' ? 'समय: प्रातः या संध्या' : 'Time: Morning or evening',
+    i18n.language === 'hi' ? 'स्नान करें या हाथ-पैर धोएं' : 'Preparation: bathe or wash hands/feet',
+    i18n.language === 'hi' ? 'दिशा: उत्तर या पूर्व की ओर बैठें' : 'Direction: face North or East',
+    i18n.language === 'hi' ? 'भोग: भुना/भिगोया चना' : 'Offering: roasted/soaked gram (chana)',
+    i18n.language === 'hi' ? 'दीपक: घी का दीपक जलाएं' : 'Light a ghee lamp before Hanuman Ji'
+  ]), [i18n.language]);
+
+  const benefits = useMemo(() => ([
+    {
+      title: i18n.language === 'hi' ? 'रक्षा कवच' : 'Protection Shield',
+      description: i18n.language === 'hi'
+        ? 'नकारात्मक ऊर्जाओं से रक्षा और मानसिक दृढ़ता'
+        : 'Shield against negative energies with renewed courage'
+    },
+    {
+      title: i18n.language === 'hi' ? 'बाधा निवारण' : 'Remove Obstacles',
+      description: i18n.language === 'hi'
+        ? 'ग्रह/वास्तु दोष व व्यक्तिगत अड़चनों का शमन'
+        : 'Helps clear Graha/Vastu hurdles and personal roadblocks'
+    },
+    {
+      title: i18n.language === 'hi' ? 'आंतरिक शांति' : 'Inner Peace',
+      description: i18n.language === 'hi'
+        ? 'मन की शांति, बल और आध्यात्मिक उन्नति'
+        : 'Mental clarity, strength, and spiritual upliftment'
+    }
+  ]), [i18n.language]);
+
+  const downloads = useMemo(() => ([
+    {
+      title: i18n.language === 'hi' ? 'शुद्ध बजरंग बाण' : 'Shuddha Bajrang Baan',
+      tag: i18n.language === 'hi' ? 'मुख्य पाठ' : 'Main path',
+      cta: i18n.language === 'hi' ? 'PDF डाउनलोड' : 'Download PDF'
+    },
+    {
+      title: i18n.language === 'hi' ? 'राम रक्षा स्तोत्र' : 'Ram Raksha Stotra',
+      tag: i18n.language === 'hi' ? 'रक्षा' : 'Protection',
+      cta: i18n.language === 'hi' ? 'PDF डाउनलोड' : 'Download PDF'
+    },
+    {
+      title: i18n.language === 'hi' ? 'संकल्प व विधि' : 'Sankalp & Vidhi',
+      tag: i18n.language === 'hi' ? 'विधि' : 'Procedure',
+      cta: i18n.language === 'hi' ? 'PDF डाउनलोड' : 'Download PDF'
+    }
+  ]), [i18n.language]);
+
+  const faqs = useMemo(() => ([
+    {
+      q: i18n.language === 'hi' ? 'संकल्प कितनी बार लें?' : 'How often should I take the Sankalp?',
+      a: i18n.language === 'hi'
+        ? 'एक बार प्रारंभ में संकल्प लें, प्रतिदिन नहीं।'
+        : 'Take the vow once at the start, not every day.'
+    },
+    {
+      q: i18n.language === 'hi' ? 'सही भोग क्या है?' : 'What is the correct Bhog?',
+      a: i18n.language === 'hi'
+        ? 'भुना/भिगोया चना हनुमान जी को अर्पित करें।'
+        : 'Offer roasted or soaked gram (chana) before starting.'
+    }
+  ]), [i18n.language]);
+
+  if (!ready || loading) return null;
 
   return (
-    <main>
+    <main className={styles.page}>
       <NavBar />
-      <ScrollSnapAnimation 
-        defaultEffect="zoom" 
-        hideHeader={true} 
-        customSections={heroSections}
-        reducedHeight={true}
-      />
-      
-      <section className={styles.contentSection}>
-        <div className={styles.contentCard}>
-          <h2 className={styles.title}>
-            {content.title}
-          </h2>
-          
-          <div className={styles.textContent}>
-            <p className={styles.paragraph}>
-              {content.paragraph1}
-            </p>
-            
-            <p className={styles.paragraph}>
-              {content.paragraph2}
-            </p>
-            
-            <p className={styles.paragraph}>
-              {content.paragraph3}
-            </p>
-            
-            <p className={`${styles.paragraph} ${styles.highlightPrimary}`}>
-              {content.paragraph4}
-            </p>
-            
-            <p className={styles.highlightAccent}>
-              {content.paragraph5}
-            </p>
+
+      <section className={styles.hero} style={{ backgroundImage: `linear-gradient(120deg, rgba(255,77,0,0.82), rgba(255,116,0,0.65)), url(${heroImage})` }}>
+        <div className={styles.heroInner}>
+          <span className={styles.badge}>{i18n.language === 'hi' ? 'स्वामी रुपेश्वरानंद जी के मार्गदर्शन में' : 'Under guidance of Swami Rupeshwaranand Ji'}</span>
+          <h1 className={styles.heroTitle}>{content.title}</h1>
+          <p className={styles.heroSubtitle}>{content.paragraph1}</p>
+          <div className={styles.heroChips}>
+            <span className={styles.chip}>{i18n.language === 'hi' ? 'रविवार • प्रातः 5:00 • 108 पाठ' : 'Sunday • 5:00 AM • 108 path'}</span>
+            <span className={styles.chipAlt}>{i18n.language === 'hi' ? 'दैनिक • 11 पाठ' : 'Daily • 11 path'}</span>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.breadcrumbs}>
+        <div className={styles.crumbsInner}>
+          <span>{i18n.language === 'hi' ? 'होम' : 'Home'}</span>
+          <span>›</span>
+          <span>{i18n.language === 'hi' ? 'आश्रम' : 'Ashram'}</span>
+          <span>›</span>
+          <strong>{i18n.language === 'hi' ? 'दिव्यास्त्र प्रयोग' : 'Divyastra Prayog'}</strong>
+        </div>
+      </section>
+
+      <section className={styles.layoutGrid}>
+        <aside className={styles.sidebar}>
+          <div className={styles.cardPrimary}>
+            <h3>{i18n.language === 'hi' ? 'अभियान से जुड़ें' : 'Join the Abhiyan'}</h3>
+            <p>{i18n.language === 'hi' ? 'प्रत्येक रविवार • 108 पाठ' : 'Every Sunday • 108 path'}</p>
+            <button className={styles.primaryBtn}>{i18n.language === 'hi' ? 'रजिस्टर करें' : 'Register now'}</button>
+          </div>
+
+          <div className={styles.cardPlain}>
+            <h4>{i18n.language === 'hi' ? 'विषय सूची' : 'Table of contents'}</h4>
+            <ul className={styles.tocList}>
+              <li><a href="#vidhi">{i18n.language === 'hi' ? 'विधि व संकल्प' : 'Vidhi & Sankalp'}</a></li>
+              <li><a href="#benefits">{i18n.language === 'hi' ? 'लाभ' : 'Benefits'}</a></li>
+              <li><a href="#downloads">{i18n.language === 'hi' ? 'डाउनलोड' : 'Downloads'}</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+
+          <div className={styles.contactCard}>
+            <h4>Swami Rupeshwaranand Ashram</h4>
+            <p>Varanasi, Uttar Pradesh</p>
+            <div className={styles.whatsapp}>+91-7607 233 230</div>
+          </div>
+        </aside>
+
+        <div className={styles.mainColumn}>
+          <section id="vidhi" className={styles.sectionCard}>
+            <div className={styles.sectionHeader}>
+              <h2>{i18n.language === 'hi' ? 'विधि और संकल्प' : 'Vidhi & Sankalp'}</h2>
+              <p>{content.paragraph2}</p>
+            </div>
+
+            <div className={styles.gridTwo}>
+              <div className={styles.stepList}>
+                {vidhiSteps.map((step, idx) => (
+                  <div key={step} className={styles.stepItem}>
+                    <span className={styles.stepDot}>{idx + 1}</span>
+                    <span>{step}</span>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.sankalpBox}>
+                <h3>{i18n.language === 'hi' ? 'संकल्प मंत्र' : 'Sankalp mantra'}</h3>
+                <p>{i18n.language === 'hi'
+                  ? '"मैं (अपना पूरा नाम) नामक आराधक श्री हनुमान जी की प्रसन्नता हेतु 108 श्री बजरंग बाण पाठ करने का संकल्प कर रहा हूँ"'
+                  : '“I (full name) take a vow to recite Shri Bajrang Baan 108 times for the grace of Hanuman Ji.”'}</p>
+                <p className={styles.sankalpNote}>{i18n.language === 'hi' ? 'जल छोड़ें और पाठ आरंभ करें' : 'Release water and begin the path.'}</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="benefits" className={styles.sectionCard}>
+            <div className={styles.sectionHeader}>
+              <h2>{i18n.language === 'hi' ? 'दिव्य लाभ' : 'Divine benefits'}</h2>
+              <p>{content.paragraph3}</p>
+            </div>
+            <div className={styles.gridThree}>
+              {benefits.map((item) => (
+                <div key={item.title} className={styles.benefitCard}>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="downloads" className={styles.sectionCard}>
+            <div className={styles.sectionHeader}>
+              <h2>{i18n.language === 'hi' ? 'स्टोत्र डाउनलोड' : 'Download stotras'}</h2>
+              <p>{content.paragraph4}</p>
+            </div>
+            <div className={styles.gridThree}>
+              {downloads.map((item) => (
+                <div key={item.title} className={styles.downloadCard}>
+                  <span className={styles.downloadTag}>{item.tag}</span>
+                  <h3>{item.title}</h3>
+                  <p>{i18n.language === 'hi' ? 'प्रामाणिक पाठ और विधि' : 'Authentic text with guidance'}</p>
+                  <button className={styles.outlineBtn}>{item.cta}</button>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className={styles.sectionCard}>
+            <div className={styles.sectionHeader}>
+              <h2>{i18n.language === 'hi' ? 'दिव्य अनुभव' : 'Divya anubhav'}</h2>
+              <p>{i18n.language === 'hi' ? 'साधकों के अनुभव साझा' : 'Experiences shared by devotees'}</p>
+            </div>
+            <div className={styles.testimonials}>
+              {[content.paragraph5, content.paragraph1, content.paragraph2].map((text, idx) => (
+                <div key={idx} className={styles.testimonialCard}>
+                  <div className={styles.avatar}>{String.fromCharCode(65 + idx)}</div>
+                  <p>{text}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="faq" className={styles.sectionCard}>
+            <div className={styles.sectionHeader}>
+              <h2>FAQ</h2>
+              <p>{i18n.language === 'hi' ? 'सामान्य प्रश्न' : 'Common questions'}</p>
+            </div>
+            <div className={styles.faqList}>
+              {faqs.map((item) => (
+                <details key={item.q} className={styles.faqItem}>
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <section className={styles.ctaBanner}>
+            <div>
+              <h3>{i18n.language === 'hi' ? 'दिव्य आंदोलन से जुड़ें' : 'Join the divine movement'}</h3>
+              <p>{i18n.language === 'hi' ? 'दैनिक अपडेट हेतु व्हाट्सएप समूह से जुड़ें' : 'Join the WhatsApp group for daily updates'}</p>
+            </div>
+            <button className={styles.primaryBtn}>{i18n.language === 'hi' ? 'समूह में जुड़ें' : 'Join WhatsApp group'}</button>
+          </section>
         </div>
       </section>
     </main>

@@ -33,6 +33,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Next.js telemetry file
+lrt
+**/lrt
+
 # amplify
 amplify/
 .amplifyrc

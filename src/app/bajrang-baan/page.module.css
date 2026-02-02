@@ -1,135 +1,425 @@
-.contentSection {
-  padding: 4rem 2rem;
+.page {
+  background: #fff7f2;
+  color: #1a1a1a;
+}
+
+.hero {
+  position: relative;
+  min-height: 60vh;
+  display: grid;
+  align-items: flex-end;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 7rem 1.5rem 5rem;
+}
+
+.heroInner {
+  max-width: 960px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.heroTitle {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.heroSubtitle {
+  max-width: 640px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #fff3e8;
+}
+
+.heroChips {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.chip,
+.chipAlt {
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #2a1200;
+  background: #ffd7b0;
+}
+
+.chipAlt {
+  background: #ffe7c7;
+}
+
+.breadcrumbs {
+  background: #fff;
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.crumbsInner {
   max-width: 1200px;
   margin: 0 auto;
-  background-color: var(--page-background, #f5f5f5);
+  display: flex;
+  gap: 0.55rem;
+  color: #5a3d24;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
-.contentCard {
-  background-color: white;
-  padding: 3rem;
+.layoutGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  display: grid;
+  gap: 1rem;
+}
+
+.cardPrimary {
+  background: linear-gradient(135deg, var(--primary-color, #ff4d00), var(--accent-color, #ff7400));
+  color: #fff;
+  padding: 1.4rem;
+  border-radius: 16px;
+  box-shadow: 0 14px 30px rgba(255, 77, 0, 0.2);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.cardPrimary h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+.cardPrimary p {
+  margin: 0;
+  color: #ffeede;
+}
+
+.primaryBtn {
+  margin-top: 0.5rem;
+  padding: 0.75rem 1rem;
+  border: none;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.title {
-  font-size: 2rem;
+  background: #fff;
+  color: var(--primary-color, #ff4d00);
   font-weight: 700;
-  color: var(--color-primary, #ff4d00);
-  text-align: center;
-  margin-bottom: 2rem;
-  border-bottom: 3px solid var(--color-secondary, #ffc100);
-  padding-bottom: 1rem;
-  line-height: 1.4;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
-.textContent {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #333;
-  text-align: justify;
+.primaryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-.paragraph {
-  margin-bottom: 1.5rem;
+.cardPlain,
+.contactCard {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
-.highlightPrimary {
-  font-weight: 600;
-  color: var(--color-primary, #ff4d00);
+.cardPlain h4,
+.contactCard h4 {
+  margin: 0 0 0.4rem;
+  color: #2a1200;
+  font-size: 1.05rem;
 }
 
-.highlightAccent {
-  font-weight: 600;
-  color: var(--color-accent, #ff7400);
+.tocList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.4rem;
 }
 
-/* Tablet - Portrait iPads, Landscape Phones */
+.tocList a {
+  color: var(--primary-color, #ff4d00);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.whatsapp {
+  margin-top: 0.4rem;
+  color: var(--primary-color, #ff4d00);
+  font-weight: 700;
+}
+
+.mainColumn {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.sectionCard {
+  background: #fff;
+  border-radius: 18px;
+  padding: 1.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+}
+
+.sectionHeader h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #1f0f05;
+}
+
+.sectionHeader p {
+  margin: 0.35rem 0 0;
+  color: #4a3425;
+  line-height: 1.6;
+}
+
+.gridTwo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.gridThree {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+.stepList {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.stepItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  background: #fff5eb;
+  border: 1px solid rgba(255, 77, 0, 0.1);
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+}
+
+.stepDot {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: var(--primary-color, #ff4d00);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.sankalpBox {
+  background: linear-gradient(135deg, rgba(255, 193, 0, 0.18), rgba(255, 116, 0, 0.12));
+  border: 1px solid rgba(255, 193, 0, 0.35);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.sankalpBox h3 {
+  margin: 0;
+  color: #1f0f05;
+}
+
+.sankalpBox p {
+  margin: 0;
+  color: #4a3425;
+  line-height: 1.6;
+}
+
+.sankalpNote {
+  font-weight: 700;
+  color: var(--primary-color, #ff4d00);
+}
+
+.benefitCard,
+.downloadCard {
+  background: #fff8ef;
+  border: 1px solid rgba(255, 77, 0, 0.08);
+  border-radius: 14px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.35rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+}
+
+.benefitCard h3,
+.downloadCard h3 {
+  margin: 0;
+  color: #1f0f05;
+}
+
+.benefitCard p,
+.downloadCard p {
+  margin: 0;
+  color: #4a3425;
+  line-height: 1.5;
+}
+
+.downloadTag {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 10px;
+  background: #ffe0b5;
+  color: #7a4318;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.outlineBtn {
+  margin-top: 0.2rem;
+  padding: 0.7rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--primary-color, #ff4d00);
+  background: transparent;
+  color: var(--primary-color, #ff4d00);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.outlineBtn:hover {
+  background: var(--primary-color, #ff4d00);
+  color: #fff;
+}
+
+.testimonials {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.testimonialCard {
+  background: #fff5eb;
+  border: 1px solid rgba(255, 77, 0, 0.08);
+  border-radius: 14px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--primary-color, #ff4d00);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+}
+
+.faqList {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 0.7rem;
+}
+
+.faqItem {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  background: #fffaf3;
+}
+
+.faqItem summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: #1f0f05;
+}
+
+.faqItem p {
+  margin: 0.4rem 0 0;
+  color: #4a3425;
+  line-height: 1.5;
+}
+
+.ctaBanner {
+  margin-top: 0.5rem;
+  background: linear-gradient(120deg, #ffb347, #ff4d00);
+  color: #fff;
+  padding: 1.3rem 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 16px 30px rgba(255, 77, 0, 0.28);
+}
+
+.ctaBanner h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.ctaBanner p {
+  margin: 0.25rem 0 0;
+  color: #fff4e8;
+}
+
 @media (max-width: 1024px) {
-  .contentSection {
-    padding: 3rem 1.5rem;
+  .layoutGrid {
+    grid-template-columns: 1fr;
   }
-  
-  .contentCard {
-    padding: 2.5rem;
-  }
-  
-  .title {
-    font-size: 1.75rem;
-  }
-  
-  .textContent {
-    font-size: 1.05rem;
-    line-height: 1.7;
+  .sidebar {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
 
-/* Mobile - Phones */
-@media (max-width: 768px) {
-  .contentSection {
-    padding: 2rem 1rem;
+@media (max-width: 720px) {
+  .hero {
+    min-height: 56vh;
+    padding: 5rem 1.25rem 3.5rem;
   }
-  
-  .contentCard {
-    padding: 2rem 1.5rem;
-    border-radius: 8px;
+  .ctaBanner {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom-width: 2px;
-    padding-bottom: 0.75rem;
-  }
-  
-  .textContent {
-    font-size: 1rem;
-    line-height: 1.7;
-    text-align: left;
-  }
-  
-  .paragraph {
-    margin-bottom: 1.25rem;
-  }
-}
-
-/* Small Mobile - Narrow Phones */
-@media (max-width: 480px) {
-  .contentSection {
-    padding: 1.5rem 0.75rem;
-  }
-  
-  .contentCard {
-    padding: 1.5rem 1rem;
-  }
-  
-  .title {
-    font-size: 1.25rem;
-    line-height: 1.3;
-    word-wrap: break-word;
-  }
-  
-  .textContent {
+  .chip,
+  .chipAlt {
     font-size: 0.95rem;
-    line-height: 1.6;
   }
 }
 
-/* Extra Small - Very Narrow Screens */
-@media (max-width: 360px) {
-  .contentSection {
-    padding: 1rem 0.5rem;
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 2rem;
   }
-  
-  .contentCard {
-    padding: 1.25rem 0.75rem;
-  }
-  
-  .title {
-    font-size: 1.1rem;
-  }
-  
-  .textContent {
-    font-size: 0.9rem;
+  .sectionCard,
+  .cardPrimary,
+  .cardPlain,
+  .contactCard {
+    padding: 1.1rem;
   }
 }

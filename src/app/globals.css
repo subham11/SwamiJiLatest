@@ -95,8 +95,15 @@ button, .langBtn, .eventBtn, .ctaBtn, .menuRow a, .menuDropdownTrigger {
   font-weight: 600;
 }
 
-/* Ensure main UI containers use Inter for clarity */
-.navbar, .footer, .announcementBar, .marqueeContent span {
+/* Top nav typography aligned with site serif stack */
+.navbar, .navbar .menuRow a, .navbar .menuDropdownTrigger, .navbar button {
+  font-family: var(--font-heading) !important;
+  font-weight: 700;
+  letter-spacing: 0.25px;
+}
+
+/* Footer and marquee keep clean UI font */
+.footer, .announcementBar, .marqueeContent span {
   font-family: var(--font-ui) !important;
   font-weight: 500;
 }

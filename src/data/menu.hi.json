@@ -34,6 +34,12 @@
           "type": "link"
         },
         {
+          "id": "products",
+          "label": "उत्पाद",
+          "href": "/products",
+          "type": "link"
+        },
+        {
           "id": "services",
           "label": "आश्रम पूजन सेवाएं",
           "href": "#services",

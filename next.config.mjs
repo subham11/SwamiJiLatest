@@ -3,6 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   // Output standalone for AWS Amplify SSR
   output: 'standalone',
+  // Disable telemetry completely
+  experimental: {
+    telemetry: false,
+  },
   images: {
     // Unoptimized for static export compatibility
     unoptimized: true,

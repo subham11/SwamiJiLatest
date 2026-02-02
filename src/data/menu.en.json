@@ -34,6 +34,12 @@
           "type": "link"
         },
         {
+          "id": "products",
+          "label": "Products",
+          "href": "/products",
+          "type": "link"
+        },
+        {
           "id": "services",
           "label": "Aashram Poojan Services",
           "href": "#services",

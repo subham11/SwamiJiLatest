@@ -1,0 +1,29 @@
+import styles from './ErrorBoundary.module.css';
+
+.errorContainer {
+  @apply flex justify-center items-center min-h-96 p-5 bg-red-100 rounded-lg border border-red-300;
+}
+
+.errorContent {
+  @apply text-center max-w-lg;
+}
+
+.errorTitle {
+  @apply text-red-900 mb-2.5 text-2xl;
+}
+
+.errorMessage {
+  @apply text-red-900 mb-5 text-base;
+}
+
+.errorText {
+  @apply text-red-900 p-3 bg-red-100 border border-red-300 rounded block mb-2.5;
+}
+
+.closeButton {
+  @apply bg-none border-none text-red-900 cursor-pointer text-lg px-2 float-right hover:opacity-70;
+}
+
+.retryButton {
+  @apply px-5 py-2.5 bg-red-900 text-white border-none rounded cursor-pointer text-base transition-colors duration-300 hover:bg-red-800;
+}
